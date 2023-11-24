@@ -8,8 +8,8 @@ const Header = () => {
     <S.HeaderContainer>
       <S.NavElement onClick={() => routerHandler(1)}>HLogger</S.NavElement>
       <S.NavWrapper>
-        <S.NavElement onClick={() => routerHandler(2)}>Calendar</S.NavElement>
-        <S.NavElement onClick={() => routerHandler(3)}>Record</S.NavElement>
+        <div onClick={() => routerHandler(2)}>Calendar</div>
+        <div onClick={() => routerHandler(3)}>Record</div>
       </S.NavWrapper>
     </S.HeaderContainer>
   );

@@ -1,9 +1,19 @@
 export const THEME = {
   BACKGROUND_COLOR: {
     BLUE: "#2463EB",
+    GREEN: "#46CA67",
+    GREEN_2: "#17A34A",
+    GREEN_3: "#4CCA6A",
     BLACK: "#2F2F31",
     WHITE: "#FFFFFF",
     WHITE_2: "#F1F5F9",
+    WHITE_3: "#F4F4F5",
+  },
+  COLOR: {
+    WHITE: "#FFFFFF",
+  },
+  BORDER: {
+    GRAY: "#E4E4E7",
   },
   BORDER_RADIUS: {
     L: "10px",
@@ -16,9 +26,7 @@ export const THEME = {
       HEIGHT: "55px",
     },
   },
-  COLOR: {
-    WHITE: "#FFFFFF",
-  },
+
   FONT_WEIGHT: {
     S: "500",
     M: "600",

@@ -21,7 +21,8 @@ export const LandingRightContainer = styled.div`
 `;
 
 export const LandingSpan = styled.span`
-  background: linear-gradient(to right, #007fff, #0059b2);
+  /* background: linear-gradient(to right, #007fff, #0059b2); */
+  background: linear-gradient(to right, #17a34a, #00bb98);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 800;
