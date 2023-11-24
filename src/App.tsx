@@ -1,18 +1,14 @@
-// App.tsx
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "./firebase";
+import React from "react";
+import Router from "./routes/Router";
+import { GlobalStyle } from "./style/init";
 
 const App = () => {
-  const getFirebaseData = async () => {
-    const querySnapshot = await getDocs(collection(db, "test"));
-    querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
-      console.log(doc.data());
-    });
-  };
-  getFirebaseData();
-
-  return <div>hello world!!</div>;
+  return (
+    <React.Fragment>
+      <GlobalStyle />
+      <Router />
+    </React.Fragment>
+  );
 };
 
 export default App;
