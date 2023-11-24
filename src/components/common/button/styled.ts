@@ -8,7 +8,7 @@ interface IButtonProps {
 const Button = styled.button<IButtonProps>`
   width: ${(props) => THEME.BUTTON_SIZE[props.size].WIDTH};
   height: ${(props) => THEME.BUTTON_SIZE[props.size].HEIGHT};
-  background-color: ${THEME.BACKGROUND_COLOR.BLUE};
+  background-color: ${THEME.BACKGROUND_COLOR.GREEN};
   border-radius: ${THEME.BORDER_RADIUS.L};
   color: ${THEME.COLOR.WHITE};
   display: flex;
