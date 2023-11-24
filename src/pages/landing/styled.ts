@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const LandingContainer = styled.div`
   width: 100%;
   display: flex;
+  height: 100vh;
 `;
 
 export const LandingLeftContainer = styled.div`
@@ -10,7 +11,6 @@ export const LandingLeftContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 90vh;
   flex-direction: column;
 `;
 
@@ -18,7 +18,6 @@ export const LandingRightContainer = styled.div`
   background-color: black;
   display: block;
   width: 50%;
-  height: 100vh;
 `;
 
 export const LandingSpan = styled.span`

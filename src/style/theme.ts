@@ -1,6 +1,9 @@
 export const THEME = {
   BACKGROUND_COLOR: {
-    BUTTON: "#007fff",
+    BLUE: "#2463EB",
+    BLACK: "#2F2F31",
+    WHITE: "#FFFFFF",
+    WHITE_2: "#F1F5F9",
   },
   BORDER_RADIUS: {
     L: "10px",
@@ -15,5 +18,18 @@ export const THEME = {
   },
   COLOR: {
     WHITE: "#FFFFFF",
+  },
+  FONT_WEIGHT: {
+    S: "500",
+    M: "600",
+    L: "700",
+    XL: "800",
+  },
+  FONT_SIZE: {
+    XS: "14px",
+    S: "16px",
+    M: "18px",
+    L: "22px",
+    XL: "2rem",
   },
 };
