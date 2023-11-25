@@ -1,15 +1,15 @@
 import { S } from "./styled";
-import useRouter from "../../hooks/useRouter";
+import useMovePage from "../../hooks/useMovePage";
 
 const Header = () => {
-  const [routerHandler] = useRouter();
+  const [routerHandler] = useMovePage();
 
   return (
     <S.HeaderContainer>
-      <S.NavElement onClick={() => routerHandler(1)}>HLogger</S.NavElement>
+      <S.NavElement onClick={() => routerHandler({ num: 1 })}>HLogger</S.NavElement>
       <S.NavWrapper>
-        <div onClick={() => routerHandler(2)}>Calendar</div>
-        <div onClick={() => routerHandler(3)}>Record</div>
+        <div onClick={() => routerHandler({ num: 2 })}>Calendar</div>
+        <div onClick={() => routerHandler({ num: 3 })}>Record</div>
       </S.NavWrapper>
     </S.HeaderContainer>
   );
