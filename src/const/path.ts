@@ -10,4 +10,5 @@ export const PATH_NUMBER = {
   LANDING: 1,
   CALENDAR: 2,
   RECORD: 3,
+  CALENDAR_DETAIl: 4,
 };
