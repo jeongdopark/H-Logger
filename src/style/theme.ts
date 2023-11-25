@@ -4,6 +4,7 @@ export const THEME = {
     GREEN: "#46CA67",
     GREEN_2: "#17A34A",
     GREEN_3: "#4CCA6A",
+    GREEN_4: "#CDE8D2",
     BLACK: "#2F2F31",
     WHITE: "#FFFFFF",
     WHITE_2: "#F1F5F9",
@@ -16,7 +17,7 @@ export const THEME = {
     GRAY: "#E4E4E7",
   },
   BORDER_RADIUS: {
-    L: "10px",
+    L: "9px",
     M: "7px",
     S: "5px",
   },
@@ -24,6 +25,12 @@ export const THEME = {
     L: {
       WIDTH: "155px",
       HEIGHT: "55px",
+      FONT_SIZE: "14px",
+    },
+    S: {
+      WIDTH: "60px",
+      HEIGHT: "35px",
+      FONT_SIZE: "12px",
     },
   },
 
@@ -39,5 +46,34 @@ export const THEME = {
     M: "18px",
     L: "22px",
     XL: "2rem",
+  },
+  INPUT_SIZE: {
+    L: {
+      WIDTH: "240px",
+      HEIGHT: "50px",
+    },
+    M: {
+      WIDTH: "200px",
+      HEIGHT: "40px",
+    },
+    S: {
+      WIDTH: "80px",
+      HEIGHT: "40px",
+    },
+  },
+
+  SELECTOR_SIZE: {
+    L: {
+      WIDTH: "240px",
+      HEIGHT: "50px",
+    },
+    M: {
+      WIDTH: "200px",
+      HEIGHT: "40px",
+    },
+    S: {
+      WIDTH: "80px",
+      HEIGHT: "40px",
+    },
   },
 };

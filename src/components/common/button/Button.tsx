@@ -2,7 +2,7 @@ import { S } from "./styled";
 
 interface IProps {
   text: string;
-  size: "L";
+  size: "L" | "S";
   onClick?: () => void;
 }
 
