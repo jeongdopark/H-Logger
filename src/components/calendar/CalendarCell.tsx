@@ -1,3 +1,4 @@
+import useMovePage from "../../hooks/useMovePage";
 import { S } from "./styled";
 import { addDays, endOfMonth, startOfWeek, startOfMonth, endOfWeek, format } from "date-fns";
 
@@ -11,6 +12,7 @@ const CalendarCell = ({ currentMonth }: IProps) => {
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
   const endDate = endOfWeek(monthEnd);
+  const [routerHandler] = useMovePage();
 
   const rows = [];
   let days = [];
@@ -19,22 +21,23 @@ const CalendarCell = ({ currentMonth }: IProps) => {
 
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
-      if (format(day, "yyyy-MM-dd") === today) {
+      const dayFormat = format(day, "yyyy-MM-dd");
+      const dynamic = dayFormat.split("-").join("").substring(2);
+      formattedDate = format(day, "d");
+      if (dayFormat === today) {
         days.push(
-          <S.CellElement today={true}>
+          <S.CellElement today={true} onClick={() => routerHandler({ num: 4, dynamic })}>
             <span>{formattedDate}</span>
             <div>today</div>
           </S.CellElement>
         );
       } else {
-        formattedDate = format(day, "d");
         days.push(
-          <S.CellElement today={false}>
+          <S.CellElement today={false} onClick={() => routerHandler({ num: 4, dynamic })}>
             <span>{formattedDate}</span>
           </S.CellElement>
         );
       }
-
       day = addDays(day, 1);
     }
     rows.push(<S.CellRow>{days}</S.CellRow>);
