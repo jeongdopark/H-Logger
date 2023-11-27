@@ -71,7 +71,18 @@ const ArrowBuntton = styled.button`
   cursor: pointer;
 `;
 
+const CellTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 5px;
+  width: 60%;
+  margin: 0 auto;
+  height: 100%;
+`;
+
 export const S = {
+  CellTextContainer,
   ArrowBuntton,
   CellContainer,
   CellElement,

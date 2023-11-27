@@ -35,6 +35,14 @@ const CalendarCell = ({ currentMonth }: IProps) => {
         days.push(
           <S.CellElement today={false} onClick={() => routerHandler({ num: 4, dynamic })}>
             <span>{formattedDate}</span>
+            <S.CellTextContainer>
+              <div>웨이트 10분</div>
+              <div>아침</div>
+              <div>점심</div>
+              <div>저녁</div>
+              <div>야식</div>
+              <div>95점</div>
+            </S.CellTextContainer>
           </S.CellElement>
         );
       }

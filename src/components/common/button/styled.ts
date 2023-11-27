@@ -9,13 +9,13 @@ const Button = styled.button<IButtonProps>`
   width: ${(props) => THEME.BUTTON_SIZE[props.size].WIDTH};
   height: ${(props) => THEME.BUTTON_SIZE[props.size].HEIGHT};
   font-size: ${(props) => THEME.BUTTON_SIZE[props.size].FONT_SIZE};
-  background-color: ${THEME.BACKGROUND_COLOR.GREEN};
+  background-color: ${THEME.BACKGROUND_COLOR.GREEN_2};
   border-radius: ${THEME.BORDER_RADIUS.M};
   color: ${THEME.COLOR.WHITE};
+  font-weight: ${THEME.FONT_WEIGHT.S};
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 700;
   outline: none;
   border: none;
   cursor: pointer;

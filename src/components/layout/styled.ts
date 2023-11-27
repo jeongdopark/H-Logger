@@ -13,6 +13,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
+  z-index: 9999;
 `;
 
 const NavElement = styled.div`

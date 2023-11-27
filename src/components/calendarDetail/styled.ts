@@ -43,8 +43,9 @@ const Menu = styled.li`
   padding: 5px 10px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   font-size: ${THEME.FONT_SIZE.XS};
-  font-weight: ${THEME.FONT_WEIGHT.M};
-  background-color: ${THEME.BACKGROUND_COLOR.GREEN_4};
+  font-weight: ${THEME.FONT_WEIGHT.S};
+  background-color: ${THEME.BACKGROUND_COLOR.GREEN_2};
+  color: ${THEME.COLOR.WHITE};
 `;
 
 const Textarea = styled.textarea`
