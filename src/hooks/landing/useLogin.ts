@@ -1,0 +1,39 @@
+import useMovePage from "../useMovePage";
+import { PATH_NUMBER } from "../../const/path";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthProvider";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../firebase";
+import { checkUserExist } from "../../utils/checkUserExist";
+import { createUserDoc } from "../../utils/createUserDoc";
+
+const useLogin = () => {
+  const [routerHandler] = useMovePage();
+  const { setIsLogin } = useContext(AuthContext);
+  const handleGoogleLogin = () => {
+    const provider = new GoogleAuthProvider(); // provider 구글 설정
+    signInWithPopup(auth, provider) // 팝업창 띄워서 로그인
+      .then(async ({ user }) => {
+        console.log(user);
+
+        const isUser = await checkUserExist(user.uid);
+        // 신규 유저일 경우
+        if (!isUser)
+          createUserDoc({
+            uid: user.uid,
+            userData: { displayName: user.displayName!, email: user.email!, photoURL: user.photoURL!, uid: user.uid },
+          });
+        localStorage.setItem("uid", user.uid);
+        setIsLogin(true);
+        routerHandler({ num: PATH_NUMBER.CALENDAR });
+      })
+      .catch((err) => {
+        alert("로그인 실패");
+        console.log(err);
+      });
+  };
+
+  return [handleGoogleLogin];
+};
+
+export default useLogin;
