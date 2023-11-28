@@ -14,15 +14,14 @@ const useLogin = () => {
     const provider = new GoogleAuthProvider(); // provider 구글 설정
     signInWithPopup(auth, provider) // 팝업창 띄워서 로그인
       .then(async ({ user }) => {
-        console.log(user);
-
         const isUser = await checkUserExist(user.uid);
         // 신규 유저일 경우
-        if (!isUser)
+        if (!isUser) {
           createUserDoc({
             uid: user.uid,
             userData: { displayName: user.displayName!, email: user.email!, photoURL: user.photoURL!, uid: user.uid },
           });
+        }
         localStorage.setItem("uid", user.uid);
         setIsLogin(true);
         routerHandler({ num: PATH_NUMBER.CALENDAR });

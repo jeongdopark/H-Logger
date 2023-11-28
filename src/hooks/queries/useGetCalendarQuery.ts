@@ -6,7 +6,6 @@ const getCalendarData = async () => {
   const uid = localStorage.getItem("uid");
   const docRef = doc(db, "records", uid!);
   const docSnap = await getDoc(docRef);
-  console.log(docSnap.data());
 
   return docSnap.data()!.calendar;
 };

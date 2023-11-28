@@ -5,9 +5,11 @@ export const checkUserExist = async (uid: string) => {
   const usersQuery = query(collection(db, "users"));
   const usersQuerySnapshot = await getDocs(usersQuery);
 
-  usersQuerySnapshot.forEach((userDoc) => {
-    if (userDoc.id === uid) return true;
-  });
+  for (const userDoc of usersQuerySnapshot.docs) {
+    if (userDoc.id === uid) {
+      return true;
+    }
+  }
 
   return false;
 };
