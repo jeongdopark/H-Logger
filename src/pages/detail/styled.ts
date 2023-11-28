@@ -9,29 +9,30 @@ const DetailContainer = styled.div`
   border-radius: ${THEME.BORDER_RADIUS.M};
 `;
 
-const FormContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  gap: 20px;
-  padding: 10px;
-`;
-
 const FormWrapper = styled.div`
   display: flex;
-  gap: 30px;
-  flex-direction: column;
-  justify-content: start;
-  margin-top: 10px;
-  padding: 10px 10px 10px 20px;
+  width: 100%;
+  justify-content: center;
   height: 50vh;
-  flex: 1;
   &:not(:last-child) {
     border-right: 1px solid ${THEME.BORDER.GRAY};
   }
 `;
 
-const RecordContainer = styled(FormContainer)``;
+const RecordContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px;
+  width: 850px;
+  margin: 0 auto;
+`;
+
+const FormContainer = styled(RecordContainer)`
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const RecordElement = styled.div`
   display: flex;
@@ -43,7 +44,36 @@ const RecordElement = styled.div`
   border-radius: ${THEME.BORDER_RADIUS.M};
 `;
 
+interface IModeSelector {
+  modeNumber: number;
+}
+
+const ModeSelect = styled.div<IModeSelector>`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 220px;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: ${THEME.BORDER_RADIUS.M};
+  background: ${THEME.BACKGROUND_COLOR.WHITE};
+
+  div:nth-child(${(props) => props.modeNumber + 1}) {
+    background-color: ${THEME.BACKGROUND_COLOR.GREEN_4};
+  }
+
+  div {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 50px;
+    border-radius: ${THEME.BORDER_RADIUS.M};
+    cursor: pointer;
+  }
+`;
+
 export const S = {
+  ModeSelect,
   RecordElement,
   RecordContainer,
   DetailContainer,

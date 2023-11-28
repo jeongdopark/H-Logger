@@ -36,7 +36,7 @@ interface IProps {
 const CellElement = styled.div<IProps>`
   font-weight: ${THEME.FONT_WEIGHT.L};
   font-size: ${THEME.FONT_SIZE.XS};
-  background-color: ${(props) => (props.today ? THEME.BACKGROUND_COLOR.GREEN_2 : THEME.BACKGROUND_COLOR.WHITE)};
+
   width: 100%;
   height: 150px;
   padding: 5px;
@@ -46,7 +46,11 @@ const CellElement = styled.div<IProps>`
 
   &:hover {
     transition: 0.2s ease-out;
-    background-color: ${(props) => (props.today ? THEME.BACKGROUND_COLOR.GREEN : THEME.BACKGROUND_COLOR.WHITE_3)};
+    background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
+  }
+
+  span {
+    color: ${(props) => (props.today ? THEME.COLOR.GREEN_2 : THEME.COLOR.BLACK)};
   }
 `;
 
@@ -81,7 +85,24 @@ const CellTextContainer = styled.div`
   height: 100%;
 `;
 
+const TagBox = styled.div`
+  padding: 5px;
+  font-weight: ${THEME.FONT_WEIGHT.S};
+  font-size: ${THEME.FONT_SIZE.XXS};
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE_3};
+  color: ${THEME.BACKGROUND_COLOR.BLACK};
+  border-radius: ${THEME.BORDER_RADIUS.S};
+`;
+
+const TagBoxWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+`;
+
 export const S = {
+  TagBoxWrapper,
+  TagBox,
   CellTextContainer,
   ArrowBuntton,
   CellContainer,

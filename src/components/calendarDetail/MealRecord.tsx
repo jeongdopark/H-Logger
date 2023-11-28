@@ -1,14 +1,14 @@
 import { S } from "./styled";
 import Menu from "./Menu";
+import { IMeal } from "../../types";
 
-const MealRecord = () => {
-  const menus = ["밥", "김치", "된장찌개", "고등어"];
+const MealRecord = ({ data }: { data: IMeal }) => {
   return (
     <S.MealRecordBox>
-      <div>아침</div>
+      <div>{data.time}</div>
       <S.MenuWrapper>
-        {menus.map((menu: string, idx: number) => (
-          <Menu menu={menu} key={idx} />
+        {data.menu.map((m: string, idx: number) => (
+          <Menu menu={m} key={idx} />
         ))}
       </S.MenuWrapper>
     </S.MealRecordBox>

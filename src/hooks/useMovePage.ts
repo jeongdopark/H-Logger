@@ -3,12 +3,12 @@ import { PATH_NUMBER } from "../const/path";
 
 interface IArg {
   num: number;
-  dynamic?: string;
+  dayFormat?: string;
 }
 
 const useMovePage = () => {
   const navigate = useNavigate();
-  const routerHandler = ({ num, dynamic }: IArg) => {
+  const routerHandler = ({ num, dayFormat }: IArg) => {
     switch (num) {
       case PATH_NUMBER.LANDING:
         navigate("/");
@@ -20,7 +20,7 @@ const useMovePage = () => {
         navigate("/record");
         break;
       case PATH_NUMBER.CALENDAR_DETAIl:
-        navigate(`/calendar/${dynamic}`);
+        navigate(`/calendar/${dayFormat}`);
         break;
     }
   };

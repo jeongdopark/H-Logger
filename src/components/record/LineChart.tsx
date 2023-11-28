@@ -45,7 +45,7 @@ const LineGraph = ({ points }: lineGraphProps): JSX.Element => {
 
 const GraphLine = styled.line`
   stroke: ${THEME.BACKGROUND_COLOR.GREEN_4};
-  stroke-width: 2;
+  strokewidth: 2;
 `;
 
 const GraphCircle = styled.circle`

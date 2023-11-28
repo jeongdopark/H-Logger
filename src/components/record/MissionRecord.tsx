@@ -5,7 +5,9 @@ import { S } from "./styled";
 const MissionRecord = () => {
   return (
     <S.MissionContainer>
-      <Title title="미션 목록" />
+      <S.TitleWrapper>
+        <Title title="Mission" size="XL" />
+      </S.TitleWrapper>
       <S.MissionScrollWrapper>
         <S.MissionWrapper>
           <MissionElement />

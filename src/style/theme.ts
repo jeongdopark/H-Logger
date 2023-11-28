@@ -12,6 +12,8 @@ export const THEME = {
   },
   COLOR: {
     WHITE: "#FFFFFF",
+    BLACK: "#2F2F31",
+    GREEN_2: "#17A34A",
   },
   BORDER: {
     GRAY: "#E4E4E7",
@@ -41,11 +43,13 @@ export const THEME = {
     XL: "800",
   },
   FONT_SIZE: {
+    XXS: "12px",
     XS: "14px",
     S: "16px",
     M: "18px",
     L: "22px",
-    XL: "2rem",
+    XL: "26px",
+    XXL: "2rem",
   },
   INPUT_SIZE: {
     L: {

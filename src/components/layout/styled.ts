@@ -14,10 +14,11 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   margin-bottom: 30px;
   z-index: 9999;
+  border-bottom: 0.5px solid ${THEME.BORDER.GRAY};
 `;
 
 const NavElement = styled.div`
-  font-size: ${THEME.FONT_SIZE.XL};
+  font-size: ${THEME.FONT_SIZE.XXL};
   font-weight: ${THEME.FONT_WEIGHT.L};
   cursor: pointer;
 `;
@@ -45,6 +46,8 @@ const LayoutContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
 `;
 
 export const S = {

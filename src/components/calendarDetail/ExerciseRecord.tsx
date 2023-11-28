@@ -1,10 +1,11 @@
 import { S } from "./styled";
+import { IExercise } from "../../types";
 
-const ExerciseRecord = () => {
+const ExerciseRecord = ({ data }: { data: IExercise }) => {
   return (
     <S.ExerciseRecordBox>
-      <div>운동 : 웨이트</div>
-      <div>시간 : 10분</div>
+      <div>{data.category}</div>
+      <div>{data.time}</div>
     </S.ExerciseRecordBox>
   );
 };

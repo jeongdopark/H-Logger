@@ -10,7 +10,7 @@ interface IProps {
 const Input = ({ title, size, placeholder }: IProps) => {
   return (
     <S.Container>
-      <Title title={title} />
+      <Title title={title} size="M" />
       <S.Input placeholder={placeholder} size={size}></S.Input>
     </S.Container>
   );

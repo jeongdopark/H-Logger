@@ -14,11 +14,11 @@ const getCalendarData = async () => {
   return data;
 };
 
-const useGetCourseListQuery = () => {
+const useCalendarDataQuery = () => {
   return useQuery({
     queryKey: ["calendar"],
     queryFn: () => getCalendarData(),
   });
 };
 
-export default useGetCourseListQuery;
+export default useCalendarDataQuery;

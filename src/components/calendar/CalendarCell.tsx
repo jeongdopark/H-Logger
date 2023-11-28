@@ -1,13 +1,15 @@
 import useMovePage from "../../hooks/useMovePage";
 import { S } from "./styled";
 import { addDays, endOfMonth, startOfWeek, startOfMonth, endOfWeek, format } from "date-fns";
+import useCalendarDataQuery from "../../hooks/queries/useGetCalendar";
 
 interface IProps {
   currentMonth: Date;
 }
 
 const CalendarCell = ({ currentMonth }: IProps) => {
-  const today = format(new Date(), "yyyy-MM-dd");
+  const { data: calendarData, isLoading } = useCalendarDataQuery();
+  const today = format(new Date(), "yyMMdd");
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart);
@@ -19,33 +21,37 @@ const CalendarCell = ({ currentMonth }: IProps) => {
   let day = startDate;
   let formattedDate = "";
 
-  while (day <= endDate) {
+  while (day <= endDate && calendarData) {
     for (let i = 0; i < 7; i++) {
-      const dayFormat = format(day, "yyyy-MM-dd");
-      const dynamic = dayFormat.split("-").join("").substring(2);
+      const dayFormat = format(day, "yyMMdd");
+      const isToday = today === dayFormat;
+      const data = calendarData![dayFormat];
+
       formattedDate = format(day, "d");
-      if (dayFormat === today) {
-        days.push(
-          <S.CellElement today={true} onClick={() => routerHandler({ num: 4, dynamic })}>
-            <span>{formattedDate}</span>
-            <div>today</div>
-          </S.CellElement>
-        );
-      } else {
-        days.push(
-          <S.CellElement today={false} onClick={() => routerHandler({ num: 4, dynamic })}>
-            <span>{formattedDate}</span>
+
+      days.push(
+        <S.CellElement today={isToday} onClick={() => routerHandler({ num: 4, dayFormat })}>
+          {isToday ? <span>{formattedDate} ●</span> : <span>{formattedDate}</span>}
+          {data && (
             <S.CellTextContainer>
-              <div>웨이트 10분</div>
-              <div>아침</div>
-              <div>점심</div>
-              <div>저녁</div>
-              <div>야식</div>
-              <div>95점</div>
+              <S.TagBoxWrapper>
+                {data.exercise.map((e) => (
+                  <S.TagBox>
+                    {e.category} {e.time}
+                  </S.TagBox>
+                ))}
+              </S.TagBoxWrapper>
+              <S.TagBoxWrapper>
+                {data.meal.map((e) => (
+                  <S.TagBox>{e.time}</S.TagBox>
+                ))}
+              </S.TagBoxWrapper>
+              <S.TagBox>{data.dailyLog.score}점</S.TagBox>
             </S.CellTextContainer>
-          </S.CellElement>
-        );
-      }
+          )}
+        </S.CellElement>
+      );
+
       day = addDays(day, 1);
     }
     rows.push(<S.CellRow>{days}</S.CellRow>);

@@ -12,7 +12,7 @@ const Textarea = ({ title, placeholder }: IProps) => {
   return (
     <S.Form>
       <S.TextareaWrapper>
-        <Title title={title} />
+        <Title title={title} size="M" />
         <S.Textarea placeholder={placeholder} />
       </S.TextareaWrapper>
       <Input title="점수" placeholder="점수를 입력해 주세요" size="L" />

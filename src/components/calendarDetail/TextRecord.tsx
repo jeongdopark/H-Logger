@@ -1,15 +1,14 @@
+import { ICalendar } from "../../types";
 import { S } from "./styled";
 
-const TextRecord = () => {
+const TextRecord = ({ detailData }: { detailData: ICalendar }) => {
+  console.log(detailData);
+
   return (
     <S.TextRecord>
       <span>세 줄 일기</span>
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore quas possimus tempora assumenda hic architecto
-        eaque error! Provident cumque, quas vitae similique, repellendus sint laudantium asperiores, consectetur
-        perferendis magni dolores.
-      </div>
-      <div>점수 : 90</div>
+      <div>{detailData.dailyLog.log}</div>
+      <div>{detailData.dailyLog.score}점</div>
     </S.TextRecord>
   );
 };

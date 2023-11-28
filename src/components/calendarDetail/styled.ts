@@ -31,7 +31,7 @@ const InputWrapper = styled.div`
 const MenuWrapper = styled.div`
   display: flex;
   gap: 5px;
-  width: 80%;
+  width: 100%;
   min-height: 100px;
   padding: 10px 5px;
   flex-wrap: wrap;
@@ -63,6 +63,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 30%;
 `;
 
 const TextareaWrapper = styled.div`
@@ -73,14 +74,16 @@ const TextareaWrapper = styled.div`
 
 const ExerciseRecordBox = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
-  width: 70%;
+  width: 90%;
   border-radius: ${THEME.BORDER_RADIUS.M};
   padding: 10px;
 `;
 
 const MealRecordBox = styled(ExerciseRecordBox)``;
 
-const TextRecord = styled(ExerciseRecordBox)``;
+const TextRecord = styled(ExerciseRecordBox)`
+  padding: 20px;
+`;
 export const S = {
   TextRecord,
   MealRecordBox,
