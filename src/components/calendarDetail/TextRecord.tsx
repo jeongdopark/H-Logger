@@ -1,4 +1,4 @@
-import { ICalendar } from "../../types";
+import { ICalendar } from "../../types/calendar";
 import { S } from "./styled";
 
 const TextRecord = ({ detailData }: { detailData: ICalendar }) => {

@@ -1,7 +1,8 @@
 import useMovePage from "../../hooks/useMovePage";
 import { S } from "./styled";
 import { addDays, endOfMonth, startOfWeek, startOfMonth, endOfWeek, format } from "date-fns";
-import useCalendarDataQuery from "../../hooks/queries/useGetCalendar";
+import useCalendarDataQuery from "../../hooks/queries/useGetCalendarQuery";
+import { IExercise, IMeal } from "../../types/calendar";
 
 interface IProps {
   currentMonth: Date;
@@ -35,14 +36,14 @@ const CalendarCell = ({ currentMonth }: IProps) => {
           {data && (
             <S.CellTextContainer>
               <S.TagBoxWrapper>
-                {data.exercise.map((e) => (
+                {data.exercise.map((e: IExercise) => (
                   <S.TagBox>
                     {e.category} {e.time}
                   </S.TagBox>
                 ))}
               </S.TagBoxWrapper>
               <S.TagBoxWrapper>
-                {data.meal.map((e) => (
+                {data.meal.map((e: IMeal) => (
                   <S.TagBox>{e.time}</S.TagBox>
                 ))}
               </S.TagBoxWrapper>

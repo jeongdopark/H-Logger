@@ -1,6 +1,6 @@
 import { S } from "./styled";
 import Menu from "./Menu";
-import { IMeal } from "../../types";
+import { IMeal } from "../../types/calendar";
 
 const MealRecord = ({ data }: { data: IMeal }) => {
   return (

@@ -1,5 +1,5 @@
 import { S } from "./styled";
-import { IExercise } from "../../types";
+import { IExercise } from "../../types/calendar";
 
 const ExerciseRecord = ({ data }: { data: IExercise }) => {
   return (

@@ -1,9 +1,10 @@
 import { S } from "./styled";
 import { addDays, startOfWeek, startOfMonth, format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import useCalendarDataQuery from "../../hooks/queries/useGetCalendar";
+import useCalendarDataQuery from "../../hooks/queries/useGetCalendarQuery";
 import { THEME } from "../../style/theme";
 import Title from "../common/title/Title";
+import { IExercise } from "../../types/calendar";
 const ScoreRecord = () => {
   const { data, isLoading } = useCalendarDataQuery();
   console.log(data);
@@ -43,14 +44,14 @@ const ScoreRecord = () => {
         color = THEME.BACKGROUND_COLOR.GREEN_2;
       }
       Week.push(
-        <S.ScoreRecordLi color={color} onClick={() => routerHandler(dateFormat)}>
+        <S.ScoreRecordLi color={color} onClick={() => routerHandler(dateFormat)} key={dateFormat}>
           <S.HoverBox className="score-tooltip">
             <div>{format(date, "yy-MM-dd")}</div>
             {dateData === "정보 없음" ? (
               <div>정보 없음</div>
             ) : (
               <div>
-                {dateData.exercise.map((e) => {
+                {dateData.exercise.map((e: IExercise) => {
                   return (
                     <>
                       <div>
