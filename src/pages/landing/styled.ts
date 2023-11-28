@@ -78,7 +78,41 @@ const LoginBtn = styled.img`
   cursor: pointer;
 `;
 
+const ModalContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed; /* 변경된 부분 */
+  top: 0; /* 추가된 부분 */
+  left: 0; /* 추가된 부분 */
+  z-index: 9999;
+`;
+
+const LoginBox = styled.div`
+  width: 30%;
+  height: 230px;
+  background-color: white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  gap: 30px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+`;
+
 export const S = {
+  ButtonWrapper,
+  LoginBox,
   LandingContainer,
   LandingLeftContainer,
   LandingRightContainer,
@@ -88,4 +122,5 @@ export const S = {
   LandingLoginDiv,
   LoginBtn,
   LoginBtnWrapper,
+  ModalContainer,
 };
