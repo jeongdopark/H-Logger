@@ -16,7 +16,6 @@ const Main = () => {
           <Button size="L" text="Get Start" />
         </S.LandingLoginContainer>
       </S.LandingLeftContainer>
-      <S.LandingRightContainer></S.LandingRightContainer>
     </S.LandingContainer>
   );
 };

@@ -16,8 +16,8 @@ const Router = () => {
           <Route path={PATH_NAME.CALENDAR} element={<Calendar />} />
           <Route path={PATH_NAME.RECORD} element={<Record />} />
           <Route path={PATH_NAME.MISSION} element={<Mission />} />
+          <Route path={PATH_NAME.LANDING} element={<Landing />} />
         </Route>
-        <Route path={PATH_NAME.LANDING} element={<Landing />} />
       </Routes>
     </BrowserRouter>
   );

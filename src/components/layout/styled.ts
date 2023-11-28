@@ -36,7 +36,7 @@ const NavWrapper = styled(NavElement)`
 const Footer = styled.footer`
   width: 100%;
   height: 8vh;
-  background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
+  border-top: 0.5px solid ${THEME.BORDER.GRAY};
   margin-top: 70px;
   line-height: 8vh;
   padding: 0px 100px;
