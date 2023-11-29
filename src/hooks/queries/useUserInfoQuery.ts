@@ -9,11 +9,11 @@ const getUserInfo = async () => {
   return docSnap.data()!;
 };
 
-const useGetUserInfoQuery = () => {
+const useUserInfoQuery = () => {
   return useQuery({
     queryKey: ["users"],
     queryFn: () => getUserInfo(),
   });
 };
 
-export default useGetUserInfoQuery;
+export default useUserInfoQuery;
