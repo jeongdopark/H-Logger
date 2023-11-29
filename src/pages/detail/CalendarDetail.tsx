@@ -5,7 +5,7 @@ import ExerciseRecord from "../../components/calendarDetail/ExerciseRecord";
 import MealRecord from "../../components/calendarDetail/MealRecord";
 import TextRecord from "../../components/calendarDetail/TextRecord";
 import WeightInput from "../../components/calendarDetail/WeightInput";
-import useCalendarDataQuery from "../../hooks/queries/useGetCalendarQuery";
+import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import { ICalendar, IExercise, IMeal } from "../../types/calendar";
 import { useEffect, useState } from "react";
 import { S } from "./styled";

@@ -1,7 +1,7 @@
 import useMovePage from "../../hooks/useMovePage";
 import { S } from "./styled";
 import { addDays, endOfMonth, startOfWeek, startOfMonth, endOfWeek, format } from "date-fns";
-import useCalendarDataQuery from "../../hooks/queries/useGetCalendarQuery";
+import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import { IExercise, IMeal } from "../../types/calendar";
 
 interface IProps {

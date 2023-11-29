@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Selector from "../common/selector/Selector";
 import Button from "../common/button/Button";
-import { MEAL_TIME } from "../../const/const";
+import { MEAL_TIME } from "../../const";
 import { S } from "./styled";
 import Menu from "./Menu";
 

@@ -1,7 +1,7 @@
 import { S } from "./styled";
 import { addDays, startOfWeek, startOfMonth, format } from "date-fns";
 import { useNavigate } from "react-router-dom";
-import useCalendarDataQuery from "../../hooks/queries/useGetCalendarQuery";
+import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import { THEME } from "../../style/theme";
 import Title from "../common/title/Title";
 import { IExercise } from "../../types/calendar";

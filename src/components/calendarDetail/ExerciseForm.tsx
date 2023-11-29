@@ -1,6 +1,6 @@
 import Input from "../common/input/Input";
 import Selector from "../common/selector/Selector";
-import { EXERCISE_TIME } from "../../const/const";
+import { EXERCISE_TIME } from "../../const";
 import Button from "../common/button/Button";
 import { S } from "./styled";
 

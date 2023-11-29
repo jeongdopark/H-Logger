@@ -99,7 +99,7 @@ const MissionScrollWrapper = styled.div`
 const HoverBox = styled.div`
   z-index: 999;
   position: absolute; /* 현재 요소에 대해 절대적 위치 지정 */
-  top: -80px;
+  top: -85px;
   left: 50%; /* 부모 요소의 가로 중앙에 위치시키기 위해 left를 50%로 설정 */
   transform: translateX(-50%); /* 요소 자체의 너비의 절반만큼 왼쪽으로 이동 */
   white-space: nowrap; /* 텍스트 줄바꿈 방지 */
@@ -126,7 +126,56 @@ const TitleWrapper = styled.div`
   padding: 20px 0px 0px 20px;
 `;
 
+const GraphLine = styled.line`
+  stroke: ${THEME.BACKGROUND_COLOR.GREEN_4};
+  stroke-width: 3;
+`;
+
+const GraphCircle = styled.circle`
+  z-index: 999;
+  fill: ${THEME.BACKGROUND_COLOR.GREEN_2};
+`;
+
+const GraphSubCircle = styled.circle`
+  fill: transparent;
+`;
+
+const GraphLineWrapper = styled.g`
+  &:hover .hover-rect {
+    visibility: visible;
+    opacity: 1;
+  }
+`;
+
+const CircleWrapper = styled.div`
+  position: relative;
+  cursor: pointer;
+`;
+
+const HoverRect = styled.rect`
+  width: 120px;
+  height: 50px;
+  visibility: hidden;
+  opacity: 0;
+  fill: ${THEME.BACKGROUND_COLOR.GREEN_3};
+  transition: 0.2s ease-in-out;
+`;
+
+const HoverText = styled.text`
+  visibility: hidden;
+  opacity: 0;
+  fill: white;
+  transition: 0.3s ease-in-out;
+`;
+
 export const S = {
+  GraphSubCircle,
+  HoverText,
+  GraphLineWrapper,
+  HoverRect,
+  CircleWrapper,
+  GraphLine,
+  GraphCircle,
   TitleWrapper,
   HoverBox,
   MissionScrollWrapper,
