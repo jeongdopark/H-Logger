@@ -11,12 +11,14 @@ interface IProps {
 const Textarea = ({ title, placeholder }: IProps) => {
   return (
     <S.Form>
-      <S.TextareaWrapper>
-        <Title title={title} size="M" />
-        <S.Textarea placeholder={placeholder} />
-      </S.TextareaWrapper>
-      <Input title="점수" placeholder="점수를 입력해 주세요" size="L" />
-      <Button text="추가" size="S" />
+      <S.FormWrapper>
+        <S.TextareaWrapper>
+          <Title title={title} size="S" />
+          <S.Textarea placeholder={placeholder} />
+        </S.TextareaWrapper>
+        <Input title="점수" placeholder="점수를 입력해 주세요" size="XL" />
+        <Button text="추가" size="S" />
+      </S.FormWrapper>
     </S.Form>
   );
 };

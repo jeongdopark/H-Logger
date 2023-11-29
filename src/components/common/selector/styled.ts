@@ -5,7 +5,7 @@ import { THEME } from "../../../style/theme";
 const SelectorContainer = styled(Container)``;
 
 interface ISelector {
-  size: "L" | "M" | "S";
+  size: "L" | "M" | "S" | "XL";
 }
 
 const Selector = styled.select<ISelector>`

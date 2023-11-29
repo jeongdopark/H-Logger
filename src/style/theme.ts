@@ -52,6 +52,10 @@ export const THEME = {
     XXL: "2rem",
   },
   INPUT_SIZE: {
+    XL: {
+      WIDTH: "320px",
+      HEIGHT: "50px",
+    },
     L: {
       WIDTH: "240px",
       HEIGHT: "50px",

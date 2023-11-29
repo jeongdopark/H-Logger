@@ -2,8 +2,6 @@ import { ICalendar } from "../../types/calendar";
 import { S } from "./styled";
 
 const TextRecord = ({ detailData }: { detailData: ICalendar }) => {
-  console.log(detailData);
-
   return (
     <S.TextRecord>
       <span>세 줄 일기</span>

@@ -31,10 +31,13 @@ const InputWrapper = styled.div`
 const MenuWrapper = styled.div`
   display: flex;
   gap: 5px;
-  width: 100%;
+  width: 320px;
   min-height: 100px;
+  justify-content: center;
   padding: 10px 5px;
   flex-wrap: wrap;
+  border-radius: ${THEME.BORDER_RADIUS.M};
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE};
 `;
 
 const Menu = styled.li`
@@ -51,7 +54,7 @@ const Menu = styled.li`
 const Textarea = styled.textarea`
   border: none;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
-  width: 80%;
+  width: 320px;
   height: 200px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   padding: 5px;
@@ -62,8 +65,8 @@ const Textarea = styled.textarea`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 30%;
+  gap: 25px;
+  width: 50%;
 `;
 
 const TextareaWrapper = styled.div`
@@ -84,7 +87,16 @@ const MealRecordBox = styled(ExerciseRecordBox)``;
 const TextRecord = styled(ExerciseRecordBox)`
   padding: 20px;
 `;
+
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80%;
+  gap: 30px;
+`;
 export const S = {
+  FormWrapper,
   TextRecord,
   MealRecordBox,
   ExerciseRecordBox,

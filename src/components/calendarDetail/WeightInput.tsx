@@ -1,12 +1,16 @@
+import { S } from "./styled";
 import Button from "../common/button/Button";
-import Input from "../common/input/Input";
+import Title from "../common/title/Title";
 
 const WeightInput = () => {
   return (
-    <>
-      <Input title="몸무게" placeholder="몸무게를 입력해 주세요." size="M" />
-      <Button text="입력" size="S" />
-    </>
+    <S.InputContainer>
+      <Title title="몸무게" size="S" />
+      <S.InputWrapper>
+        <S.Input placeholder="몸무게를 입력해 주세요." size="L"></S.Input>
+        <Button size="S" text="입력" />
+      </S.InputWrapper>
+    </S.InputContainer>
   );
 };
 

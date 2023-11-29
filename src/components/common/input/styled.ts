@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 interface IInputProps {
   // todo IProps과 props 같은데 어떻게 tyep 설정해줄 수 있을까 ?
-  size: "L" | "M" | "S";
+  size: "L" | "M" | "S" | "XL";
 }
 
 const Input = styled.input<IInputProps>`
