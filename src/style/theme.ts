@@ -9,6 +9,10 @@ export const THEME = {
     WHITE: "#FFFFFF",
     WHITE_2: "#F1F5F9",
     WHITE_3: "#F4F4F5",
+    RED: "#E11D49",
+    RED_2: "#F56C6D",
+    ORANGE: "#F1CD01",
+    ORANGE_2: "#E8A849",
   },
   COLOR: {
     WHITE: "#FFFFFF",

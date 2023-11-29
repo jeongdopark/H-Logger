@@ -1,4 +1,6 @@
 import useMovePage from "../useMovePage";
+import useToast from "../useToast";
+import Toast from "../../components/toast";
 import { PATH_NUMBER } from "../../const/path";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
@@ -25,10 +27,12 @@ const useLogin = () => {
         localStorage.setItem("uid", user.uid);
         setIsLogin(true);
         routerHandler({ num: PATH_NUMBER.CALENDAR });
+        useToast({ content: <Toast text="로그인 성공" type="SUCCESS" /> });
       })
       .catch((err) => {
         alert("로그인 실패");
         console.log(err);
+        useToast({ content: <Toast text="로그인 실패" type="FAIL" /> });
       });
   };
 

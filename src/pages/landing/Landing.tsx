@@ -1,12 +1,12 @@
-import { S } from "./styled";
 import Button from "../../components/common/button/Button";
 import useLogin from "../../hooks/landing/useLogin";
-import { useContext, useRef, useState } from "react";
+import useMovePage from "../../hooks/useMovePage";
 import useOutsideClick from "../../hooks/landing/useOutsideClick";
+import { S } from "./styled";
 import { SVG } from "../../components/SVG";
 import { AuthContext } from "../../context/AuthProvider";
-import useMovePage from "../../hooks/useMovePage";
 import { PATH_NUMBER } from "../../const/path";
+import { useContext, useRef, useState } from "react";
 
 const Main = () => {
   const [handleGoogleLogin] = useLogin();
