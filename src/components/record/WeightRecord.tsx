@@ -1,29 +1,47 @@
+import { useEffect, useState } from "react";
+import { IWeight } from "../../types/weight";
 import Title from "../common/title/Title";
 import LineGraph from "./LineChart";
 import { S } from "./styled";
+import { WEIGHT_LINE_CONST } from "../../const";
 
-const WeightRecord = () => {
-  const points = [
-    { x: -180, y: (80 - 76) * 6 },
-    { x: -90, y: (82 - 76) * 6 },
-    { x: 0, y: (84 - 76) * 6 },
-    { x: 90, y: (80 - 76) * 6 },
-    { x: 180, y: (83 - 76) * 6 },
-    { x: 270, y: (81 - 76) * 6 },
-    { x: 360, y: (79 - 76) * 6 },
-    { x: 450, y: (78 - 76) * 6 },
-    { x: 540, y: (79 - 76) * 6 },
-    { x: 630, y: (77 - 76) * 6 },
-    { x: 720, y: (79 - 76) * 6 },
-  ];
+interface IPoints {
+  x: number;
+  y: number;
+}
 
+const WeightRecord = ({ userWeight }: { userWeight: IWeight[] }) => {
+  const [points, setPoints] = useState<IPoints[]>();
+  const [sortUserWeight, setSortUserWeight] = useState<IWeight[]>();
+  let X_INTERVAL = 1100 / userWeight.length;
+  useEffect(() => {
+    let sum = 0;
+    let average = 0;
+    const point_arr = [];
+    const sort_weight = userWeight.sort((a, b) => a.date - b.date);
+    for (let i = 0; i < sort_weight.length; i++) {
+      sum += sort_weight[i].weight;
+    }
+    average = sum / sort_weight.length;
+
+    for (let i = 0; i < sort_weight.length; i++) {
+      point_arr.push({
+        x: WEIGHT_LINE_CONST.START_X_POS + X_INTERVAL * i,
+        y: (sort_weight[i].weight - average) * WEIGHT_LINE_CONST.Y_INTERVAL,
+      });
+    }
+    setSortUserWeight([...sort_weight]);
+    setPoints([...point_arr]);
+  }, []);
+
+  if (!points) return <div>Loading...</div>;
   return (
     <>
       <S.RecordContainer>
         <S.TitleWrapper>
           <Title title="Weight" size="XL" />
         </S.TitleWrapper>
-        <LineGraph points={points} />
+        <LineGraph points={points!} sortUserWeight={sortUserWeight!} />
       </S.RecordContainer>
     </>
   );
