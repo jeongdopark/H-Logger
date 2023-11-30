@@ -35,19 +35,23 @@ const CalendarCell = ({ currentMonth }: IProps) => {
           {isToday ? <span>{formattedDate} ●</span> : <span>{formattedDate}</span>}
           {data && (
             <S.CellTextContainer>
-              <S.TagBoxWrapper>
-                {data.exercise.map((e: IExercise) => (
-                  <S.TagBox>
-                    {e.category} {e.time}
-                  </S.TagBox>
-                ))}
-              </S.TagBoxWrapper>
-              <S.TagBoxWrapper>
-                {data.meal.map((e: IMeal) => (
-                  <S.TagBox>{e.time}</S.TagBox>
-                ))}
-              </S.TagBoxWrapper>
-              <S.TagBox>{data.dailyLog.score}점</S.TagBox>
+              {data.exercise && (
+                <S.TagBoxWrapper>
+                  {data.exercise.map((e: IExercise) => (
+                    <S.TagBox>
+                      {e.category} {e.time}
+                    </S.TagBox>
+                  ))}
+                </S.TagBoxWrapper>
+              )}
+              {data.meal && (
+                <S.TagBoxWrapper>
+                  {data.meal.map((e: IMeal) => (
+                    <S.TagBox>{e.time}</S.TagBox>
+                  ))}
+                </S.TagBoxWrapper>
+              )}
+              {data.dailyLog && <S.TagBox>{data.dailyLog.score}점</S.TagBox>}
             </S.CellTextContainer>
           )}
         </S.CellElement>
