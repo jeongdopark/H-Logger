@@ -6,7 +6,7 @@ import { useState } from "react";
 import { MEAL_TIME } from "../../const";
 import { S } from "./styled";
 
-const MealForm = () => {
+const MealForm = ({ date }: { date: string }) => {
   const [meals, setMeals] = useState(["밥", "김치", "된장찌개", "고등어", "후라이"]);
 
   return (

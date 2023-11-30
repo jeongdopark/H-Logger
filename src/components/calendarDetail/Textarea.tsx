@@ -6,6 +6,7 @@ import Button from "../common/button/Button";
 interface IProps {
   title: string;
   placeholder: string;
+  date: string;
 }
 
 const Textarea = ({ title, placeholder }: IProps) => {

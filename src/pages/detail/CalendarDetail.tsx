@@ -13,7 +13,6 @@ import { useParams } from "react-router-dom";
 
 const CalendarDetail = () => {
   const { id } = useParams();
-
   const [modeNumber, setModeNumber] = useState(0);
   const [detailData, setDetailData] = useState<ICalendar>();
   const { data: calendarData, isLoading, isFetched } = useCalendarDataQuery();
@@ -31,10 +30,10 @@ const CalendarDetail = () => {
   };
 
   const FormArray = [
-    <ExerciseForm />,
-    <MealForm />,
-    <Textarea title="세 줄 일지" placeholder="하루 일지를 작성해 주세요." />,
-    <WeightInput />,
+    <ExerciseForm date={id!} />,
+    <MealForm date={id!} />,
+    <Textarea title="세 줄 일지" placeholder="하루 일지를 작성해 주세요." date={id!} />,
+    <WeightInput date={id!} />,
   ];
 
   if (isLoading) return <div>Loading...</div>;
@@ -52,19 +51,25 @@ const CalendarDetail = () => {
       </S.FormContainer>
       {detailData && (
         <S.RecordContainer>
-          <S.RecordElement>
-            {detailData?.exercise.map((data: IExercise) => (
-              <ExerciseRecord data={data} />
-            ))}
-          </S.RecordElement>
-          <S.RecordElement>
-            {detailData?.meal.map((data: IMeal) => (
-              <MealRecord data={data} />
-            ))}
-          </S.RecordElement>
-          <S.RecordElement>
-            <TextRecord detailData={detailData!} />
-          </S.RecordElement>
+          {detailData.exercise && (
+            <S.RecordElement>
+              {detailData?.exercise.map((data: IExercise) => (
+                <ExerciseRecord data={data} />
+              ))}
+            </S.RecordElement>
+          )}
+          {detailData.meal && (
+            <S.RecordElement>
+              {detailData?.meal.map((data: IMeal) => (
+                <MealRecord data={data} />
+              ))}
+            </S.RecordElement>
+          )}
+          {detailData.dailyLog && (
+            <S.RecordElement>
+              <TextRecord detailData={detailData!} />
+            </S.RecordElement>
+          )}
         </S.RecordContainer>
       )}
     </S.DetailContainer>

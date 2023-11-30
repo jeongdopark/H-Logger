@@ -26,7 +26,7 @@ export const TOAST_TYPE = {
 
 export const TOAST_DURATION = {
   DURATION: {
-    SET_TIMEOUT: 1700,
-    ANIMATION: "1.7s",
+    SET_TIMEOUT: 1500,
+    ANIMATION: "1.5s",
   },
 };

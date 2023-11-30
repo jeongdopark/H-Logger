@@ -2,7 +2,7 @@ import { S } from "./styled";
 import Button from "../common/button/Button";
 import Title from "../common/title/Title";
 
-const WeightInput = () => {
+const WeightInput = ({ date }: { date: string }) => {
   return (
     <S.InputContainer>
       <Title title="몸무게" size="S" />

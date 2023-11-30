@@ -32,8 +32,10 @@ const ScoreRecord = () => {
       const date = startDate;
       const dateFormat = format(date, "yyMMdd");
       const dateData = data[dateFormat] ? data[dateFormat] : "정보 없음";
-      const score = data[dateFormat] ? data[dateFormat].dailyLog.score : 0;
+      const score = data[dateFormat] && data[dateFormat].dailyLog ? data[dateFormat].dailyLog.score : 0;
+
       let color = "";
+
       if (score === 0) {
         color = "white";
       } else if (score <= 39) {
@@ -51,16 +53,17 @@ const ScoreRecord = () => {
               <div>정보 없음</div>
             ) : (
               <div>
-                {dateData.exercise.map((e: IExercise) => {
-                  return (
-                    <>
-                      <div>
-                        {e.category} {e.time}
-                      </div>
-                    </>
-                  );
-                })}
-                <div>{dateData.dailyLog.score}점</div>
+                {dateData.exercise &&
+                  dateData.exercise.map((e: IExercise) => {
+                    return (
+                      <>
+                        <div>
+                          {e.category} {e.time}
+                        </div>
+                      </>
+                    );
+                  })}
+                {dateData.dailyLog && <div>{dateData.dailyLog.score}점</div>}
               </div>
             )}
           </S.HoverBox>
