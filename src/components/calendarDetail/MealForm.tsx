@@ -42,7 +42,6 @@ const MealForm = ({ date }: { date: string }) => {
         },
       }
     );
-    alert("submit");
   };
 
   return (
