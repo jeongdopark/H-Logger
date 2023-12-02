@@ -15,8 +15,12 @@ const postExercise = async ({ category, time, dateKey }: IExercise) => {
   const calendarData = docSnap.data()!.calendar;
 
   if (calendarData[dateKey]) {
-    const exerciseArray = calendarData[dateKey].exercise;
-    exerciseArray.push({ category, time });
+    if (calendarData[dateKey].exercise) {
+      const exerciseArray = calendarData[dateKey].exercise;
+      exerciseArray.push({ category, time });
+    } else {
+      calendarData[dateKey] = { ...calendarData[dateKey], exercise: [{ category, time }] };
+    }
   } else {
     // 해당 날짜에 exercise 배열이 없으면, 새 배열 생성
     calendarData[dateKey] = { exercise: [{ category, time }] };

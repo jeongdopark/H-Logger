@@ -1,10 +1,12 @@
 import Input from "../common/input/Input";
 import Selector from "../common/selector/Selector";
 import Button from "../common/button/Button";
-import { EXERCISE_TIME } from "../../const";
-import { S } from "./styled";
 import React, { useState } from "react";
 import useCreateExerciseMutation from "../../hooks/mutation/usePostExerciseMutation";
+import useToast from "../../hooks/useToast";
+import Toast from "../toast";
+import { EXERCISE_TIME } from "../../const";
+import { S } from "./styled";
 
 type ExerciseTimeType = (typeof EXERCISE_TIME)[number];
 
@@ -14,7 +16,17 @@ const ExerciseForm = ({ date }: { date: string }) => {
   const [exerciseTime, setExerciseTime] = useState<ExerciseTimeType>(EXERCISE_TIME[0]);
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    postExercise({ category: exercise, time: exerciseTime, dateKey: date });
+    postExercise(
+      { category: exercise, time: exerciseTime, dateKey: date },
+      {
+        onSuccess: () => {
+          useToast({ content: <Toast text="등록 완료" type="SUCCESS" /> });
+        },
+        onError: () => {
+          useToast({ content: <Toast text="다시 입력해 주세요." type="FAIL" /> });
+        },
+      }
+    );
   };
   return (
     <S.Form onSubmit={submitHandler}>
@@ -26,7 +38,7 @@ const ExerciseForm = ({ date }: { date: string }) => {
           value={exercise}
           setValue={setExercise}
         />
-        <Selector title="운동 시간" options={EXERCISE_TIME} size="XL" setExerciseTime={setExerciseTime} />
+        <Selector title="운동 시간" options={EXERCISE_TIME} size="XL" setState={setExerciseTime} />
         <Button size="S" text="추가" />
       </S.FormWrapper>
     </S.Form>
