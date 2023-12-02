@@ -7,7 +7,7 @@ const MealRecord = ({ data }: { data: IMeal }) => {
     <S.MealRecordBox>
       <div>{data.time}</div>
       <S.MenuWrapper>
-        {data.menu.map((m: string, idx: number) => (
+        {data.menus.map((m: string, idx: number) => (
           <Menu menu={m} key={idx} />
         ))}
       </S.MenuWrapper>
