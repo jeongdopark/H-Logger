@@ -22,6 +22,9 @@ const useMovePage = () => {
       case PATH_NUMBER.CALENDAR_DETAIl:
         navigate(`/calendar/${dayFormat}`);
         break;
+      case PATH_NUMBER.MISSION:
+        navigate(`/mission/${dayFormat}`);
+        break;
     }
   };
   return [routerHandler];

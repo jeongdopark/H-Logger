@@ -6,16 +6,19 @@ import MealRecord from "../../components/calendarDetail/MealRecord";
 import TextRecord from "../../components/calendarDetail/TextRecord";
 import WeightInput from "../../components/calendarDetail/WeightInput";
 import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
+import Button from "../../components/common/button/Button";
+import useMovePage from "../../hooks/useMovePage";
 import { S } from "./styled";
 import { ICalendar, IExercise, IMeal } from "../../types/calendar";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const CalendarDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
   const [modeNumber, setModeNumber] = useState(0);
   const [detailData, setDetailData] = useState<ICalendar>();
   const { data: calendarData, isLoading, isFetched } = useCalendarDataQuery();
+  const [routerHandler] = useMovePage();
 
   useEffect(() => {
     if (isFetched) {
@@ -40,6 +43,10 @@ const CalendarDetail = () => {
 
   return (
     <S.DetailContainer>
+      <S.DetailHeader>
+        <span>{id[2] + id[3] + "월 " + id[4] + id[5] + "일"}</span>
+        <Button text="미션 생성" size="S" onClick={() => routerHandler({ num: 5, dayFormat: id })} />
+      </S.DetailHeader>
       <S.FormContainer>
         <S.ModeSelect onClick={(e) => modeNumberHandler(e)} modeNumber={modeNumber}>
           <div data-key={0}>운동</div>

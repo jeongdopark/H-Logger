@@ -3,7 +3,7 @@ export const PATH_NAME = {
   CALENDAR: "/calendar",
   CALENDAR_DETAIL: "/calendar/:id",
   RECORD: "/record",
-  MISSION: "/mission",
+  MISSION: "/mission/:id",
 };
 
 export const PATH_NUMBER = {
@@ -11,4 +11,5 @@ export const PATH_NUMBER = {
   CALENDAR: 2,
   RECORD: 3,
   CALENDAR_DETAIl: 4,
+  MISSION: 5,
 };
