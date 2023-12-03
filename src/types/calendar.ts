@@ -15,6 +15,6 @@ export interface IExercise {
 }
 
 export interface IMeal {
-  menu: string[];
+  menus: string[];
   time: "아침" | "아점" | "점심" | "점저" | "저녁" | "야식";
 }

@@ -1,23 +1,23 @@
 import { S } from "./styled";
 import Title from "../title/Title";
-import React from "react";
+import React, { ReactNode } from "react";
 
-interface IProps {
+interface IProps<T extends ReactNode> {
   title: string;
-  options: string[];
-  setExerciseTime: React.Dispatch<React.SetStateAction<string>>;
+  options: T[];
   size: "L" | "M" | "S" | "XL";
+  setState: React.Dispatch<React.SetStateAction<T>>;
 }
 
-const Selector = ({ title, options, size, setExerciseTime }: IProps) => {
+const Selector = <T extends ReactNode>({ title, options, size, setState }: IProps<T>) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setExerciseTime(event.target.value);
+    setState(event.target.value as T);
   };
   return (
     <S.SelectorContainer>
       <Title title={title} size="S" />
       <S.Selector size={size} onChange={handleChange}>
-        {options.map((elem: string, idx: number) => (
+        {options.map((elem: T, idx: number) => (
           <S.Option key={idx}>{elem}</S.Option>
         ))}
       </S.Selector>

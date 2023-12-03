@@ -1,17 +1,18 @@
 import Title from "../title/Title";
+import { ReactNode } from "react";
 import { S } from "./styled";
 
-interface IProps {
+interface IProps<T> {
   title: string;
   placeholder: string;
   size: "L" | "M" | "S" | "XL";
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
+  value: string | number;
+  setValue: React.Dispatch<React.SetStateAction<T>>;
 }
 
-const Input = ({ title, size, placeholder, value, setValue }: IProps) => {
+const Input = <T extends ReactNode>({ title, size, placeholder, value, setValue }: IProps<T>) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setValue(e.target.value as T);
   };
   return (
     <S.Container>
