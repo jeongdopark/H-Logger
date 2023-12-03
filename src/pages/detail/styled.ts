@@ -21,7 +21,6 @@ const FormWrapper = styled.div`
 
 const RecordContainer = styled.div`
   display: flex;
-  justify-content: space-around;
   gap: 20px;
   padding: 10px;
   width: 850px;
@@ -36,7 +35,6 @@ const FormContainer = styled(RecordContainer)`
 
 const RecordElement = styled.div`
   display: flex;
-  flex: 1;
   flex-direction: column;
   justify-content: start;
   padding: 20px 10px 10px 20px;

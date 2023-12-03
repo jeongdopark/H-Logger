@@ -6,9 +6,9 @@ import MealRecord from "../../components/calendarDetail/MealRecord";
 import TextRecord from "../../components/calendarDetail/TextRecord";
 import WeightInput from "../../components/calendarDetail/WeightInput";
 import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
+import { S } from "./styled";
 import { ICalendar, IExercise, IMeal } from "../../types/calendar";
 import { useEffect, useState } from "react";
-import { S } from "./styled";
 import { useParams } from "react-router-dom";
 
 const CalendarDetail = () => {
@@ -32,7 +32,7 @@ const CalendarDetail = () => {
   const FormArray = [
     <ExerciseForm date={id!} />,
     <MealForm date={id!} />,
-    <Textarea title="세 줄 일지" placeholder="하루 일지를 작성해 주세요." date={id!} />,
+    <Textarea title="하루 기록" placeholder="하루를 기록해 주세요." date={id!} />,
     <WeightInput date={id!} />,
   ];
 

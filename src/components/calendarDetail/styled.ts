@@ -44,6 +44,7 @@ const Menu = styled.li`
   height: 30px;
   line-height: 20px;
   padding: 5px 10px;
+  cursor: pointer;
   border-radius: ${THEME.BORDER_RADIUS.M};
   font-size: ${THEME.FONT_SIZE.XS};
   font-weight: ${THEME.FONT_WEIGHT.S};
@@ -77,15 +78,16 @@ const TextareaWrapper = styled.div`
 
 const ExerciseRecordBox = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
-  width: 90%;
+  width: 250px;
   border-radius: ${THEME.BORDER_RADIUS.M};
-  padding: 10px;
+  padding: 15px 10px;
 `;
 
 const MealRecordBox = styled(ExerciseRecordBox)``;
 
 const TextRecord = styled(ExerciseRecordBox)`
   padding: 20px;
+  width: 250px;
 `;
 
 const FormWrapper = styled.div`
