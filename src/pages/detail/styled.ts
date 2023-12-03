@@ -7,6 +7,7 @@ const DetailContainer = styled.div`
   flex-direction: column;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_3};
   border-radius: ${THEME.BORDER_RADIUS.M};
+  padding: 20px;
 `;
 
 const FormWrapper = styled.div`
@@ -23,8 +24,8 @@ const RecordContainer = styled.div`
   display: flex;
   gap: 20px;
   padding: 10px;
-  width: 850px;
-  margin: 0 auto;
+  width: 100%;
+  justify-content: center;
 `;
 
 const FormContainer = styled(RecordContainer)`
@@ -70,7 +71,23 @@ const ModeSelect = styled.div<IModeSelector>`
   }
 `;
 
+const DetailHeader = styled.div`
+  gap: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 60px;
+
+  align-items: center;
+  border-radius: ${THEME.BORDER_RADIUS.M} ${THEME.BORDER_RADIUS.M} 0 0;
+  span {
+    font-size: ${THEME.FONT_SIZE.XL};
+    font-weight: ${THEME.FONT_WEIGHT.M};
+  }
+`;
+
 export const S = {
+  DetailHeader,
   ModeSelect,
   RecordElement,
   RecordContainer,

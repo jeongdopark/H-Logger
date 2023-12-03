@@ -1,7 +1,6 @@
 import useCreateWeightMutation from "../../hooks/mutation/usePostWeightMutation";
 import Button from "../common/button/Button";
 import useToast from "../../hooks/useToast";
-import Title from "../common/title/Title";
 import Toast from "../toast";
 import { S } from "./styled";
 import React, { useState } from "react";

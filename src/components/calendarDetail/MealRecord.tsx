@@ -6,11 +6,11 @@ const MealRecord = ({ data }: { data: IMeal }) => {
   return (
     <S.MealRecordBox>
       <div>{data.time}</div>
-      <S.MenuWrapper>
+      <S.MenuRecordWrapper>
         {data.menus.map((m: string, idx: number) => (
           <Menu menu={m} key={idx} />
         ))}
-      </S.MenuWrapper>
+      </S.MenuRecordWrapper>
     </S.MealRecordBox>
   );
 };

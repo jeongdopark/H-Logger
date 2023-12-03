@@ -4,6 +4,7 @@ import { THEME } from "../../style/theme";
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
 
 interface IInputProps {
@@ -37,6 +38,11 @@ const MenuWrapper = styled.div`
   flex-wrap: wrap;
   border-radius: ${THEME.BORDER_RADIUS.M};
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
+`;
+
+const MenuRecordWrapper = styled(MenuWrapper)`
+  min-height: auto;
+  width: 100%;
 `;
 
 const Menu = styled.li`
@@ -82,7 +88,9 @@ const ExerciseRecordBox = styled.div`
   padding: 15px 10px;
 `;
 
-const MealRecordBox = styled(ExerciseRecordBox)``;
+const MealRecordBox = styled(ExerciseRecordBox)`
+  width: 320px;
+`;
 
 const TextRecord = styled(ExerciseRecordBox)`
   padding: 20px;
@@ -97,6 +105,7 @@ const FormWrapper = styled.div`
   gap: 30px;
 `;
 export const S = {
+  MenuRecordWrapper,
   FormWrapper,
   TextRecord,
   MealRecordBox,
