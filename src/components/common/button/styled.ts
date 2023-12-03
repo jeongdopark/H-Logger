@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { THEME } from "../../../style/theme";
 
 interface IButtonProps {
-  size: "L" | "S";
+  size: "L" | "S" | "XL";
 }
 
 const Button = styled.button<IButtonProps>`

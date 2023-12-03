@@ -39,7 +39,7 @@ const ExerciseForm = ({ date }: { date: string }) => {
           setValue={setExercise}
         />
         <Selector title="운동 시간" options={EXERCISE_TIME} size="XL" setState={setExerciseTime} />
-        <Button size="S" text="추가" />
+        <Button size="XL" text="추가" />
       </S.FormWrapper>
     </S.Form>
   );

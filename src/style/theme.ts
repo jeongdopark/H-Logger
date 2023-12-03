@@ -38,6 +38,11 @@ export const THEME = {
       HEIGHT: "35px",
       FONT_SIZE: "12px",
     },
+    XL: {
+      WIDTH: "320px",
+      HEIGHT: "40px",
+      FONT_SIZE: "14px",
+    },
   },
 
   FONT_WEIGHT: {

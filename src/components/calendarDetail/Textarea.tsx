@@ -44,7 +44,7 @@ const Textarea = ({ title, placeholder, date }: IProps) => {
           <S.Textarea placeholder={placeholder} value={dailyLog} onChange={onChangeLog} />
         </S.TextareaWrapper>
         <Selector title="점수" options={SCORE} size="XL" setState={setScore} />
-        <Button text="추가" size="S" />
+        <Button text="추가" size="XL" />
       </S.FormWrapper>
     </S.Form>
   );

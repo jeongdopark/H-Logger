@@ -4,7 +4,6 @@ import { THEME } from "../../style/theme";
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 7px;
 `;
 
 interface IInputProps {

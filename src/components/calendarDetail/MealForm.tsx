@@ -60,7 +60,7 @@ const MealForm = ({ date }: { date: string }) => {
           ))}
         </S.MenuWrapper>
         <Selector title="식사 시간" options={MEAL_TIME} size="XL" setState={setMealTime} />
-        <Button size="S" text="추가" />
+        <Button size="XL" text="추가" />
       </S.FormWrapper>
     </S.Form>
   );

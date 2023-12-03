@@ -2,7 +2,7 @@ import { S } from "./styled";
 
 interface IProps {
   text: string;
-  size: "L" | "S";
+  size: "L" | "S" | "XL";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
