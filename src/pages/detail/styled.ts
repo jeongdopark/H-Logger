@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { THEME } from "../../style/theme";
 
-const DetailContainer = styled.div`
+export const DetailContainer = styled.div`
   display: flex;
   width: 90%;
   flex-direction: column;

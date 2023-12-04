@@ -14,6 +14,9 @@ const ExerciseForm = ({ date }: { date: string }) => {
   const { mutate: postExercise } = useCreateExerciseMutation();
   const [exercise, setExercise] = useState<string>("");
   const [exerciseTime, setExerciseTime] = useState<ExerciseTimeType>(EXERCISE_TIME[0]);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setExercise(e.target.value);
+  };
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     postExercise(
@@ -36,7 +39,7 @@ const ExerciseForm = ({ date }: { date: string }) => {
           size="XL"
           placeholder="운동 종목을 입력해 주세요."
           value={exercise}
-          setValue={setExercise}
+          onChange={onChange}
         />
         <Selector title="운동 시간" options={EXERCISE_TIME} size="XL" setState={setExerciseTime} />
         <Button size="XL" text="추가" />

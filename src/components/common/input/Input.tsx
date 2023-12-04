@@ -7,17 +7,15 @@ interface IProps<T> {
   placeholder: string;
   size: "L" | "M" | "S" | "XL";
   value: string | number;
-  setValue: React.Dispatch<React.SetStateAction<T>>;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  name?: string;
 }
 
-const Input = <T extends ReactNode>({ title, size, placeholder, value, setValue }: IProps<T>) => {
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value as T);
-  };
+const Input = <T extends ReactNode>({ title, size, placeholder, value, onChange, name }: IProps<T>) => {
   return (
     <S.Container>
       <Title title={title} size="S" />
-      <S.Input placeholder={placeholder} size={size} value={value} onChange={onChange}></S.Input>
+      <S.Input name={name} placeholder={placeholder} size={size} value={value} onChange={onChange}></S.Input>
     </S.Container>
   );
 };
