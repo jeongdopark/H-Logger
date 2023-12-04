@@ -1,4 +1,10 @@
+import { EXERCISE_TIME, MEAL_TIME } from "../const";
+
 export interface ICalendar {
+  [key: string]: IDate;
+}
+
+interface IDate {
   dailyLog: IDailyLog;
   exercise: IExercise[];
   meal: IMeal[];
@@ -11,10 +17,10 @@ export interface IDailyLog {
 
 export interface IExercise {
   category: string;
-  time: "15분" | "30분" | "45분" | "1시간" | "1시간 15분" | "1시간 30분" | "1시간 45분" | "2시간";
+  time: (typeof EXERCISE_TIME)[number];
 }
 
 export interface IMeal {
   menus: string[];
-  time: "아침" | "아점" | "점심" | "점저" | "저녁" | "야식";
+  time: (typeof MEAL_TIME)[number];
 }

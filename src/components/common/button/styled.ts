@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { THEME } from "../../../style/theme";
 
 interface IButtonProps {
-  size: "L" | "S" | "XL";
+  size: keyof typeof THEME.BUTTON_SIZE;
 }
 
 const Button = styled.button<IButtonProps>`
