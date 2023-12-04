@@ -28,15 +28,20 @@ export const THEME = {
     S: "5px",
   },
   BUTTON_SIZE: {
-    L: {
-      WIDTH: "155px",
-      HEIGHT: "55px",
-      FONT_SIZE: "14px",
-    },
     S: {
       WIDTH: "60px",
       HEIGHT: "35px",
       FONT_SIZE: "12px",
+    },
+    M: {
+      WIDTH: "150px",
+      HEIGHT: "35px",
+      FONT_SIZE: "12px",
+    },
+    L: {
+      WIDTH: "155px",
+      HEIGHT: "55px",
+      FONT_SIZE: "14px",
     },
     XL: {
       WIDTH: "320px",

@@ -1,8 +1,8 @@
 export interface IMission {
-  current_weight: number;
+  current_weight: number | "";
   exercise_count: number;
-  goal_exercise_count: number;
-  goal_weight: number;
+  goal_exercise_count: number | "";
+  goal_weight: number | "";
   title: string;
   period: IPeriod;
 }

@@ -6,8 +6,7 @@ const getCurrentMission = async () => {
   const uid = localStorage.getItem("uid");
   const docRef = doc(db, "records", uid!);
   const docSnap = await getDoc(docRef);
-
-  return docSnap.data()!.current_mission;
+  return docSnap.data()!.currentMission;
 };
 
 const useCurrentMissionQuery = () => {

@@ -168,7 +168,17 @@ const HoverText = styled.text`
   transition: 0.3s ease-in-out;
 `;
 
+const ChartWrapper = styled.div`
+  width: 1000px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  border-radius: 7px;
+  padding: 10px;
+`;
+
 export const S = {
+  ChartWrapper,
   GraphSubCircle,
   HoverText,
   GraphLineWrapper,
