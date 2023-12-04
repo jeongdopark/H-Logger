@@ -1,11 +1,17 @@
 import { S } from "./styled";
-import { useState } from "react";
+import React, { useState } from "react";
 import Title from "../common/title/Title";
 
-const MissionDatePicker = ({ startDate }: { startDate: string }) => {
+interface IProps {
+  startDate: string;
+  endDate: Date | undefined;
+  setEndDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
+}
+
+const MissionDatePicker = ({ startDate, endDate, setEndDate }: IProps) => {
   const [dateRange, setDateRange] = useState([new Date(2023, 10, 30), null]);
 
-  const [, endDate] = dateRange;
+  // const [, endDate] = dateRange;
   return (
     <div>
       <Title title="미션 기간" size="S" />
@@ -21,6 +27,7 @@ const MissionDatePicker = ({ startDate }: { startDate: string }) => {
         endDate={endDate}
         onChange={(update: any) => {
           setDateRange(update);
+          setEndDate(update[1]);
         }}
         isClearable={true}
       />
