@@ -12,7 +12,7 @@ const getCalendarData = async () => {
 
 const useCalendarDataQuery = () => {
   return useQuery({
-    queryKey: ["calendar"],
+    queryKey: [QUERY_KEY.CANLENDAR],
     queryFn: () => getCalendarData(),
   });
 };

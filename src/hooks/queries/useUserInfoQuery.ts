@@ -11,7 +11,7 @@ const getUserInfo = async () => {
 
 const useUserInfoQuery = () => {
   return useQuery({
-    queryKey: ["users"],
+    queryKey: [QUERY_KEY.USER],
     queryFn: () => getUserInfo(),
   });
 };

@@ -11,7 +11,7 @@ const getCurrentMission = async () => {
 
 const useCurrentMissionQuery = () => {
   return useQuery({
-    queryKey: ["mission"],
+    queryKey: [QUERY_KEY.CURRENT_MISSION],
     queryFn: () => getCurrentMission(),
   });
 };

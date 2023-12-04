@@ -17,7 +17,7 @@ const getWeightData = async () => {
 
 const useWeightQuery = () => {
   return useQuery({
-    queryKey: ["weight"],
+    queryKey: [QUERY_KEY.WEIGHT],
     queryFn: () => getWeightData(),
   });
 };
