@@ -74,10 +74,26 @@ const MissionContainer = styled(RecordContainer)`
 `;
 
 const MissionElement = styled.div`
-  width: 60%;
-  height: 90px;
+  width: 550px;
+  height: 130px;
+  padding: 15px;
   border-radius: ${THEME.BORDER_RADIUS.M};
-  background-color: ${THEME.BACKGROUND_COLOR.GREEN_3};
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE};
+  display: flex;
+
+  gap: 5px;
+  position: relative;
+
+  button {
+    margin-left: auto;
+    margin-top: auto;
+  }
+`;
+
+const MissionInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 `;
 
 const MissionWrapper = styled.div`
@@ -177,6 +193,10 @@ const ChartWrapper = styled.div`
   padding: 10px;
 `;
 
+const MissionText = styled.div`
+  font-size: ${THEME.FONT_SIZE.XS};
+`;
+
 export const S = {
   ChartWrapper,
   GraphSubCircle,
@@ -198,4 +218,6 @@ export const S = {
   UserImg,
   MissionContainer,
   MissionElement,
+  MissionText,
+  MissionInfo,
 };

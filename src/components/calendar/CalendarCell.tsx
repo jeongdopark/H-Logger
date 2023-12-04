@@ -14,7 +14,6 @@ interface IProps {
 const CalendarCell = ({ currentMonth }: IProps) => {
   const { data: missionData, isLoading: missionLoading } = useCurrentMissionQuery();
   const { data: calendarData, isLoading: calendarLoading } = useCalendarDataQuery();
-  console.log(missionData, calendarData);
 
   const today = format(new Date(), "yyMMdd");
   const monthStart = startOfMonth(currentMonth);
@@ -38,18 +37,19 @@ const CalendarCell = ({ currentMonth }: IProps) => {
 
       formattedDate = format(day, "d");
       // start, end, mid, true, false
-      const missionStatus = missionData
+
+      const MISSION_STATUS = missionData
         ? checkMission(dayFormat, missionData.period.start, missionData.period.mid, missionData.period.end)
         : "false";
       days.push(
         <S.CellElement
           today={isToday}
           onClick={() => routerHandler({ num: 4, dayFormat })}
-          missionStatus={missionStatus}
+          missionStatus={MISSION_STATUS}
         >
           {isToday ? <span>{formattedDate} today</span> : <span>{formattedDate}</span>}
-          {missionStatus === "start" && <span> </span>}
-          {missionStatus !== "false" && <S.MissionDivider></S.MissionDivider>}
+          {MISSION_STATUS === "start" && <span> </span>}
+          {MISSION_STATUS !== "false" && <S.MissionDivider></S.MissionDivider>}
           {data && (
             <S.CellTextContainer>
               {data.exercise && (

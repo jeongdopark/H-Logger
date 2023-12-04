@@ -5,6 +5,7 @@ import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import { THEME } from "../../style/theme";
 import Title from "../common/title/Title";
 import { IExercise } from "../../types/calendar";
+import React from "react";
 const ScoreRecord = () => {
   const { data, isLoading } = useCalendarDataQuery();
   console.log(data);
@@ -57,7 +58,7 @@ const ScoreRecord = () => {
                   dateData.exercise.map((e: IExercise) => {
                     return (
                       <>
-                        <div>
+                        <div key={e.time}>
                           {e.category} {e.time}
                         </div>
                       </>
@@ -80,7 +81,11 @@ const ScoreRecord = () => {
       <S.TitleWrapper>
         <Title title="Record" size="XL" />
       </S.TitleWrapper>
-      <S.ScoreRecordWrapper>{Year.map((week) => week)}</S.ScoreRecordWrapper>
+      <S.ScoreRecordWrapper>
+        {Year.map((week, idx) => (
+          <React.Fragment key={idx}>{week}</React.Fragment>
+        ))}
+      </S.ScoreRecordWrapper>
     </S.RecordContainer>
   );
 };

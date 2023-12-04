@@ -1,4 +1,5 @@
 import { IWeight } from "../../types/weight";
+import { dotDateFormat } from "../../utils/dateFormat";
 import { S } from "./styled";
 
 interface pointsProps {
@@ -29,18 +30,19 @@ const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
   return (
     <svg viewBox={`0 -40 556 140`} width="100%" height="100%">
       {lines.map(({ x1, x2, y1, y2 }) => (
-        <S.GraphLine x1={x1} x2={x2} y1={y1} y2={y2} />
+        <S.GraphLine x1={x1} x2={x2} y1={y1} y2={y2} key={x1} />
       ))}
 
       {points.map(({ x, y }: any, index) => {
+        const dotDate = dotDateFormat(String(sortUserWeight[index].date));
         return (
-          <S.GraphLineWrapper key={index}>
+          <S.GraphLineWrapper key={dotDate}>
             <S.GraphSubCircle cx={x} cy={y} r="25" />
             <S.GraphCircle cx={x} cy={y} r="4" />
 
             <S.HoverRect className="hover-rect" x={x - 60} y={y + 10} rx={5} />
             <S.HoverText className="hover-rect" x={x - 25} y={y + 30} fontSize={14}>
-              {sortUserWeight[index].date}
+              {dotDate}
             </S.HoverText>
             <S.HoverText className="hover-rect" x={x - 16} y={y + 50} fontSize={14}>
               {sortUserWeight[index].weight}kg
