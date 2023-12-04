@@ -1,23 +1,94 @@
 import { S } from "./styled";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { findMidDate } from "../../utils/findMidDate";
 import Input from "../../components/common/input/Input";
 import Button from "../../components/common/button/Button";
 import DatePicker from "../../components/mission/DatePicker";
+import useCreateMissionMutation from "../../hooks/mutation/usePostMissionMutation";
+import { dateFormat } from "../../utils/dateFormat";
+import { IMission } from "../../types/mission";
+
+export interface IFormData {
+  title: string;
+  current_weight: number | "";
+  goal_weight: number | "";
+  goal_exercise_count: number | "";
+}
 
 const Mission = () => {
+  const { mutate } = useCreateMissionMutation();
   const { id } = useParams() as { id: string };
-  console.log(id);
+  const [formData, setFormData] = useState<IFormData>({
+    title: "",
+    current_weight: "",
+    goal_weight: "",
+    goal_exercise_count: "",
+  });
+  const { title, current_weight, goal_weight, goal_exercise_count } = formData;
+  const [endDate, setEndDate] = useState<Date>();
+  console.log(endDate);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    console.log(value, name, "?");
 
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  // period
+
+  const submitHandler = (e: React.MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const mid = findMidDate(id, dateFormat(endDate!));
+    const period = {
+      start: id,
+      end: dateFormat(endDate!),
+      mid,
+    };
+    const submitData: IMission = { ...formData, exercise_count: 0, period };
+    mutate(submitData);
+  };
   return (
     <S.MissionContainer>
-      <S.MissionFormContainer>
-        <Input title="미션 제목" size="L" placeholder="미션 제목을 입력하세요." />
-        <DatePicker startDate={id} />
+      <S.MissionFormContainer onSubmit={submitHandler}>
+        <Input
+          name="title"
+          title="미션 제목"
+          size="L"
+          placeholder="미션 제목을 입력하세요."
+          value={title}
+          onChange={onChange}
+        />
+        <DatePicker startDate={id} endDate={endDate} setEndDate={setEndDate} />
         <S.WeightWrapper>
-          <Input title="현재 몸무게" size="L" placeholder="현재 몸무게를 입력하세요." />
-          <Input title="목표 몸무게" size="L" placeholder="목표 몸무게를 입력하세요." />
+          <Input
+            name="current_weight"
+            title="현재 몸무게"
+            size="L"
+            placeholder="현재 몸무게를 입력하세요."
+            value={current_weight}
+            onChange={onChange}
+          />
+          <Input
+            name="goal_weight"
+            title="목표 몸무게"
+            size="L"
+            placeholder="목표 몸무게를 입력하세요."
+            value={goal_weight}
+            onChange={onChange}
+          />
         </S.WeightWrapper>
-        <Input title="목표 운동 횟수" size="L" placeholder="목표 운동 횟수를 입력하세요." />
+        <Input
+          name="goal_exercise_count"
+          title="목표 운동 횟수"
+          size="L"
+          placeholder="목표 운동 횟수를 입력하세요."
+          value={goal_exercise_count}
+          onChange={onChange}
+        />
         <S.ButtonWrapper>
           <Button text="미션 생성" size="XL" />
         </S.ButtonWrapper>
