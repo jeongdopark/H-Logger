@@ -11,7 +11,8 @@ import useWeightQuery from "../../hooks/queries/useWeightQuery";
 const Record = () => {
   const { data: userInfo, isLoading: userInfoLoading } = useUserInfoQuery();
   const { data: userWeight, isLoading: userWeightLoading } = useWeightQuery();
-  if (userInfoLoading || userWeightLoading) return <div>loading...</div>;
+
+  if (userInfo === undefined || userWeight === undefined) return <div>loading...</div>;
   return (
     <S.RecordContainer>
       <UserSection userInfo={userInfo as IUser} />
