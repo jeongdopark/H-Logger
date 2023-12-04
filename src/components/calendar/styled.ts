@@ -31,19 +31,19 @@ const DaysContainer = styled.div`
 
 interface IProps {
   today: boolean;
+  missionStatus: "false" | "true" | "start" | "end" | "mid";
 }
 
 const CellElement = styled.div<IProps>`
   font-weight: ${THEME.FONT_WEIGHT.L};
   font-size: ${THEME.FONT_SIZE.XS};
-
   width: 100%;
   height: 150px;
   padding: 5px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   cursor: pointer;
   margin: 2px;
-
+  /* background-color: ${(props) => props.missionStatus !== "false" && THEME.BACKGROUND_COLOR.GREEN_4}; */
   &:hover {
     transition: 0.2s ease-out;
     background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
@@ -100,7 +100,16 @@ const TagBoxWrapper = styled.div`
   gap: 5px;
 `;
 
+const MissionDivider = styled.div`
+  height: 3px;
+  width: 100%;
+  background-color: ${THEME.BACKGROUND_COLOR.GREEN_3};
+  top: 20px;
+  left: 0px;
+`;
+
 export const S = {
+  MissionDivider,
   TagBoxWrapper,
   TagBox,
   CellTextContainer,
