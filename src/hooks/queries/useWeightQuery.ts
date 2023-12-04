@@ -1,7 +1,8 @@
 import { db } from "../../firebase";
-import { useQuery } from "@tanstack/react-query";
-import { getDoc, doc } from "firebase/firestore";
 import { IWeight } from "../../types/weight";
+import { useQuery } from "@tanstack/react-query";
+import { QUERY_KEY } from "../../const/queryKey";
+import { getDoc, doc } from "firebase/firestore";
 
 const getWeightData = async () => {
   const uid = localStorage.getItem("uid");

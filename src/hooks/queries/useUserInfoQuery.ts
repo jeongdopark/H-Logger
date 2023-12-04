@@ -1,5 +1,6 @@
 import { db } from "../../firebase";
 import { useQuery } from "@tanstack/react-query";
+import { QUERY_KEY } from "../../const/queryKey";
 import { getDoc, doc } from "firebase/firestore";
 
 const getUserInfo = async () => {
