@@ -15,6 +15,7 @@ const useCalendarDataQuery = () => {
   return useQuery({
     queryKey: [QUERY_KEY.CANLENDAR],
     queryFn: () => getCalendarData(),
+    suspense: true,
   });
 };
 

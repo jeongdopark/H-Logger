@@ -14,6 +14,7 @@ const useMissionsQuery = () => {
   return useQuery({
     queryKey: [QUERY_KEY.MISSIONS],
     queryFn: () => getMissionsData(),
+    suspense: true,
   });
 };
 

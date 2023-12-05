@@ -20,6 +20,7 @@ const useWeightQuery = () => {
   return useQuery({
     queryKey: [QUERY_KEY.WEIGHT],
     queryFn: () => getWeightData(),
+    suspense: true,
   });
 };
 

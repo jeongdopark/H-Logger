@@ -14,6 +14,7 @@ const useUserInfoQuery = () => {
   return useQuery({
     queryKey: [QUERY_KEY.USER],
     queryFn: () => getUserInfo(),
+    suspense: true,
   });
 };
 

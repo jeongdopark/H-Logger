@@ -1,40 +1,46 @@
+import { S } from "./styled";
 import { useEffect, useState } from "react";
 import { IWeight } from "../../types/weight";
+import { WEIGHT_LINE_CONST } from "../../const";
+import useWeightQuery from "../../hooks/queries/useWeightQuery";
 import Title from "../common/title/Title";
 import LineGraph from "./LineChart";
-import { S } from "./styled";
-import { WEIGHT_LINE_CONST } from "../../const";
+import RecordBoxSkeleton from "../skeleton/RecordBox";
 
 interface IPoints {
   x: number;
   y: number;
 }
 
-const WeightRecord = ({ userWeight }: { userWeight: IWeight[] }) => {
+const WeightRecord = () => {
+  const { data: userWeight, isLoading: userWeightLoading } = useWeightQuery();
   const [points, setPoints] = useState<IPoints[]>();
   const [sortUserWeight, setSortUserWeight] = useState<IWeight[]>();
-  let X_INTERVAL = 1100 / userWeight.length;
+
   useEffect(() => {
+    let X_INTERVAL = userWeight ? 1100 / userWeight.length : null;
     let sum = 0;
     let average = 0;
     const point_arr = [];
-    const sort_weight = userWeight.sort((a, b) => a.date - b.date);
+    const sort_weight = userWeight ? userWeight.sort((a, b) => a.date - b.date) : [];
     for (let i = 0; i < sort_weight.length; i++) {
       sum += sort_weight[i].weight;
     }
     average = sum / sort_weight.length;
 
-    for (let i = 0; i < sort_weight.length; i++) {
-      point_arr.push({
-        x: WEIGHT_LINE_CONST.START_X_POS + X_INTERVAL * i,
-        y: (sort_weight[i].weight - average) * WEIGHT_LINE_CONST.Y_INTERVAL,
-      });
+    if (userWeight && X_INTERVAL) {
+      for (let i = 0; i < sort_weight.length; i++) {
+        point_arr.push({
+          x: WEIGHT_LINE_CONST.START_X_POS + X_INTERVAL * i,
+          y: (sort_weight[i].weight - average) * WEIGHT_LINE_CONST.Y_INTERVAL,
+        });
+      }
     }
     setSortUserWeight([...sort_weight]);
     setPoints([...point_arr]);
-  }, []);
+  }, [userWeightLoading]);
 
-  if (!points) return <div>Loading...</div>;
+  if (!sortUserWeight) return <RecordBoxSkeleton />;
   return (
     <>
       <S.RecordContainer>

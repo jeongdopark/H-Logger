@@ -1,13 +1,13 @@
-//
-
-import { IUser } from "../../types/user";
+import useUserInfoQuery from "../../hooks/queries/useUserInfoQuery";
 import { S } from "./styled";
 
-const UserSection = ({ userInfo }: { userInfo: IUser }) => {
+const UserSection = () => {
+  const { data: userInfo } = useUserInfoQuery();
+
   return (
     <S.UserWrapper>
-      <S.UserImg src={userInfo.photoURL} />
-      <div>{userInfo.displayName}님</div>
+      <S.UserImg src={userInfo!.photoURL} />
+      <div>{userInfo!.displayName}님</div>
     </S.UserWrapper>
   );
 };

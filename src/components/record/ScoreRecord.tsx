@@ -1,15 +1,14 @@
 import { S } from "./styled";
-import { addDays, startOfWeek, startOfMonth, format } from "date-fns";
-import { useNavigate } from "react-router-dom";
-import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import { THEME } from "../../style/theme";
-import Title from "../common/title/Title";
+import { useNavigate } from "react-router-dom";
 import { IExercise } from "../../types/calendar";
+import { addDays, startOfWeek, startOfMonth, format } from "date-fns";
+import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
+import Title from "../common/title/Title";
 import React from "react";
-const ScoreRecord = () => {
-  const { data, isLoading } = useCalendarDataQuery();
-  console.log(data);
 
+const ScoreRecord = () => {
+  const { data } = useCalendarDataQuery();
   const navigate = useNavigate();
   const routerHandler = (id: string) => {
     navigate(`/calendar/${id}`);
@@ -81,6 +80,7 @@ const ScoreRecord = () => {
       <S.TitleWrapper>
         <Title title="Record" size="XL" />
       </S.TitleWrapper>
+
       <S.ScoreRecordWrapper>
         {Year.map((week, idx) => (
           <React.Fragment key={idx}>{week}</React.Fragment>

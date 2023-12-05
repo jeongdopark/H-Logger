@@ -5,9 +5,7 @@ import { IMission } from "../../types/mission";
 import { S } from "./styled";
 
 const MissionRecord = () => {
-  const { data: missions, isLoading } = useMissionsQuery();
-
-  if (missions === undefined) return <div>Loading...</div>;
+  const { data: missions } = useMissionsQuery();
 
   return (
     <S.MissionContainer>
