@@ -6,6 +6,7 @@ import useWeightQuery from "../../hooks/queries/useWeightQuery";
 import Title from "../common/title/Title";
 import LineGraph from "./LineChart";
 import RecordBoxSkeleton from "../skeleton/RecordBox";
+import Empty from "../common/Empty";
 
 interface IPoints {
   x: number;
@@ -45,8 +46,9 @@ const WeightRecord = () => {
     <>
       <S.RecordContainer>
         <S.TitleWrapper>
-          <Title title="Weight" size="XL" />
+          <Title title="몸무게 기록" size="M" />
         </S.TitleWrapper>
+        {userWeight!.length === 0 && <Empty />}
         <LineGraph points={points!} sortUserWeight={sortUserWeight!} />
       </S.RecordContainer>
     </>

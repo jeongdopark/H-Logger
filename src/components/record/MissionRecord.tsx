@@ -3,17 +3,18 @@ import MissionElement from "./MissionElement";
 import Title from "../common/title/Title";
 import { IMission } from "../../types/mission";
 import { S } from "./styled";
+import Empty from "../common/Empty";
 
 const MissionRecord = () => {
   const { data: missions } = useMissionsQuery();
-
   return (
     <S.MissionContainer>
       <S.TitleWrapper>
-        <Title title="Mission" size="XL" />
+        <Title title="미션 목록" size="M" />
       </S.TitleWrapper>
       <S.MissionScrollWrapper>
         <S.MissionWrapper>
+          {missions.length === 0 && <Empty />}
           {missions.map((mission: IMission, idx: number) => {
             return <MissionElement key={idx} mission={mission} />;
           })}
