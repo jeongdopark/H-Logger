@@ -30,8 +30,7 @@ const DaysContainer = styled.div`
 `;
 
 interface IProps {
-  today: boolean;
-  missionStatus: "false" | "true" | "start" | "end" | "mid";
+  validtoday: "true" | "false";
 }
 
 const CellElement = styled.div<IProps>`
@@ -43,14 +42,13 @@ const CellElement = styled.div<IProps>`
   border-radius: ${THEME.BORDER_RADIUS.M};
   cursor: pointer;
   margin: 2px;
-  /* background-color: ${(props) => props.missionStatus !== "false" && THEME.BACKGROUND_COLOR.GREEN_4}; */
   &:hover {
     transition: 0.2s ease-out;
     background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
   }
 
   span {
-    color: ${(props) => (props.today ? THEME.COLOR.GREEN_2 : THEME.COLOR.BLACK)};
+    color: ${(props) => (props.validtoday === "true" ? THEME.COLOR.GREEN_2 : THEME.COLOR.BLACK)};
   }
 `;
 

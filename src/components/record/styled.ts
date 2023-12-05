@@ -100,6 +100,7 @@ const MissionInfo = styled.div`
 const MissionWrapper = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
   width: 100%;
+  height: 100%;
   gap: 10px;
   flex-direction: column;
   overflow-y: scroll;

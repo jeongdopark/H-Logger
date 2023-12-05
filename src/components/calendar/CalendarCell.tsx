@@ -12,8 +12,8 @@ interface IProps {
 }
 
 const CalendarCell = ({ currentMonth }: IProps) => {
-  const { data: missionData, isLoading: missionLoading } = useCurrentMissionQuery();
-  const { data: calendarData, isLoading: calendarLoading } = useCalendarDataQuery();
+  const { data: calendarData } = useCalendarDataQuery();
+  const { data: missionData } = useCurrentMissionQuery();
 
   const today = format(new Date(), "yyMMdd");
   const monthStart = startOfMonth(currentMonth);
@@ -27,8 +27,6 @@ const CalendarCell = ({ currentMonth }: IProps) => {
   let day = startDate;
   let formattedDate = "";
 
-  if (missionLoading || calendarLoading) return <div>Loading..</div>;
-
   while (day <= endDate && calendarData) {
     for (let i = 0; i < 7; i++) {
       const dayFormat = format(day, "yyMMdd");
@@ -38,15 +36,12 @@ const CalendarCell = ({ currentMonth }: IProps) => {
       formattedDate = format(day, "d");
       // start, end, mid, true, false
 
-      const MISSION_STATUS = missionData
-        ? checkMission(dayFormat, missionData.period.start, missionData.period.mid, missionData.period.end)
-        : "false";
+      const MISSION_STATUS =
+        missionData && Object.keys(missionData).length !== 0
+          ? checkMission(dayFormat, missionData.period.start, missionData.period.mid, missionData.period.end)
+          : "false";
       days.push(
-        <S.CellElement
-          today={isToday}
-          onClick={() => routerHandler({ num: 4, dayFormat })}
-          missionStatus={MISSION_STATUS}
-        >
+        <S.CellElement validtoday={isToday ? "true" : "false"} onClick={() => routerHandler({ num: 4, dayFormat })}>
           {isToday ? <span>{formattedDate} today</span> : <span>{formattedDate}</span>}
           {MISSION_STATUS === "start" && <span> </span>}
           {MISSION_STATUS !== "false" && <S.MissionDivider></S.MissionDivider>}
@@ -54,8 +49,8 @@ const CalendarCell = ({ currentMonth }: IProps) => {
             <S.CellTextContainer>
               {data.exercise && (
                 <S.TagBoxWrapper>
-                  {data.exercise.map((e: IExercise) => (
-                    <S.TagBox>
+                  {data.exercise.map((e: IExercise, idx: number) => (
+                    <S.TagBox key={idx}>
                       {e.category} {e.time}
                     </S.TagBox>
                   ))}
@@ -63,8 +58,8 @@ const CalendarCell = ({ currentMonth }: IProps) => {
               )}
               {data.meal && (
                 <S.TagBoxWrapper>
-                  {data.meal.map((e: IMeal) => (
-                    <S.TagBox>{e.time}</S.TagBox>
+                  {data.meal.map((e: IMeal, idx: number) => (
+                    <S.TagBox key={idx}>{e.time}</S.TagBox>
                   ))}
                 </S.TagBoxWrapper>
               )}
@@ -76,7 +71,7 @@ const CalendarCell = ({ currentMonth }: IProps) => {
 
       day = addDays(day, 1);
     }
-    rows.push(<S.CellRow>{days}</S.CellRow>);
+    rows.push(<S.CellRow key={format(day, "yyyy-MM-dd")}>{days}</S.CellRow>);
     days = [];
   }
   return <S.CellContainer>{rows}</S.CellContainer>;
