@@ -7,8 +7,11 @@ import { SVG } from "../../components/SVG";
 import { AuthContext } from "../../context/AuthProvider";
 import { PATH_NUMBER } from "../../const/path";
 import { useContext, useRef, useState } from "react";
+import useToast from "../../hooks/useToast";
+import Toast from "../../components/toast";
 
 const Main = () => {
+  const { setIsLogin } = useContext(AuthContext);
   const [handleGoogleLogin] = useLogin();
   const [routerHandler] = useMovePage();
   const loginModal = useRef<HTMLDivElement>(null);
@@ -27,6 +30,13 @@ const Main = () => {
     setIsOpened: setIsLoginBoxOpened,
   });
 
+  const GuestLogin = () => {
+    localStorage.setItem("uid", import.meta.env.VITE_GUEST_ID);
+    setIsLogin(true);
+    routerHandler({ num: PATH_NUMBER.CALENDAR });
+    useToast({ content: <Toast text="Guest 로그인" type="SUCCESS" /> });
+  };
+
   return (
     <S.LandingContainer>
       {isLoginBoxOpened && (
@@ -35,7 +45,7 @@ const Main = () => {
             <div onClick={handleGoogleLogin} style={{ cursor: "pointer" }}>
               {SVG.Goggle}
             </div>
-            <Button text="Guest" size="L" />
+            <Button text="Guest" size="L" onClick={GuestLogin} />
           </S.LoginBox>
         </S.ModalContainer>
       )}
