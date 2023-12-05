@@ -8,23 +8,26 @@ import WeightRecord from "../../components/record/WeightRecord";
 import MissionRecord from "../../components/record/MissionRecord";
 import MissionSkeleton from "../../components/skeleton/MIsison";
 import ScoreSkeleton from "../../components/skeleton/Score";
+import ErrorBoundary from "../../components/error/ErrorBoundary";
 
 const Record = () => {
   return (
-    <S.RecordContainer>
-      <Suspense fallback={<UserSkeleton />}>
-        <UserSection />
-      </Suspense>
-      <Suspense fallback={<ScoreSkeleton />}>
-        <ScoreRecord />
-      </Suspense>
-      <Suspense fallback={<RecordBoxSkeleton />}>
-        <WeightRecord />
-      </Suspense>
-      <Suspense fallback={<MissionSkeleton />}>
-        <MissionRecord />
-      </Suspense>
-    </S.RecordContainer>
+    <ErrorBoundary>
+      <S.RecordContainer>
+        <Suspense fallback={<UserSkeleton />}>
+          <UserSection />
+        </Suspense>
+        <Suspense fallback={<ScoreSkeleton />}>
+          <ScoreRecord />
+        </Suspense>
+        <Suspense fallback={<RecordBoxSkeleton />}>
+          <WeightRecord />
+        </Suspense>
+        <Suspense fallback={<MissionSkeleton />}>
+          <MissionRecord />
+        </Suspense>
+      </S.RecordContainer>
+    </ErrorBoundary>
   );
 };
 

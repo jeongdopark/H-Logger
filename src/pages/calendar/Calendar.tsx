@@ -1,11 +1,14 @@
 import { S } from "./styled";
 import CalendarBox from "../../components/calendar/CalendarBox";
+import ErrorBoundary from "../../components/error/ErrorBoundary";
 
 const Calendar = () => {
   return (
-    <S.CalendarContainer>
-      <CalendarBox />
-    </S.CalendarContainer>
+    <ErrorBoundary>
+      <S.CalendarContainer>
+        <CalendarBox />
+      </S.CalendarContainer>
+    </ErrorBoundary>
   );
 };
 
