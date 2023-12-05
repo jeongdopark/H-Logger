@@ -9,22 +9,15 @@ import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import Button from "../../components/common/button/Button";
 import useMovePage from "../../hooks/useMovePage";
 import { S } from "./styled";
-import { ICalendar, IExercise, IMeal } from "../../types/calendar";
-import { useEffect, useState } from "react";
+import { IExercise, IMeal } from "../../types/calendar";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const CalendarDetail = () => {
   const { id } = useParams() as { id: string };
   const [modeNumber, setModeNumber] = useState(0);
-  const [detailData, setDetailData] = useState<ICalendar>();
-  const { data: calendarData, isLoading, isFetched } = useCalendarDataQuery();
+  const { data: calendarData, isLoading } = useCalendarDataQuery();
   const [routerHandler] = useMovePage();
-
-  useEffect(() => {
-    if (isFetched) {
-      setDetailData(calendarData![id!]);
-    }
-  }, [isFetched]);
 
   const modeNumberHandler = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
@@ -56,26 +49,32 @@ const CalendarDetail = () => {
         </S.ModeSelect>
         <S.FormWrapper>{FormArray[modeNumber]}</S.FormWrapper>
       </S.FormContainer>
-      {detailData && (
+      {calendarData[id] && (
         <S.RecordContainer>
-          {detailData.exercise && (
+          {calendarData[id].exercise ? (
             <S.RecordElement>
-              {detailData?.exercise.map((data: IExercise) => (
+              {calendarData[id]?.exercise.map((data: IExercise) => (
                 <ExerciseRecord data={data} />
               ))}
             </S.RecordElement>
+          ) : (
+            <S.EmptyBox />
           )}
-          {detailData.meal && (
+          {calendarData[id].meal ? (
             <S.RecordElement>
-              {detailData?.meal.map((data: IMeal) => (
+              {calendarData[id]?.meal.map((data: IMeal) => (
                 <MealRecord data={data} />
               ))}
             </S.RecordElement>
+          ) : (
+            <S.EmptyBox style={{ width: "320px" }} />
           )}
-          {detailData.dailyLog && (
+          {calendarData[id].dailyLog ? (
             <S.RecordElement>
-              <TextRecord detailData={detailData!} />
+              <TextRecord detailData={calendarData[id]!} />
             </S.RecordElement>
+          ) : (
+            <S.EmptyBox />
           )}
         </S.RecordContainer>
       )}

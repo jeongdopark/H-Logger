@@ -1,7 +1,7 @@
-// import { IMission } from "../../types/mission";
 import { dotDateFormat } from "../../utils/dateFormat";
-import Button from "../common/button/Button";
 import { S } from "./styled";
+import Button from "../common/button/Button";
+
 interface IProp {
   mission: IMission;
 }

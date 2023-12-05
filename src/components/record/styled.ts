@@ -1,24 +1,25 @@
 import styled from "styled-components";
 import { THEME } from "../../style/theme";
 
-const UserWrapper = styled.div`
+export const UserWrapper = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 80%;
+  width: 20%;
   gap: 20px;
+  margin: 35px 0px;
   div {
     font-size: ${THEME.FONT_SIZE.XL};
   }
 `;
 
-const UserImg = styled.img`
+export const UserImg = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;
 `;
 
-const RecordContainer = styled.div`
+export const RecordContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: ${THEME.BORDER_RADIUS.M};
@@ -29,7 +30,7 @@ const RecordContainer = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
 `;
 
-const ScoreRecordWrapper = styled.div`
+export const ScoreRecordWrapper = styled.div`
   display: flex;
   gap: 5px;
 
@@ -66,7 +67,7 @@ const ScoreRecordLi = styled.li<IScoreColor>`
   }
 `;
 
-const MissionContainer = styled(RecordContainer)`
+export const MissionContainer = styled(RecordContainer)`
   display: block;
   height: auto;
   min-height: 350px;
@@ -135,7 +136,7 @@ const HoverBox = styled.div`
   display: none;
 `;
 
-const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   display: flex;
   justify-content: start;
   width: 100%;

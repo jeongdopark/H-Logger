@@ -1,6 +1,6 @@
+import { S } from "./styled";
 import { IWeight } from "../../types/weight";
 import { dotDateFormat } from "../../utils/dateFormat";
-import { S } from "./styled";
 
 interface pointsProps {
   x: number;
