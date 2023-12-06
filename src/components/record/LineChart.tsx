@@ -2,6 +2,7 @@ import { S } from "./styled";
 import { IWeight } from "../../types/weight";
 import { dotDateFormat } from "../../utils/dateFormat";
 import { SVG_VIEWBOX } from "../../const";
+import { THEME } from "../../style/theme";
 
 interface pointsProps {
   x: number;
@@ -21,65 +22,49 @@ interface lineGraphProps {
 }
 
 const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
-  console.log(SVG_VIEWBOX.AVERAGE_HEIGHT / 75);
-
-  const test = [
-    {
-      x: 0,
-      y:
-        SVG_VIEWBOX.AVERAGE_HEIGHT +
-        (SVG_VIEWBOX.AVERAGE_HEIGHT - 75 * (SVG_VIEWBOX.AVERAGE_HEIGHT / 75)) * 10 -
-        SVG_VIEWBOX.UP,
-    },
-    {
-      x: 130,
-      y:
-        SVG_VIEWBOX.AVERAGE_HEIGHT +
-        (SVG_VIEWBOX.AVERAGE_HEIGHT - 74 * (SVG_VIEWBOX.AVERAGE_HEIGHT / 75)) * 10 -
-        SVG_VIEWBOX.UP,
-    },
-    {
-      x: 260,
-      y:
-        SVG_VIEWBOX.AVERAGE_HEIGHT +
-        (SVG_VIEWBOX.AVERAGE_HEIGHT - 76 * (SVG_VIEWBOX.AVERAGE_HEIGHT / 75)) * 10 -
-        SVG_VIEWBOX.UP,
-    },
-  ];
-  console.log(test);
-
-  const lines = test.reduce((result: line[], point: pointsProps, index: number) => {
-    if (index === 0) return [];
-    const previous = test[index - 1];
-    const line = { x1: previous.x, y1: previous.y, x2: point.x, y2: point.y };
-    return [...result, line];
-  }, []);
-  console.log(lines);
+  const POLYLINE_POINT = points.map((e) => `${e.x + 45}, ${e.y + 32}`).join(" ");
 
   return (
-    <svg viewBox={`0 0 ${SVG_VIEWBOX.WIDTH} ${SVG_VIEWBOX.HEIGHT}`} width="90%" height="100%">
-      {lines.map(({ x1, x2, y1, y2 }) => (
-        <S.GraphLine x1={x1} x2={x2} y1={y1} y2={y2} key={x1} />
-      ))}
+    <S.ChartContainer>
+      <ul>
+        {points.map((e, index) => {
+          const dotDate = dotDateFormat(String(sortUserWeight[index].date));
 
-      {test.map(({ x, y }: any, index) => {
-        const dotDate = dotDateFormat(String(sortUserWeight[index].date));
-        return (
-          <S.GraphLineWrapper key={dotDate}>
-            <S.GraphSubCircle cx={x} cy={y} r="25" />
-            <S.GraphCircle cx={x} cy={y} r="4" />
-
-            <S.HoverRect className="hover-rect" x={x - 60} y={y + 10} rx={5} />
-            <S.HoverText className="hover-rect" x={x - 25} y={y + 30} fontSize={14}>
-              {dotDate}
-            </S.HoverText>
-            <S.HoverText className="hover-rect" x={x - 16} y={y + 50} fontSize={14}>
-              {sortUserWeight[index].weight}kg
-            </S.HoverText>
-          </S.GraphLineWrapper>
-        );
-      })}
-    </svg>
+          return (
+            <S.ChartLi x={e.x} y={e.y}>
+              <svg viewBox="0 0 20px 20px" width={100} height={205}>
+                <S.GraphLineWrapper>
+                  <S.GraphCircle
+                    cx="5"
+                    cy={e.y}
+                    r="2.5"
+                    stroke={THEME.BACKGROUND_COLOR.GREEN}
+                    fill={THEME.BACKGROUND_COLOR.GREEN}
+                    strokeWidth="5"
+                  />
+                  <S.HoverRect className="hover-rect" x={10} y={e.y - 40} rx={5} />
+                  <S.HoverText className="hover-rect" x={25} y={e.y - 20} fontSize={14}>
+                    {sortUserWeight[index].weight}kg
+                  </S.HoverText>
+                </S.GraphLineWrapper>
+              </svg>
+              <S.ChartText>{dotDate}</S.ChartText>
+            </S.ChartLi>
+          );
+        })}
+      </ul>
+      <S.SVGContainer viewBox="0 0 100px 100px " width="100%" height="100%">
+        <S.Polyline
+          points={POLYLINE_POINT}
+          fill="none"
+          stroke={THEME.BACKGROUND_COLOR.GREEN_4}
+          strokeWidth="6"
+        ></S.Polyline>
+        {points.map((e, index) => (
+          <S.Circle cx={e.x + 45} cy={e.y + 32} r="8" fill="transparent" />
+        ))}
+      </S.SVGContainer>
+    </S.ChartContainer>
   );
 };
 

@@ -6,6 +6,7 @@ import { dotDateFormat } from "../../utils/dateFormat";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import Title from "../common/title/Title";
 import BoxRecord from "./BoxRecord";
+import DonutChart from "./DonutChart";
 
 const MissionModal = ({ modalData }: { modalData: IMission | undefined }) => {
   const { isInitClick, isModalOpened, setIsInitClick, setIsModalOpened } = useContext(ModalContext);
@@ -34,7 +35,11 @@ const MissionModal = ({ modalData }: { modalData: IMission | undefined }) => {
           <S.MiniBox>
             <BoxRecord modalData={modalData} />
           </S.MiniBox>
-          <S.MiniBox></S.MiniBox>
+          <S.MiniBox>
+            <DonutChart
+              percent={Math.round((modalData?.exercise_count! / Number(modalData?.goal_exercise_count!)) * 100) / 100}
+            />
+          </S.MiniBox>
         </S.MiniBoxWrapper>
       </S.MissionModalWrapper>
     </S.MissionModalContainer>
