@@ -1,13 +1,17 @@
 import { S } from "./styled";
 import { useState } from "react";
+import { IMission } from "../../types/mission";
 import { useParams } from "react-router-dom";
+import { dateFormat } from "../../utils/dateFormat";
 import { findMidDate } from "../../utils/findMidDate";
 import Input from "../../components/common/input/Input";
+import Toast from "../../components/toast";
 import Button from "../../components/common/button/Button";
+import useToast from "../../hooks/useToast";
 import DatePicker from "../../components/mission/DatePicker";
+import useMovePage from "../../hooks/useMovePage";
 import useCreateMissionMutation from "../../hooks/mutation/usePostMissionMutation";
-import { dateFormat } from "../../utils/dateFormat";
-import { IMission } from "../../types/mission";
+import { PATH_NUMBER } from "../../const/path";
 
 export interface IFormData {
   title: string;
@@ -17,6 +21,7 @@ export interface IFormData {
 }
 
 const Mission = () => {
+  const [routerHandler] = useMovePage();
   const { mutate } = useCreateMissionMutation();
   const { id } = useParams() as { id: string };
   const [formData, setFormData] = useState<IFormData>({
@@ -27,21 +32,17 @@ const Mission = () => {
   });
   const { title, current_weight, goal_weight, goal_exercise_count } = formData;
   const [endDate, setEndDate] = useState<Date>();
-  console.log(endDate);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-    console.log(value, name, "?");
-
     setFormData({
       ...formData,
       [name]: value,
     });
   };
 
-  // period
-
   const submitHandler = (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const mid = findMidDate(id, dateFormat(endDate!));
     const period = {
       start: id,
@@ -49,7 +50,15 @@ const Mission = () => {
       mid,
     };
     const submitData: IMission = { ...formData, exercise_count: 0, period };
-    mutate(submitData);
+    mutate(submitData, {
+      onSuccess: () => {
+        useToast({ content: <Toast text="미션 등록" type="SUCCESS" /> });
+        routerHandler({ num: PATH_NUMBER.CALENDAR });
+      },
+      onError: () => {
+        useToast({ content: <Toast text="등록 실패" type="FAIL" /> });
+      },
+    });
   };
   return (
     <S.MissionContainer>

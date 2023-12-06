@@ -78,7 +78,7 @@ const ScoreRecord = () => {
   return (
     <S.RecordContainer>
       <S.TitleWrapper>
-        <Title title="점수 기록" size="M" />
+        <Title title="운동" size="M" />
       </S.TitleWrapper>
 
       <S.ScoreRecordWrapper>

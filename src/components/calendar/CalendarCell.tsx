@@ -6,6 +6,7 @@ import { addDays, endOfMonth, startOfWeek, startOfMonth, endOfWeek, format } fro
 import useMovePage from "../../hooks/useMovePage";
 import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import useCurrentMissionQuery from "../../hooks/queries/useCurrentMissionQuery";
+import { PATH_NUMBER } from "../../const/path";
 
 interface IProps {
   currentMonth: Date;
@@ -41,7 +42,10 @@ const CalendarCell = ({ currentMonth }: IProps) => {
           ? checkMission(dayFormat, missionData.period.start, missionData.period.mid, missionData.period.end)
           : "false";
       days.push(
-        <S.CellElement validtoday={isToday ? "true" : "false"} onClick={() => routerHandler({ num: 4, dayFormat })}>
+        <S.CellElement
+          validtoday={isToday ? "true" : "false"}
+          onClick={() => routerHandler({ num: PATH_NUMBER.CALENDAR_DETAIl, dayFormat })}
+        >
           {isToday ? <span>{formattedDate} today</span> : <span>{formattedDate}</span>}
           {MISSION_STATUS === "start" && <span> </span>}
           {MISSION_STATUS !== "false" && <S.MissionDivider></S.MissionDivider>}
