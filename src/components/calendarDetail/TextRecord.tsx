@@ -1,4 +1,4 @@
-import { ICalendar, IDate } from "../../types/calendar";
+import { IDate } from "../../types/calendar";
 import { S } from "./styled";
 
 interface IProps {

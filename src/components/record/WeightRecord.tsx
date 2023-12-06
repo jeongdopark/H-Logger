@@ -22,7 +22,6 @@ const WeightRecord = () => {
     let X_INTERVAL = userWeight ? 400 / userWeight.length : null;
     let sum = 0;
     let average = 0;
-    let scale = null;
     const point_arr = [];
     const sort_weight = userWeight ? userWeight.sort((a, b) => a.date - b.date) : [];
 
@@ -30,7 +29,7 @@ const WeightRecord = () => {
       sum += sort_weight[i].weight;
     }
     average = sum / sort_weight.length;
-    scale = Math.round(SVG_VIEWBOX.AVERAGE_HEIGHT / average);
+    const scale = Math.round(SVG_VIEWBOX.AVERAGE_HEIGHT / average);
 
     if (userWeight && X_INTERVAL) {
       for (let i = 0; i < sort_weight.length; i++) {
