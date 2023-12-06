@@ -29,7 +29,6 @@ const WeightRecord = () => {
       sum += sort_weight[i].weight;
     }
     average = sum / sort_weight.length;
-    const scale = Math.round(SVG_VIEWBOX.AVERAGE_HEIGHT / average);
 
     if (userWeight && X_INTERVAL) {
       for (let i = 0; i < sort_weight.length; i++) {
