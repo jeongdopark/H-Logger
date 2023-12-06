@@ -36,12 +36,12 @@ interface ISVG_VIEWBOX {
   WIDTH: number;
   HEIGHT: number;
   AVERAGE_HEIGHT: number;
-  UP: number;
+  SCALE: number;
 }
 
 export const SVG_VIEWBOX: ISVG_VIEWBOX = {
   WIDTH: 1200,
-  HEIGHT: 300,
-  AVERAGE_HEIGHT: Math.round(300 / 2),
-  UP: 20,
+  HEIGHT: 200,
+  AVERAGE_HEIGHT: Math.round(200 / 2),
+  SCALE: 15,
 };

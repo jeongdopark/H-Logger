@@ -157,6 +157,12 @@ const GraphLine = styled.line`
 const GraphCircle = styled.circle`
   z-index: 999;
   fill: ${THEME.BACKGROUND_COLOR.GREEN_2};
+  cursor: pointer;
+
+  &:hover .hover-rect {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 
 const GraphSubCircle = styled.circle`
@@ -176,12 +182,13 @@ const CircleWrapper = styled.div`
 `;
 
 const HoverRect = styled.rect`
-  width: 120px;
-  height: 50px;
+  width: 60px;
+  height: 30px;
   visibility: hidden;
   opacity: 0;
   fill: ${THEME.BACKGROUND_COLOR.GREEN_3};
   transition: 0.2s ease-in-out;
+  z-index: 999;
 `;
 
 const HoverText = styled.text`
@@ -254,7 +261,86 @@ const BoxContainer = styled.div`
   gap: 5px;
 `;
 
+const ChartContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
+interface IChartLi {
+  x: number;
+  y: number;
+}
+
+const ChartLi = styled.li<IChartLi>`
+  position: absolute;
+  bottom: 30px;
+  left: ${(props) => props.x + 40}px;
+  width: 10px;
+  height: 200px;
+  border-radius: ${THEME.BORDER_RADIUS.M};
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE};
+`;
+
+const ChartSVGWrapper = styled.div<IChartLi>`
+  position: absolute;
+  width: 20px;
+  height: 100%;
+`;
+
+const ChartText = styled.span`
+  position: absolute;
+  left: -19px;
+  font-size: ${THEME.FONT_SIZE.XS};
+  font-weight: ${THEME.FONT_WEIGHT.M};
+`;
+
+const SVGContainer = styled.svg`
+  z-index: 99999;
+`;
+const Polyline = styled.polyline`
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: dash 2s linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+`;
+
+const Circle = styled.circle`
+  z-index: 9999;
+`;
+
+const DonutChartContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+const AnimationCircle = styled.circle`
+  animation: circle-fill-animation 2s ease-in-out;
+
+  @keyframes circle-fill-animation {
+    0% {
+      stroke-dasharray: 0 ${2 * Math.PI * 90};
+    }
+  }
+`;
+
 export const S = {
+  AnimationCircle,
+  DonutChartContainer,
+  Polyline,
+  SVGContainer,
+  Circle,
+  ChartText,
+  ChartSVGWrapper,
+  ChartLi,
+  ChartContainer,
   WeightChartContainer,
   BoxContainer,
   MiniBoxWrapper,

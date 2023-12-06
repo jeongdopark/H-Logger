@@ -17,7 +17,6 @@ const WeightRecord = () => {
   const { data: userWeight, isLoading: userWeightLoading } = useWeightQuery();
   const [points, setPoints] = useState<IPoints[]>();
   const [sortUserWeight, setSortUserWeight] = useState<IWeight[]>();
-  console.log(userWeight);
 
   useEffect(() => {
     let X_INTERVAL = userWeight ? 400 / userWeight.length : null;
@@ -26,6 +25,7 @@ const WeightRecord = () => {
     let scale = null;
     const point_arr = [];
     const sort_weight = userWeight ? userWeight.sort((a, b) => a.date - b.date) : [];
+
     for (let i = 0; i < sort_weight.length; i++) {
       sum += sort_weight[i].weight;
     }
@@ -36,7 +36,10 @@ const WeightRecord = () => {
       for (let i = 0; i < sort_weight.length; i++) {
         point_arr.push({
           x: WEIGHT_LINE_CONST.START_X_POS + X_INTERVAL * i,
-          y: sort_weight[i].weight * scale,
+          y:
+            SVG_VIEWBOX.AVERAGE_HEIGHT +
+            (SVG_VIEWBOX.AVERAGE_HEIGHT - sort_weight[i].weight * (SVG_VIEWBOX.AVERAGE_HEIGHT / average)) *
+              SVG_VIEWBOX.SCALE,
         });
       }
     }
@@ -49,7 +52,7 @@ const WeightRecord = () => {
     <>
       <S.WeightChartContainer>
         <S.TitleWrapper>
-          <Title title="몸무게 기록" size="M" />
+          <Title title="몸무게" size="M" />
         </S.TitleWrapper>
         {userWeight!.length === 0 && <Empty />}
         <LineGraph points={points!} sortUserWeight={sortUserWeight!} />
