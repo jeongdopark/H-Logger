@@ -1,6 +1,7 @@
 import { S } from "./styled";
 import { IWeight } from "../../types/weight";
 import { dotDateFormat } from "../../utils/dateFormat";
+import { SVG_VIEWBOX } from "../../const";
 
 interface pointsProps {
   x: number;
@@ -20,20 +21,48 @@ interface lineGraphProps {
 }
 
 const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
-  const lines = points.reduce((result: line[], point: pointsProps, index: number) => {
+  console.log(SVG_VIEWBOX.AVERAGE_HEIGHT / 75);
+
+  const test = [
+    {
+      x: 0,
+      y:
+        SVG_VIEWBOX.AVERAGE_HEIGHT +
+        (SVG_VIEWBOX.AVERAGE_HEIGHT - 75 * (SVG_VIEWBOX.AVERAGE_HEIGHT / 75)) * 10 -
+        SVG_VIEWBOX.UP,
+    },
+    {
+      x: 130,
+      y:
+        SVG_VIEWBOX.AVERAGE_HEIGHT +
+        (SVG_VIEWBOX.AVERAGE_HEIGHT - 74 * (SVG_VIEWBOX.AVERAGE_HEIGHT / 75)) * 10 -
+        SVG_VIEWBOX.UP,
+    },
+    {
+      x: 260,
+      y:
+        SVG_VIEWBOX.AVERAGE_HEIGHT +
+        (SVG_VIEWBOX.AVERAGE_HEIGHT - 76 * (SVG_VIEWBOX.AVERAGE_HEIGHT / 75)) * 10 -
+        SVG_VIEWBOX.UP,
+    },
+  ];
+  console.log(test);
+
+  const lines = test.reduce((result: line[], point: pointsProps, index: number) => {
     if (index === 0) return [];
-    const previous = points[index - 1];
+    const previous = test[index - 1];
     const line = { x1: previous.x, y1: previous.y, x2: point.x, y2: point.y };
     return [...result, line];
   }, []);
+  console.log(lines);
 
   return (
-    <svg viewBox={`0 -40 556 140`} width="100%" height="100%">
+    <svg viewBox={`0 0 ${SVG_VIEWBOX.WIDTH} ${SVG_VIEWBOX.HEIGHT}`} width="90%" height="100%">
       {lines.map(({ x1, x2, y1, y2 }) => (
         <S.GraphLine x1={x1} x2={x2} y1={y1} y2={y2} key={x1} />
       ))}
 
-      {points.map(({ x, y }: any, index) => {
+      {test.map(({ x, y }: any, index) => {
         const dotDate = dotDateFormat(String(sortUserWeight[index].date));
         return (
           <S.GraphLineWrapper key={dotDate}>

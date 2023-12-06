@@ -5,7 +5,7 @@ export const MEAL_TIME = ["아침", "아점", "점심", "점저", "저녁", "야
 export const SCORE = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
 export const WEIGHT_LINE_CONST = {
-  START_X_POS: -180,
+  START_X_POS: 0,
   X_INTERVAL: 90,
   Y_INTERVAL: 15,
 };
@@ -30,4 +30,18 @@ export const TOAST_DURATION = {
     SET_TIMEOUT: 1500,
     ANIMATION: "1.5s",
   },
+};
+
+interface ISVG_VIEWBOX {
+  WIDTH: number;
+  HEIGHT: number;
+  AVERAGE_HEIGHT: number;
+  UP: number;
+}
+
+export const SVG_VIEWBOX: ISVG_VIEWBOX = {
+  WIDTH: 1200,
+  HEIGHT: 300,
+  AVERAGE_HEIGHT: Math.round(300 / 2),
+  UP: 20,
 };

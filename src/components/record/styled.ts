@@ -31,6 +31,10 @@ export const RecordContainer = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
 `;
 
+const WeightChartContainer = styled(RecordContainer)`
+  height: 300px;
+`;
+
 export const ScoreRecordWrapper = styled.div`
   display: flex;
   gap: 5px;
@@ -251,6 +255,7 @@ const BoxContainer = styled.div`
 `;
 
 export const S = {
+  WeightChartContainer,
   BoxContainer,
   MiniBoxWrapper,
   MiniBox,

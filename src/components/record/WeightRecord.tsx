@@ -1,7 +1,7 @@
 import { S } from "./styled";
 import { useEffect, useState } from "react";
 import { IWeight } from "../../types/weight";
-import { WEIGHT_LINE_CONST } from "../../const";
+import { SVG_VIEWBOX, WEIGHT_LINE_CONST } from "../../const";
 import useWeightQuery from "../../hooks/queries/useWeightQuery";
 import Title from "../common/title/Title";
 import LineGraph from "./LineChart";
@@ -17,23 +17,26 @@ const WeightRecord = () => {
   const { data: userWeight, isLoading: userWeightLoading } = useWeightQuery();
   const [points, setPoints] = useState<IPoints[]>();
   const [sortUserWeight, setSortUserWeight] = useState<IWeight[]>();
+  console.log(userWeight);
 
   useEffect(() => {
-    let X_INTERVAL = userWeight ? 1100 / userWeight.length : null;
+    let X_INTERVAL = userWeight ? 400 / userWeight.length : null;
     let sum = 0;
     let average = 0;
+    let scale = null;
     const point_arr = [];
     const sort_weight = userWeight ? userWeight.sort((a, b) => a.date - b.date) : [];
     for (let i = 0; i < sort_weight.length; i++) {
       sum += sort_weight[i].weight;
     }
     average = sum / sort_weight.length;
+    scale = Math.round(SVG_VIEWBOX.AVERAGE_HEIGHT / average);
 
     if (userWeight && X_INTERVAL) {
       for (let i = 0; i < sort_weight.length; i++) {
         point_arr.push({
           x: WEIGHT_LINE_CONST.START_X_POS + X_INTERVAL * i,
-          y: (sort_weight[i].weight - average) * WEIGHT_LINE_CONST.Y_INTERVAL,
+          y: sort_weight[i].weight * scale,
         });
       }
     }
@@ -44,13 +47,13 @@ const WeightRecord = () => {
   if (!sortUserWeight) return <RecordBoxSkeleton />;
   return (
     <>
-      <S.RecordContainer>
+      <S.WeightChartContainer>
         <S.TitleWrapper>
           <Title title="몸무게 기록" size="M" />
         </S.TitleWrapper>
         {userWeight!.length === 0 && <Empty />}
         <LineGraph points={points!} sortUserWeight={sortUserWeight!} />
-      </S.RecordContainer>
+      </S.WeightChartContainer>
     </>
   );
 };
