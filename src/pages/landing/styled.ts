@@ -78,17 +78,18 @@ const LoginBtn = styled.img`
   cursor: pointer;
 `;
 
-const ModalContainer = styled.div`
+export const ModalContainer = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed; /* 변경된 부분 */
-  top: 0; /* 추가된 부분 */
-  left: 0; /* 추가된 부분 */
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 9999;
+  backdrop-filter: blur(1.5px);
 `;
 
 const LoginBox = styled.div`

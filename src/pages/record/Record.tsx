@@ -9,7 +9,7 @@ import MissionRecord from "../../components/record/MissionRecord";
 import MissionSkeleton from "../../components/skeleton/MIsison";
 import ScoreSkeleton from "../../components/skeleton/Score";
 import ErrorBoundary from "../../components/error/ErrorBoundary";
-
+import { ModalProvider } from "../../context/ModalProvider";
 const Record = () => {
   return (
     <ErrorBoundary>
@@ -23,9 +23,11 @@ const Record = () => {
         <Suspense fallback={<RecordBoxSkeleton />}>
           <WeightRecord />
         </Suspense>
-        <Suspense fallback={<MissionSkeleton />}>
-          <MissionRecord />
-        </Suspense>
+        <ModalProvider>
+          <Suspense fallback={<MissionSkeleton />}>
+            <MissionRecord />
+          </Suspense>
+        </ModalProvider>
       </S.RecordContainer>
     </ErrorBoundary>
   );

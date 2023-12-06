@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { THEME } from "../../style/theme";
+import { ModalContainer } from "../../pages/landing/styled";
 
 export const UserWrapper = styled.div`
   display: flex;
@@ -81,7 +82,7 @@ const MissionElement = styled.div`
   border-radius: ${THEME.BORDER_RADIUS.M};
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   display: flex;
-
+  cursor: pointer;
   gap: 5px;
   position: relative;
 
@@ -199,7 +200,64 @@ const MissionText = styled.div`
   font-size: ${THEME.FONT_SIZE.XS};
 `;
 
+const MissionModalContainer = styled(ModalContainer)``;
+
+const MissionModalWrapper = styled.div`
+  width: 500px;
+  height: 55vh;
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE};
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: ${THEME.BORDER_RADIUS.L};
+`;
+
+const MissionModalText = styled.div`
+  font-size: ${THEME.FONT_SIZE.XS};
+`;
+
+const MissionModalBox = styled.div`
+  width: 100%;
+  height: 45%;
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
+  border-radius: ${THEME.BORDER_RADIUS.M};
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const MiniBox = styled.div`
+  width: 50%;
+  height: 100%;
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
+  border-radius: ${THEME.BORDER_RADIUS.M};
+  padding: 20px;
+`;
+
+const MiniBoxWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 50%;
+  gap: 10px;
+`;
+
+const BoxContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5px;
+`;
+
 export const S = {
+  BoxContainer,
+  MiniBoxWrapper,
+  MiniBox,
+  MissionModalBox,
+  MissionModalText,
+  MissionModalWrapper,
+  MissionModalContainer,
   ChartWrapper,
   GraphSubCircle,
   HoverText,
