@@ -1,7 +1,7 @@
 import Button from "../../components/common/button/Button";
 import useLogin from "../../hooks/landing/useLogin";
 import useMovePage from "../../hooks/useMovePage";
-import useOutsideClick from "../../hooks/landing/useOutsideClick";
+import useOutsideClick from "../../hooks/useOutsideClick";
 import { S } from "./styled";
 import { SVG } from "../../components/SVG";
 import { AuthContext } from "../../context/AuthProvider";
@@ -9,6 +9,7 @@ import { PATH_NUMBER } from "../../const/path";
 import { useContext, useRef, useState } from "react";
 import useToast from "../../hooks/useToast";
 import Toast from "../../components/toast";
+import useScrollLock from "../../hooks/useScrollLock";
 
 const Main = () => {
   const { setIsLogin } = useContext(AuthContext);
@@ -18,6 +19,7 @@ const Main = () => {
   const { isLogin } = useContext(AuthContext);
   const [isInitClick, setIsInitClick] = useState<boolean>(false);
   const [isLoginBoxOpened, setIsLoginBoxOpened] = useState<boolean>(false);
+  const { openScroll } = useScrollLock();
   const LoginBoxHandler = () => {
     setIsInitClick(true);
     setIsLoginBoxOpened(true);
@@ -32,6 +34,7 @@ const Main = () => {
 
   const GuestLogin = () => {
     localStorage.setItem("uid", import.meta.env.VITE_GUEST_ID);
+    openScroll();
     setIsLogin(true);
     routerHandler({ num: PATH_NUMBER.CALENDAR });
     useToast({ content: <Toast text="Guest 로그인" type="SUCCESS" /> });

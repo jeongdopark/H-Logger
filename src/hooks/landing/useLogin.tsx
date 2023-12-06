@@ -8,11 +8,15 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
 import { checkUserExist } from "../../utils/checkUserExist";
 import { createUserDoc } from "../../utils/createUserDoc";
+import useScrollLock from "../useScrollLock";
 
 const useLogin = () => {
   const [routerHandler] = useMovePage();
+  const { openScroll } = useScrollLock();
   const { setIsLogin } = useContext(AuthContext);
+
   const handleGoogleLogin = () => {
+    openScroll();
     const provider = new GoogleAuthProvider(); // provider 구글 설정
     signInWithPopup(auth, provider) // 팝업창 띄워서 로그인
       .then(async ({ user }) => {
