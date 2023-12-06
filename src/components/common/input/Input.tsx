@@ -1,8 +1,7 @@
 import Title from "../title/Title";
-import { ReactNode } from "react";
 import { S } from "./styled";
 
-interface IProps<T> {
+interface IProps {
   title: string;
   placeholder: string;
   size: "L" | "M" | "S" | "XL";
@@ -11,7 +10,7 @@ interface IProps<T> {
   name?: string;
 }
 
-const Input = <T extends ReactNode>({ title, size, placeholder, value, onChange, name }: IProps<T>) => {
+const Input = ({ title, size, placeholder, value, onChange, name }: IProps) => {
   return (
     <S.Container>
       <Title title={title} size="S" />

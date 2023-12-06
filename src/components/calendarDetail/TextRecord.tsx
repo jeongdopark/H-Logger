@@ -1,7 +1,13 @@
-import { ICalendar } from "../../types/calendar";
+import { ICalendar, IDate } from "../../types/calendar";
 import { S } from "./styled";
 
-const TextRecord = ({ detailData }: { detailData: ICalendar }) => {
+interface IProps {
+  detailData: IDate;
+}
+
+const TextRecord = ({ detailData }: IProps) => {
+  console.log(detailData);
+
   return (
     <S.TextRecord>
       <span>세 줄 일기</span>

@@ -15,6 +15,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   }
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    console.log(error);
     // 다음 렌더링에서 폴백 UI가 보이도록 상태를 업데이트 합니다.
     return { hasError: true };
   }
@@ -22,6 +23,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
     // 에러 리포팅 서비스에 에러를 기록할 수도 있습니다.
     console.log(error);
+    console.log(errorInfo);
     console.log("Something went wrong.Something went wrong.Something went wrong.");
   }
 

@@ -4,7 +4,7 @@ export interface ICalendar {
   [key: string]: IDate;
 }
 
-interface IDate {
+export interface IDate {
   dailyLog: IDailyLog;
   exercise: IExercise[];
   meal: IMeal[];

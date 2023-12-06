@@ -1,19 +1,11 @@
 import { S } from "./styled";
 import { IWeight } from "../../types/weight";
 import { dotDateFormat } from "../../utils/dateFormat";
-import { SVG_VIEWBOX } from "../../const";
 import { THEME } from "../../style/theme";
 
 interface pointsProps {
   x: number;
   y: number;
-}
-
-interface line {
-  x1: number;
-  x2: number;
-  y1: number;
-  y2: number;
 }
 
 interface lineGraphProps {
@@ -60,7 +52,7 @@ const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
           stroke={THEME.BACKGROUND_COLOR.GREEN_4}
           strokeWidth="6"
         ></S.Polyline>
-        {points.map((e, index) => (
+        {points.map((e) => (
           <S.Circle cx={e.x + 45} cy={e.y + 32} r="8" fill="transparent" />
         ))}
       </S.SVGContainer>

@@ -8,7 +8,7 @@ const CalendarSkeleton = () => {
     <S.CellContainer_S>
       {ELEMENT.map((week, idx) => (
         <S.CellRow_S key={idx}>
-          {week.map((day, idx) => (
+          {week.map((idx) => (
             <S.Cell_S key={idx}>
               <Shimmer />
             </S.Cell_S>

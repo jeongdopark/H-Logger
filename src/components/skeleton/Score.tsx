@@ -14,7 +14,7 @@ const ScoreSkeleton = () => {
       <S.ScoreRecordWrapper_S>
         {Year.map((week, idx) => (
           <React.Fragment key={idx}>
-            {week.map((day, idx) => {
+            {week.map((idx) => {
               return <div key={idx}>1</div>;
             })}
           </React.Fragment>

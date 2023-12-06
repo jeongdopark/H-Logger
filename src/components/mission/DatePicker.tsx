@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const MissionDatePicker = ({ startDate, endDate, setEndDate }: IProps) => {
-  const [dateRange, setDateRange] = useState([new Date(2023, 10, 30), null]);
+  const [, setDateRange] = useState([new Date(2023, 10, 30), null]);
 
   // const [, endDate] = dateRange;
   return (
