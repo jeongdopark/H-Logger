@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import useScrollLock from "./useScrollLock";
 
 interface IProps {
   ref: React.RefObject<HTMLDivElement>;
@@ -9,9 +10,11 @@ interface IProps {
 }
 
 const useOutsideClick = ({ ref, isInit, setIsInit, isOpened, setIsOpened }: IProps) => {
+  const { openScroll, lockScroll } = useScrollLock();
   const handleFocusOut = (event: MouseEvent) => {
     // 최초 모달 오픈
     if (isInit) {
+      lockScroll();
       setIsInit(false);
       return;
     }
@@ -19,6 +22,7 @@ const useOutsideClick = ({ ref, isInit, setIsInit, isOpened, setIsOpened }: IPro
     if (!ref.current?.contains(event.target as Node) && isOpened) {
       setIsOpened(false);
       setIsInit(false);
+      openScroll();
     }
     // 모달 밖 클릭 & 모달 열려 있지 않은 경우
     if (!ref.current?.contains(event.target as Node) && !isOpened) {
