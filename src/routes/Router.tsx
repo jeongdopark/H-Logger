@@ -1,10 +1,7 @@
 import { PATH_NAME } from "../const/path";
-import Calendar from "../pages/calendar/Calendar";
-import Landing from "../pages/landing/Landing";
-import CalendarDetail from "../pages/detail/CalendarDetail";
 import Layout from "../components/layout/Layout";
-import Record from "../pages/record/Record";
-import Mission from "../pages/mission/Mission";
+import Landing from "../pages/landing/Landing";
+import withLazy from "../components/withLazy";
 
 export const RouterInfo = [
   {
@@ -18,22 +15,22 @@ export const RouterInfo = [
       },
       {
         path: PATH_NAME.CALENDAR,
-        element: <Calendar />,
+        element: withLazy("calendar"),
         label: "calendar",
       },
       {
         path: PATH_NAME.CALENDAR_DETAIL,
-        element: <CalendarDetail />,
+        element: withLazy("calendarDetail"),
         label: "calendarDetail",
       },
       {
         path: PATH_NAME.MISSION,
-        element: <Mission />,
+        element: withLazy("mission"),
         label: "mission",
       },
       {
         path: PATH_NAME.RECORD,
-        element: <Record />,
+        element: withLazy("record"),
         label: "record",
       },
     ],
