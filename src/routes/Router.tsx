@@ -20,7 +20,7 @@ export const RouterInfo = [
       },
       {
         path: PATH_NAME.CALENDAR_DETAIL,
-        element: withLazy("calendarDetail"),
+        element: withLazy("detail"),
         label: "calendarDetail",
       },
       {
