@@ -24,7 +24,7 @@ const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
 
           return (
             <S.ChartLi x={e.x} y={e.y}>
-              <svg viewBox="0 0 20px 20px" width={100} height={205}>
+              <svg viewBox="0 0 20px 20px" width={50} height={205} style={{ zIndex: "999" }}>
                 <S.GraphLineWrapper>
                   <S.GraphCircle
                     cx="5"
@@ -34,9 +34,11 @@ const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
                     fill={THEME.BACKGROUND_COLOR.GREEN}
                     strokeWidth="5"
                   />
-                  <S.HoverRect className="hover-rect" x={10} y={e.y - 40} rx={5} />
-                  <S.HoverText className="hover-rect" x={25} y={e.y - 20} fontSize={14}>
-                    {sortUserWeight[index].weight}kg
+                  <S.HoverRect className="hover-rect" x={10} y={e.y - 30} rx={5} />
+                  <S.HoverText className="hover-rect" x={16.5} y={e.y - 15.5} fontSize={12}>
+                    {String(sortUserWeight[index].weight).length === 2
+                      ? String(sortUserWeight[index].weight) + ".0"
+                      : sortUserWeight[index].weight}
                   </S.HoverText>
                 </S.GraphLineWrapper>
               </svg>

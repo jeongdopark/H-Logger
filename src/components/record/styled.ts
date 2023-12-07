@@ -155,7 +155,6 @@ const GraphLine = styled.line`
 `;
 
 const GraphCircle = styled.circle`
-  z-index: 999;
   fill: ${THEME.BACKGROUND_COLOR.GREEN_2};
   cursor: pointer;
 
@@ -170,6 +169,7 @@ const GraphSubCircle = styled.circle`
 `;
 
 const GraphLineWrapper = styled.g`
+  z-index: 999;
   &:hover .hover-rect {
     visibility: visible;
     opacity: 1;
@@ -182,13 +182,13 @@ const CircleWrapper = styled.div`
 `;
 
 const HoverRect = styled.rect`
-  width: 60px;
-  height: 30px;
+  z-index: 9999;
+  width: 40px;
+  height: 20px;
   visibility: hidden;
   opacity: 0;
   fill: ${THEME.BACKGROUND_COLOR.GREEN_3};
   transition: 0.2s ease-in-out;
-  z-index: 999;
 `;
 
 const HoverText = styled.text`
@@ -295,9 +295,7 @@ const ChartText = styled.span`
   font-weight: ${THEME.FONT_WEIGHT.M};
 `;
 
-const SVGContainer = styled.svg`
-  z-index: 99999;
-`;
+const SVGContainer = styled.svg``;
 const Polyline = styled.polyline`
   stroke-dasharray: 1200;
   stroke-dashoffset: 1200;
@@ -312,9 +310,7 @@ const Polyline = styled.polyline`
   }
 `;
 
-const Circle = styled.circle`
-  z-index: 9999;
-`;
+const Circle = styled.circle``;
 
 const DonutChartContainer = styled.div`
   width: 100%;
