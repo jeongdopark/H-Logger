@@ -299,7 +299,7 @@ const SVGContainer = styled.svg``;
 const Polyline = styled.polyline`
   stroke-dasharray: 1200;
   stroke-dashoffset: 1200;
-  animation: dash 2s linear;
+  animation: dash 3s linear;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 

@@ -8,6 +8,7 @@ export const WEIGHT_LINE_CONST = {
   START_X_POS: 0,
   X_INTERVAL: 90,
   Y_INTERVAL: 15,
+  X_LIMIT: 1200,
 };
 
 export const TOAST_TYPE = {

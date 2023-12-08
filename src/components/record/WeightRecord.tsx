@@ -19,7 +19,7 @@ const WeightRecord = () => {
   const [sortUserWeight, setSortUserWeight] = useState<IWeight[]>();
 
   useEffect(() => {
-    let X_INTERVAL = userWeight ? 400 / userWeight.length : null;
+    let X_INTERVAL = userWeight ? WEIGHT_LINE_CONST.X_LIMIT / userWeight.length : null;
     let sum = 0;
     let average = 0;
     const point_arr = [];

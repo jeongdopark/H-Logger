@@ -1,13 +1,10 @@
 import { PATH_NAME } from "../const/path";
-import { Suspense, lazy } from "react";
 import Layout from "../components/layout/Layout";
+import Record from "../pages/record/Record";
 import Landing from "../pages/landing/Landing";
 import Mission from "../pages/mission/Mission";
-import Loading from "../components/Loading";
-
-const Calendar = lazy(() => import("../pages/calendar/Calendar.tsx"));
-const CalendarDetail = lazy(() => import("../pages/detail/Detail.tsx"));
-const Record = lazy(() => import("../pages/record/Record.tsx"));
+import Calendar from "../pages/calendar/Calendar";
+import CalendarDetail from "../pages/detail/Detail";
 
 export const RouterInfo = [
   {
@@ -21,29 +18,17 @@ export const RouterInfo = [
       },
       {
         path: PATH_NAME.CALENDAR,
-        element: (
-          <Suspense fallback={<Loading />}>
-            <Calendar />
-          </Suspense>
-        ),
+        element: <Calendar />,
         label: "calendar",
       },
       {
         path: PATH_NAME.CALENDAR_DETAIL,
-        element: (
-          <Suspense fallback={<Loading />}>
-            <CalendarDetail />
-          </Suspense>
-        ),
+        element: <CalendarDetail />,
         label: "calendarDetail",
       },
       {
         path: PATH_NAME.RECORD,
-        element: (
-          <Suspense fallback={<Loading />}>
-            <Record />
-          </Suspense>
-        ),
+        element: <Record />,
         label: "record",
       },
       {

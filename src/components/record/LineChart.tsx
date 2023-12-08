@@ -19,23 +19,23 @@ const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
   return (
     <S.ChartContainer>
       <ul>
-        {points.map((e, index) => {
+        {points.map((point, index) => {
           const dotDate = dotDateFormat(String(sortUserWeight[index].date));
 
           return (
-            <S.ChartLi x={e.x} y={e.y}>
+            <S.ChartLi x={point.x} y={point.y}>
               <svg viewBox="0 0 20px 20px" width={50} height={205} style={{ zIndex: "999" }}>
                 <S.GraphLineWrapper>
                   <S.GraphCircle
                     cx="5"
-                    cy={e.y}
+                    cy={point.y}
                     r="2.5"
                     stroke={THEME.BACKGROUND_COLOR.GREEN}
                     fill={THEME.BACKGROUND_COLOR.GREEN}
                     strokeWidth="5"
                   />
-                  <S.HoverRect className="hover-rect" x={10} y={e.y - 30} rx={5} />
-                  <S.HoverText className="hover-rect" x={16.5} y={e.y - 15.5} fontSize={12}>
+                  <S.HoverRect className="hover-rect" x={10} y={point.y - 30} rx={5} />
+                  <S.HoverText className="hover-rect" x={16.5} y={point.y - 15.5} fontSize={12}>
                     {String(sortUserWeight[index].weight).length === 2
                       ? String(sortUserWeight[index].weight) + ".0"
                       : sortUserWeight[index].weight}
