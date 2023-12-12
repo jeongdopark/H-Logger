@@ -54,7 +54,7 @@ const Main = () => {
       )}
       <S.LandingLeftContainer>
         <S.LandingH1>
-          More Systematic
+          Visualize Wellness
           <br />
           With
           <br />
