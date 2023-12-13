@@ -15,7 +15,7 @@ export const deleteMeal = async ({ dateKey, index }: IArg) => {
   const calendarData = docSnap.data()!.calendar;
   const meal = calendarData[dateKey].meal;
 
-  const new_meal = meal.filter((elem: IMeal, idx: number) => {
+  const new_meal = meal.filter((_: IMeal, idx: number) => {
     return idx !== index;
   });
   const new_calendarData = { ...calendarData[dateKey], meal: new_meal };

@@ -15,7 +15,7 @@ export const deleteExercise = async ({ dateKey, index }: IArg) => {
   const calendarData = docSnap.data()!.calendar;
   const exercise = calendarData[dateKey].exercise;
 
-  const new_exericse = exercise.filter((elem: IExercise, idx: number) => {
+  const new_exericse = exercise.filter((_: IExercise, idx: number) => {
     return idx !== index;
   });
   const new_calendarData = { ...calendarData[dateKey], exercise: new_exericse };
