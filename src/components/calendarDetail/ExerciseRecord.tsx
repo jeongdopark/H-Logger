@@ -1,11 +1,18 @@
 import { S } from "./styled";
 import { IExercise } from "../../types/calendar";
 
-const ExerciseRecord = ({ data }: { data: IExercise }) => {
+interface IProps {
+  data: IExercise;
+  index: number;
+}
+
+const ExerciseRecord = ({ data, index }: IProps) => {
   return (
     <S.ExerciseRecordBox>
-      <div>{data.category}</div>
-      <div>{data.time}</div>
+      <S.ExerciseRecord>{data.category}</S.ExerciseRecord>
+      <S.Diver></S.Diver>
+      <S.ExerciseRecord>{data.time}</S.ExerciseRecord>
+      <S.DeleteDot />
     </S.ExerciseRecordBox>
   );
 };

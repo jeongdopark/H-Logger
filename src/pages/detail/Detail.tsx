@@ -12,6 +12,7 @@ import { S } from "./styled";
 import { IExercise, IMeal } from "../../types/calendar";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import DonutChart from "../../components/record/DonutChart";
 
 const CalendarDetail = () => {
   const { id } = useParams() as { id: string };
@@ -49,35 +50,40 @@ const CalendarDetail = () => {
         </S.ModeSelect>
         <S.FormWrapper>{FormArray[modeNumber]}</S.FormWrapper>
       </S.FormContainer>
-      {calendarData[id] && (
-        <S.RecordContainer>
-          {calendarData[id].exercise ? (
-            <S.RecordElement>
-              {calendarData[id]?.exercise.map((data: IExercise) => (
-                <ExerciseRecord data={data} />
-              ))}
-            </S.RecordElement>
-          ) : (
-            <S.EmptyBox />
-          )}
-          {calendarData[id].meal ? (
-            <S.RecordElement>
-              {calendarData[id]?.meal.map((data: IMeal) => (
-                <MealRecord data={data} />
-              ))}
-            </S.RecordElement>
-          ) : (
-            <S.EmptyBox style={{ width: "320px" }} />
-          )}
-          {calendarData[id].dailyLog ? (
-            <S.RecordElement>
-              <TextRecord detailData={calendarData[id]!} />
-            </S.RecordElement>
-          ) : (
-            <S.EmptyBox />
-          )}
-        </S.RecordContainer>
-      )}
+
+      <S.RecordContainer>
+        {calendarData[id]?.exercise ? (
+          <S.RecordElement>
+            <S.ExerciseRecordBox>운동</S.ExerciseRecordBox>
+            {calendarData[id]?.exercise.map((data: IExercise, index: number) => (
+              <ExerciseRecord data={data} key={index} index={index} />
+            ))}
+          </S.RecordElement>
+        ) : (
+          <S.ExerciseRecordBox>운동</S.ExerciseRecordBox>
+        )}
+        {calendarData[id]?.meal ? (
+          <S.RecordElement>
+            <S.MealRecordBox>식단</S.MealRecordBox>
+            {calendarData[id]?.meal.map((data: IMeal, index: number) => (
+              <MealRecord data={data} key={index} index={index} />
+            ))}
+          </S.RecordElement>
+        ) : (
+          <S.MealRecordBox>식단</S.MealRecordBox>
+        )}
+        {calendarData[id]?.dailyLog ? (
+          <S.RecordElement>
+            <S.ExerciseRecordBox>일기</S.ExerciseRecordBox>
+            <TextRecord detailData={calendarData[id]!} />
+            <S.ChartWrapper>
+              <DonutChart percent={calendarData[id].dailyLog.score * 0.01} unit={"점"} />
+            </S.ChartWrapper>
+          </S.RecordElement>
+        ) : (
+          <S.ExerciseRecordBox>일기</S.ExerciseRecordBox>
+        )}
+      </S.RecordContainer>
     </S.DetailContainer>
   );
 };

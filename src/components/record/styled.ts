@@ -313,6 +313,7 @@ const Polyline = styled.polyline`
 const Circle = styled.circle``;
 
 const DonutChartContainer = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
 `;
@@ -327,7 +328,17 @@ const AnimationCircle = styled.circle`
   }
 `;
 
+const SVGText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: ${THEME.FONT_SIZE.XS};
+  font-weight: ${THEME.FONT_WEIGHT.L};
+`;
+
 export const S = {
+  SVGText,
   AnimationCircle,
   DonutChartContainer,
   Polyline,

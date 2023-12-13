@@ -38,6 +38,7 @@ const MissionModal = ({ modalData }: { modalData: IMission | undefined }) => {
           <S.MiniBox>
             <DonutChart
               percent={Math.round((modalData?.exercise_count! / Number(modalData?.goal_exercise_count!)) * 100) / 100}
+              unit={"%"}
             />
           </S.MiniBox>
         </S.MiniBoxWrapper>
