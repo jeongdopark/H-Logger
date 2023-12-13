@@ -26,6 +26,8 @@ const RecordContainer = styled.div`
   padding: 10px;
   width: 100%;
   justify-content: center;
+  font-size: ${THEME.FONT_SIZE.XS};
+  font-weight: ${THEME.FONT_WEIGHT.M};
 `;
 
 const FormContainer = styled(RecordContainer)`
@@ -90,7 +92,38 @@ const EmptyBox = styled.div`
   width: 250px;
 `;
 
+const MealRecordBox = styled.div`
+  width: 320px;
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE};
+  border-radius: ${THEME.BORDER_RADIUS.M};
+`;
+
+const ExerciseRecordBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  border-radius: ${THEME.BORDER_RADIUS.M};
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE};
+  padding: 15px 0px;
+`;
+
+const ChartWrapper = styled.div`
+  height: 120px;
+  background-color: ${THEME.BACKGROUND_COLOR.WHITE};
+  border-radius: ${THEME.BORDER_RADIUS.M};
+  padding: 20px;
+  width: 250px;
+`;
+
 export const S = {
+  ChartWrapper,
+  ExerciseRecordBox,
+  MealRecordBox,
   EmptyBox,
   DetailHeader,
   ModeSelect,

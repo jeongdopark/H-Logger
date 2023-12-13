@@ -1,7 +1,12 @@
 import { THEME } from "../../style/theme";
 import { S } from "./styled";
 
-const DonutChart = ({ percent }: { percent: number }) => {
+interface IProps {
+  percent: number;
+  unit: string;
+}
+
+const DonutChart = ({ percent, unit }: IProps) => {
   console.log(percent);
 
   return (
@@ -18,10 +23,11 @@ const DonutChart = ({ percent }: { percent: number }) => {
           strokeDasharray={`${2 * Math.PI * 90 * percent} ${2 * Math.PI * 90 * (1 - percent)}`}
           strokeDashoffset={2 * Math.PI * 90 * 0.25}
         />
-        <text x={80} y={110} fontSize={30} fontWeight={700}>
-          {percent * 100}%
-        </text>
       </svg>
+      <S.SVGText>
+        {percent * 100}
+        {unit}
+      </S.SVGText>
     </S.DonutChartContainer>
   );
 };

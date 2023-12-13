@@ -43,6 +43,8 @@ const MenuWrapper = styled.div`
 const MenuRecordWrapper = styled(MenuWrapper)`
   min-height: auto;
   width: 100%;
+  justify-content: start;
+  padding: 10px 15px;
 `;
 
 const Menu = styled.li`
@@ -81,15 +83,39 @@ const TextareaWrapper = styled.div`
   gap: 10px;
 `;
 
-const ExerciseRecordBox = styled.div`
+export const ExerciseRecordBox = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   width: 250px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   padding: 15px 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+`;
+
+const ExerciseRecord = styled.div`
+  padding: 10px;
+  text-align: center;
+  width: 40%;
+`;
+
+const Diver = styled.div`
+  width: 1px;
+  height: 100%;
+  background-color: ${THEME.BORDER.GRAY};
 `;
 
 const MealRecordBox = styled(ExerciseRecordBox)`
   width: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MealTime = styled.div`
+  width: 35px;
+  text-align: center;
 `;
 
 const TextRecord = styled(ExerciseRecordBox)`
@@ -104,7 +130,28 @@ const FormWrapper = styled.div`
   min-width: 80%;
   gap: 30px;
 `;
+
+const ChartWrapper = styled.div`
+  width: 100%;
+  height: 100px;
+  margin-top: 25px;
+`;
+
+const DeleteDot = styled.div`
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  background-color: #ff6259ff;
+  border-radius: 50%;
+  cursor: pointer;
+`;
+
 export const S = {
+  DeleteDot,
+  ExerciseRecord,
+  ChartWrapper,
   MenuRecordWrapper,
   FormWrapper,
   TextRecord,
@@ -118,4 +165,6 @@ export const S = {
   InputWrapper,
   Input,
   InputContainer,
+  Diver,
+  MealTime,
 };
