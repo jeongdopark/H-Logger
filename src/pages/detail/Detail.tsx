@@ -56,7 +56,7 @@ const CalendarDetail = () => {
           <S.RecordElement>
             <S.ExerciseRecordBox>운동</S.ExerciseRecordBox>
             {calendarData[id]?.exercise.map((data: IExercise, index: number) => (
-              <ExerciseRecord data={data} key={index} index={index} />
+              <ExerciseRecord data={data} key={index} index={index} dateKey={id} />
             ))}
           </S.RecordElement>
         ) : (
@@ -66,22 +66,26 @@ const CalendarDetail = () => {
           <S.RecordElement>
             <S.MealRecordBox>식단</S.MealRecordBox>
             {calendarData[id]?.meal.map((data: IMeal, index: number) => (
-              <MealRecord data={data} key={index} index={index} />
+              <MealRecord data={data} key={index} index={index} dateKey={id} />
             ))}
           </S.RecordElement>
         ) : (
-          <S.MealRecordBox>식단</S.MealRecordBox>
+          <S.RecordElement>
+            <S.MealRecordBox>식단</S.MealRecordBox>
+          </S.RecordElement>
         )}
         {calendarData[id]?.dailyLog ? (
           <S.RecordElement>
             <S.ExerciseRecordBox>일기</S.ExerciseRecordBox>
-            <TextRecord detailData={calendarData[id]!} />
+            <TextRecord detailData={calendarData[id]!} dateKey={id} />
             <S.ChartWrapper>
               <DonutChart percent={calendarData[id].dailyLog.score * 0.01} unit={"점"} />
             </S.ChartWrapper>
           </S.RecordElement>
         ) : (
-          <S.ExerciseRecordBox>일기</S.ExerciseRecordBox>
+          <S.RecordElement>
+            <S.MealRecordBox>일기</S.MealRecordBox>
+          </S.RecordElement>
         )}
       </S.RecordContainer>
     </S.DetailContainer>
