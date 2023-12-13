@@ -60,7 +60,9 @@ const CalendarDetail = () => {
             ))}
           </S.RecordElement>
         ) : (
-          <S.ExerciseRecordBox>운동</S.ExerciseRecordBox>
+          <S.RecordElement>
+            <S.MealRecordBox>운동</S.MealRecordBox>
+          </S.RecordElement>
         )}
         {calendarData[id]?.meal ? (
           <S.RecordElement>
