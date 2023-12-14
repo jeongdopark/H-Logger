@@ -7,7 +7,8 @@ const HeaderContainer = styled.header`
   top: 0px;
   height: 9vh;
   background-color: transparent;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
   display: flex;
   padding: 0px 100px;
   align-items: center;
