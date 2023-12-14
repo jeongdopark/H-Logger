@@ -1,3 +1,5 @@
+import { IExercise } from "./calendar";
+
 export interface IMission {
   current_weight: number | "";
   exercise_count: number;
@@ -5,7 +7,13 @@ export interface IMission {
   goal_weight: number | "";
   title: string;
   period: IPeriod;
+  exercise: MissionExerciseType;
+  isActive: boolean;
 }
+
+type MissionExerciseType = {
+  [key: string]: IExercise[];
+};
 
 interface IPeriod {
   start: string;

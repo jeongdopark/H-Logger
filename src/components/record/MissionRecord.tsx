@@ -8,9 +8,17 @@ import { IMission } from "../../types/mission";
 import { useContext, useState } from "react";
 import { S } from "./styled";
 
+export interface IModalInfo {
+  modalData: IMission;
+  index: number;
+}
+
 const MissionRecord = () => {
   const { data: missions } = useMissionsQuery();
-  const [modalData, setModalData] = useState<IMission>();
+  const [modalInfo, setModalInfo] = useState<IModalInfo>({
+    modalData: {} as IMission,
+    index: 0,
+  });
   const { isModalOpened } = useContext(ModalContext);
   return (
     <S.MissionContainer>
@@ -21,11 +29,11 @@ const MissionRecord = () => {
         <S.MissionWrapper>
           {missions.length === 0 && <Empty />}
           {missions.map((mission: IMission, idx: number) => {
-            return <MissionElement key={idx} mission={mission} setModalData={setModalData} />;
+            return <MissionElement key={idx} mission={mission} setModalInfo={setModalInfo} idx={idx} />;
           })}
         </S.MissionWrapper>
       </S.MissionScrollWrapper>
-      {isModalOpened && <MissionModal modalData={modalData} />}
+      {isModalOpened && <MissionModal modalInfo={modalInfo} />}
     </S.MissionContainer>
   );
 };

@@ -121,25 +121,27 @@ const MissionScrollWrapper = styled.div`
 
 const HoverBox = styled.div`
   z-index: 999;
-  position: absolute; /* 현재 요소에 대해 절대적 위치 지정 */
+  position: absolute;
   top: -85px;
-  left: 50%; /* 부모 요소의 가로 중앙에 위치시키기 위해 left를 50%로 설정 */
-  transform: translateX(-50%); /* 요소 자체의 너비의 절반만큼 왼쪽으로 이동 */
-  white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
 
-  /* 박스 스타일링 */
-  background-color: #333; /* 배경색 */
-  color: white; /* 텍스트 색상 */
-  padding: 8px 12px; /* 내부 여백 */
-  border-radius: 4px; /* 모서리 둥글게 */
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25); /* 그림자 효과 */
+  background-color: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: ${THEME.BORDER_RADIUS.M};
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
-  /* 텍스트 스타일링 */
-  text-align: center; /* 텍스트 가운데 정렬 */
-  font-size: 14px; /* 폰트 크기 */
+  text-align: center;
+  font-size: ${THEME.FONT_SIZE.XXS};
   width: 150px;
   height: 80px;
   display: none;
+
+  div {
+    margin-top: 5px;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -215,7 +217,7 @@ const MissionModalContainer = styled(ModalContainer)``;
 
 const MissionModalWrapper = styled.div`
   width: 500px;
-  height: 55vh;
+  height: auto;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   padding: 25px;
   display: flex;
@@ -237,11 +239,12 @@ const MissionModalBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 7px;
 `;
 
 const MiniBox = styled.div`
   width: 50%;
-  height: 100%;
+  height: 150px;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
   border-radius: ${THEME.BORDER_RADIUS.M};
   padding: 20px;
@@ -337,7 +340,15 @@ const SVGText = styled.div`
   font-weight: ${THEME.FONT_WEIGHT.L};
 `;
 
+const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+`;
+
 export const S = {
+  ButtonWrapper,
   SVGText,
   AnimationCircle,
   DonutChartContainer,

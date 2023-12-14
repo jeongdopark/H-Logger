@@ -9,7 +9,6 @@ const postMission = async ({ ...props }: IMission) => {
   const docSnap = await getDoc(docRef);
   const missions_array = docSnap.data()!.missions;
   await updateDoc(docRef, {
-    currentMission: { ...props },
     missions: [...missions_array, props],
   });
 };

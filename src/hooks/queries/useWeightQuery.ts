@@ -1,6 +1,6 @@
 import { db } from "../../firebase";
 import { IWeight } from "../../types/weight";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "../../const/queryKey";
 import { getDoc, doc } from "firebase/firestore";
 
@@ -17,10 +17,9 @@ const getWeightData = async () => {
 };
 
 const useWeightQuery = () => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: [QUERY_KEY.WEIGHT],
     queryFn: () => getWeightData(),
-    suspense: true,
   });
 };
 

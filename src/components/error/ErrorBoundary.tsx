@@ -24,13 +24,12 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
     // 에러 리포팅 서비스에 에러를 기록할 수도 있습니다.
     console.log(error);
     console.log(errorInfo);
-    console.log("Something went wrong.Something went wrong.Something went wrong.");
   }
 
   render() {
     if (this.state.hasError) {
       // 폴백 UI를 커스텀하여 렌더링할 수 있습니다.
-      return <h1>Something went wrong.Something went wrong.Something went wrong.Something went wrong.</h1>;
+      return <h1>홈 화면으로 이동 부탁드려요 🙇‍♂️</h1>;
     }
 
     return this.props.children;
