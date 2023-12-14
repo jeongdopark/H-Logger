@@ -1,6 +1,6 @@
 import { db } from "../../firebase";
 import { IWeight } from "../../types/weight";
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "../../const/queryKey";
 import { getDoc, doc } from "firebase/firestore";
 
