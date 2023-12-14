@@ -3,34 +3,22 @@ import { useContext } from "react";
 import { ModalContext } from "../../context/ModalProvider";
 import { dotDateFormat } from "../../utils/dateFormat";
 import Button from "../common/button/Button";
+import { IMission } from "../../types/mission";
+import { IModalInfo } from "./MissionRecord";
 
 interface IProp {
   mission: IMission;
-  setModalData: React.Dispatch<React.SetStateAction<IMission | undefined>>;
+  setModalInfo: React.Dispatch<React.SetStateAction<IModalInfo>>;
+  idx: number;
 }
 
-export interface IMission {
-  current_weight: number | "";
-  exercise_count: number;
-  goal_exercise_count: number | "";
-  goal_weight: number | "";
-  title: string;
-  period: IPeriod;
-}
-
-interface IPeriod {
-  start: string;
-  mid: string;
-  end: string;
-}
-
-const MissionElement = ({ mission, setModalData }: IProp) => {
+const MissionElement = ({ idx, mission, setModalInfo }: IProp) => {
   const { setIsInitClick, setIsModalOpened } = useContext(ModalContext);
   const GOAL_WEIGHT = Number(mission.current_weight) - Number(mission.goal_weight);
   const START_DATE = dotDateFormat(mission.period.start);
   const END_DATE = dotDateFormat(mission.period.end);
   const modalHandler = () => {
-    setModalData(mission);
+    setModalInfo({ modalData: mission, index: idx });
     setIsInitClick(true);
     setIsModalOpened(true);
   };

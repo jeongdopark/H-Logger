@@ -7,8 +7,6 @@ interface IProps {
 }
 
 const DonutChart = ({ percent, unit }: IProps) => {
-  console.log(percent);
-
   return (
     <S.DonutChartContainer>
       <svg viewBox="0, 0, 200, 200" width="100%" height="100%">
