@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
-import { UserWrapper, RecordContainer, MissionContainer, TitleWrapper } from "../record/styled";
+import { UserWrapper, RecordContainer, MissionContainer, ScoreRecordWrapper, TitleWrapper } from "../record/styled";
 import { THEME } from "../../style/theme";
-import ScoreRecord from "../record/ScoreRecord";
 
 const UserWrapper_S = styled(UserWrapper)``;
 
@@ -81,7 +80,7 @@ const ScoreContainer_S = styled(RecordContainer)``;
 
 const TitleWrapper_S = styled(TitleWrapper)``;
 
-const ScoreRecordWrapper_S = styled(ScoreRecord)`
+const ScoreRecordWrapper_S = styled(ScoreRecordWrapper)`
   position: relative;
   overflow: hidden;
 `;
@@ -117,6 +116,11 @@ const Cell_S = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
   position: relative;
   overflow: hidden;
+
+  @media ${THEME.DEVICE.small} {
+    height: 50px;
+    font-size: ${THEME.FONT_SIZE.XXXS};
+  }
 `;
 
 export const S = {

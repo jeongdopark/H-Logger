@@ -9,13 +9,13 @@ const ScoreSkeleton = () => {
   return (
     <S.ScoreContainer_S>
       <S.TitleWrapper_S>
-        <Title title="Record" size="XL" />
+        <Title title="" size="XL" />
       </S.TitleWrapper_S>
       <S.ScoreRecordWrapper_S>
         {Year.map((week, idx) => (
           <React.Fragment key={idx}>
             {week.map((idx) => {
-              return <div key={idx}>1</div>;
+              return <div key={idx}></div>;
             })}
           </React.Fragment>
         ))}
