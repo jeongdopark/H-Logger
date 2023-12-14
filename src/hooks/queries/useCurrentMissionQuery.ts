@@ -1,5 +1,5 @@
 import { db } from "../../firebase";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "../../const/queryKey";
 import { getDoc, doc } from "firebase/firestore";
 
@@ -11,10 +11,9 @@ const getCurrentMission = async () => {
 };
 
 const useCurrentMissionQuery = () => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: [QUERY_KEY.CURRENT_MISSION],
     queryFn: () => getCurrentMission(),
-    suspense: true,
   });
 };
 

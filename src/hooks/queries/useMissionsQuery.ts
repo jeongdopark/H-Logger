@@ -1,5 +1,5 @@
 import { db } from "../../firebase";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { QUERY_KEY } from "../../const/queryKey";
 import { getDoc, doc } from "firebase/firestore";
 
@@ -7,14 +7,13 @@ const getMissionsData = async () => {
   const uid = localStorage.getItem("uid");
   const docRef = doc(db, "records", uid!);
   const docSnap = await getDoc(docRef);
-  return docSnap.data()!.missions;
+  return docSnap.data()!.missions.reverse();
 };
 
 const useMissionsQuery = () => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: [QUERY_KEY.MISSIONS],
     queryFn: () => getMissionsData(),
-    suspense: true,
   });
 };
 
