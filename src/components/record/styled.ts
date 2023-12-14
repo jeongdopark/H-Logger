@@ -215,7 +215,7 @@ const MissionModalContainer = styled(ModalContainer)``;
 
 const MissionModalWrapper = styled.div`
   width: 500px;
-  height: 55vh;
+  height: auto;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   padding: 25px;
   display: flex;
@@ -237,11 +237,12 @@ const MissionModalBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 7px;
 `;
 
 const MiniBox = styled.div`
   width: 50%;
-  height: 100%;
+  height: 150px;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
   border-radius: ${THEME.BORDER_RADIUS.M};
   padding: 20px;
@@ -337,7 +338,15 @@ const SVGText = styled.div`
   font-weight: ${THEME.FONT_WEIGHT.L};
 `;
 
+const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+`;
+
 export const S = {
+  ButtonWrapper,
   SVGText,
   AnimationCircle,
   DonutChartContainer,

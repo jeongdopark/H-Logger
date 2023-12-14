@@ -7,6 +7,7 @@ import useOutsideClick from "../../hooks/useOutsideClick";
 import Title from "../common/title/Title";
 import BoxRecord from "./BoxRecord";
 import DonutChart from "./DonutChart";
+import Button from "../common/button/Button";
 
 const MissionModal = ({ modalData }: { modalData: IMission | undefined }) => {
   const { isInitClick, isModalOpened, setIsInitClick, setIsModalOpened } = useContext(ModalContext);
@@ -42,6 +43,11 @@ const MissionModal = ({ modalData }: { modalData: IMission | undefined }) => {
             />
           </S.MiniBox>
         </S.MiniBoxWrapper>
+        <S.ButtonWrapper>
+          <Button text="수정" size="S" />
+          <Button text="삭제" size="S" />
+          <Button text="미션 종료" size="S" />
+        </S.ButtonWrapper>
       </S.MissionModalWrapper>
     </S.MissionModalContainer>
   );
