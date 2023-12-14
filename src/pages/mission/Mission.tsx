@@ -49,7 +49,7 @@ const Mission = () => {
       end: dateFormat(endDate!),
       mid,
     };
-    const submitData: IMission = { ...formData, exercise_count: 0, period };
+    const submitData: IMission = { ...formData, exercise_count: 0, period, exercise: {}, isActive: true };
     mutate(submitData, {
       onSuccess: () => {
         useToast({ content: <Toast text="미션 등록" type="SUCCESS" /> });
