@@ -1,4 +1,9 @@
 export const THEME = {
+  DEVICE: {
+    xsmall: `(max-width : 480px)`,
+    small: `(max-width : 750px)`,
+    large: `(max-width : 1280px)`,
+  },
   BACKGROUND_COLOR: {
     BLUE: "#2463EB",
     GREEN: "#46CA67",
@@ -45,6 +50,11 @@ export const THEME = {
     },
     XL: {
       WIDTH: "320px",
+      HEIGHT: "40px",
+      FONT_SIZE: "14px",
+    },
+    MO: {
+      WIDTH: "125px",
       HEIGHT: "40px",
       FONT_SIZE: "14px",
     },

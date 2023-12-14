@@ -23,14 +23,14 @@ export const ResponsiveProvider = ({ children }: { children: React.ReactNode }) 
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const handleResize = () => {
-    setIsMobile(window.innerWidth < 850);
+    setIsMobile(window.innerWidth < 750);
   };
 
   useEffect(() => {
-    window.addEventListener("resize", debounce(handleResize, 250));
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", debounce(handleResize, 250));
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 

@@ -23,12 +23,12 @@ export const UserImg = styled.img`
 export const RecordContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 5px;
   border-radius: ${THEME.BORDER_RADIUS.M};
-
-  align-items: center;
   width: 100%;
   height: 200px;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
+  overflow-x: scroll;
 `;
 
 const WeightChartContainer = styled(RecordContainer)`
@@ -38,8 +38,7 @@ const WeightChartContainer = styled(RecordContainer)`
 export const ScoreRecordWrapper = styled.div`
   display: flex;
   gap: 5px;
-
-  justify-content: center;
+  padding: 10px 20px;
 `;
 
 const ScoreRecordUl = styled.ul`
@@ -268,6 +267,7 @@ const ChartContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: scroll;
 `;
 
 interface IChartLi {

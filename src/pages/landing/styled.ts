@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { THEME } from "../../style/theme";
 
 export const LandingContainer = styled.div`
   width: 100%;
@@ -29,6 +30,9 @@ export const LandingSpan = styled.span`
   margin-top: 20px;
   margin-bottom: 20px;
   max-width: 600px;
+  @media ${THEME.DEVICE.small} {
+    font-size: ${THEME.FONT_SIZE.XXL};
+  }
 `;
 
 export const LandingH1 = styled.h1`
@@ -41,6 +45,10 @@ export const LandingH1 = styled.h1`
   margin-top: 20px;
   margin-bottom: 20px;
   max-width: 600px;
+
+  @media ${THEME.DEVICE.small} {
+    font-size: ${THEME.FONT_SIZE.XXL};
+  }
 `;
 
 const LandingLoginContainer = styled.div`

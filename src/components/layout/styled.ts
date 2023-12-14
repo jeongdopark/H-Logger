@@ -15,21 +15,35 @@ const HeaderContainer = styled.header`
   margin-bottom: 30px;
   z-index: 9999;
   border-bottom: 0.5px solid ${THEME.BORDER.GRAY};
+  @media ${THEME.DEVICE.small} {
+    padding: 0px 15px;
+  }
 `;
 
 const NavElement = styled.div`
   font-size: ${THEME.FONT_SIZE.XXL};
   font-weight: ${THEME.FONT_WEIGHT.L};
   cursor: pointer;
+
+  @media ${THEME.DEVICE.small} {
+    font-size: ${THEME.FONT_SIZE.L};
+  }
 `;
 
 const NavWrapper = styled(NavElement)`
   display: flex;
   gap: 50px;
+  @media ${THEME.DEVICE.small} {
+    gap: 10px;
+  }
 
   div {
     font-weight: ${THEME.FONT_WEIGHT.L};
     font-size: ${THEME.FONT_SIZE.M};
+
+    @media ${THEME.DEVICE.small} {
+      font-size: ${THEME.FONT_SIZE.XXS};
+    }
   }
 `;
 
@@ -40,6 +54,12 @@ const Footer = styled.footer`
   margin-top: 70px;
   line-height: 8vh;
   padding: 0px 100px;
+
+  @media ${THEME.DEVICE.small} {
+    text-align: center;
+    padding: 0px 10px;
+    font-size: ${THEME.FONT_SIZE.XXS};
+  }
 `;
 
 const LayoutContainer = styled.div`
