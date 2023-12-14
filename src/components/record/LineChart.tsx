@@ -14,8 +14,8 @@ interface lineGraphProps {
 }
 
 const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
-  const POLYLINE_POINT = points.map((e) => `${e.x + 45}, ${e.y + 32}`).join(" ");
-
+  const POLYLINE_POINT = points.map((e) => `${e.x + 45}, ${e.y + 29}`).join(" ");
+  const maxPointX = Math.max(...points.map((p) => p.x)) + 45; // 45는 추가적인 여백입니다.
   return (
     <S.ChartContainer>
       <ul>
@@ -47,16 +47,18 @@ const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
           );
         })}
       </ul>
-      <S.SVGContainer viewBox="0 0 100px 100px " width="100%" height="100%">
-        <S.Polyline
-          points={POLYLINE_POINT}
-          fill="none"
-          stroke={THEME.BACKGROUND_COLOR.GREEN_4}
-          strokeWidth="6"
-        ></S.Polyline>
-        {points.map((e) => (
-          <S.Circle cx={e.x + 45} cy={e.y + 32} r="8" fill="transparent" />
-        ))}
+      <S.SVGContainer>
+        <svg viewBox={`0 0 ${maxPointX} 100px`} width={maxPointX} height="100%">
+          <S.Polyline
+            points={POLYLINE_POINT}
+            fill="none"
+            stroke={THEME.BACKGROUND_COLOR.GREEN_4}
+            strokeWidth="6"
+          ></S.Polyline>
+          {points.map((e) => (
+            <S.Circle cx={e.x + 45} cy={e.y + 32} r="8" fill="transparent" />
+          ))}
+        </svg>
       </S.SVGContainer>
     </S.ChartContainer>
   );

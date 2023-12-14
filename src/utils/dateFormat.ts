@@ -5,5 +5,5 @@ export const dateFormat = (date: Date) => {
 };
 
 export const dotDateFormat = (date: string) => {
-  return date[0] + date[1] + "." + date[2] + date[3] + "." + date[4] + date[5];
+  return date[2] + date[3] + "." + date[4] + date[5];
 };

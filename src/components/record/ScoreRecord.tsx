@@ -7,7 +7,7 @@ import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import Title from "../common/title/Title";
 import React from "react";
 
-const ScoreRecord = () => {
+const ScoreRecord = ({ isMobile }: { isMobile: boolean }) => {
   const { data } = useCalendarDataQuery();
   const navigate = useNavigate();
   const routerHandler = (id: string) => {
@@ -78,7 +78,7 @@ const ScoreRecord = () => {
   return (
     <S.RecordContainer>
       <S.TitleWrapper>
-        <Title title="운동" size="M" />
+        <Title title="운동" size={isMobile ? "XS" : "L"} />
       </S.TitleWrapper>
 
       <S.ScoreRecordWrapper>
