@@ -15,7 +15,7 @@ interface lineGraphProps {
 
 const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
   const POLYLINE_POINT = points.map((e) => `${e.x + 45}, ${e.y + 29}`).join(" ");
-  const maxPointX = Math.max(...points.map((p) => p.x)) + 45; // 45는 추가적인 여백입니다.
+  const maxPointX = Math.max(...points.map((p) => p.x)) + 45;
   return (
     <S.ChartContainer>
       <ul>

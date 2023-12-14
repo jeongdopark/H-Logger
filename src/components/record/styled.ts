@@ -316,7 +316,7 @@ const ChartSVGWrapper = styled.div<IChartLi>`
 
 const ChartText = styled.span`
   position: absolute;
-  left: -19px;
+  left: -12px;
   font-size: ${THEME.FONT_SIZE.XS};
   font-weight: ${THEME.FONT_WEIGHT.M};
 `;
