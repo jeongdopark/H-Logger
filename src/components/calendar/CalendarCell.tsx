@@ -1,12 +1,12 @@
 import { S } from "./styled";
-import { checkMission } from "../../utils/checkMission";
 import { IExercise, IMeal } from "../../types/calendar";
 import { addDays, endOfMonth, startOfWeek, startOfMonth, endOfWeek, format } from "date-fns";
 
 import useMovePage from "../../hooks/useMovePage";
 import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
-import useCurrentMissionQuery from "../../hooks/queries/useCurrentMissionQuery";
 import { PATH_NUMBER } from "../../const/path";
+import useMissionsQuery from "../../hooks/queries/useMissionsQuery";
+import { checkPeriod } from "../../utils/checkPeriod";
 
 interface IProps {
   currentMonth: Date;
@@ -14,7 +14,7 @@ interface IProps {
 
 const CalendarCell = ({ currentMonth }: IProps) => {
   const { data: calendarData } = useCalendarDataQuery();
-  const { data: missionData } = useCurrentMissionQuery();
+  const { data: missionData } = useMissionsQuery();
 
   const today = format(new Date(), "yyMMdd");
   const monthStart = startOfMonth(currentMonth);
@@ -35,20 +35,22 @@ const CalendarCell = ({ currentMonth }: IProps) => {
       const data = calendarData![dayFormat];
 
       formattedDate = format(day, "d");
-      // start, end, mid, true, false
 
       const MISSION_STATUS =
-        missionData && Object.keys(missionData).length !== 0
-          ? checkMission(dayFormat, missionData.period.start, missionData.period.mid, missionData.period.end)
-          : "false";
+        missionData && missionData.length !== 0 && missionData[missionData.length - 1].isActive
+          ? checkPeriod(
+              dayFormat,
+              missionData[missionData.length - 1].period.start,
+              missionData[missionData.length - 1].period.end
+            )
+          : false;
       days.push(
         <S.CellElement
           validtoday={isToday ? "true" : "false"}
           onClick={() => routerHandler({ num: PATH_NUMBER.CALENDAR_DETAIl, dayFormat })}
         >
           {isToday ? <span>{formattedDate} today</span> : <span>{formattedDate}</span>}
-          {MISSION_STATUS === "start" && <span> </span>}
-          {MISSION_STATUS !== "false" && <S.MissionDivider></S.MissionDivider>}
+          {MISSION_STATUS && <S.MissionDivider></S.MissionDivider>}
           {data && (
             <S.CellTextContainer>
               {data.exercise && (
