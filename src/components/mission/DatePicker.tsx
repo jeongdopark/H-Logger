@@ -17,7 +17,6 @@ const MissionDatePicker = ({ startDate, endDate, setEndDate }: IProps) => {
     <div>
       <Title title="미션 기간" size={isMobile ? "XS" : "S"} />
       <S.CustomDatePicker
-        isMobile={isMobile}
         selectsRange={true}
         startDate={
           new Date(
