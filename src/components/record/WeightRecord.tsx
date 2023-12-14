@@ -13,13 +13,17 @@ interface IPoints {
   y: number;
 }
 
-const WeightRecord = () => {
+const WeightRecord = ({ isMobile }: { isMobile: boolean }) => {
   const { data: userWeight, isLoading: userWeightLoading } = useWeightQuery();
   const [points, setPoints] = useState<IPoints[]>();
   const [sortUserWeight, setSortUserWeight] = useState<IWeight[]>();
 
   useEffect(() => {
-    let X_INTERVAL = userWeight ? WEIGHT_LINE_CONST.X_LIMIT / userWeight.length : null;
+    let X_INTERVAL = userWeight
+      ? isMobile
+        ? WEIGHT_LINE_CONST.X_LIMIT_MOBILE / userWeight.length
+        : WEIGHT_LINE_CONST.X_LIMIT / userWeight.length
+      : null;
     let sum = 0;
     let average = 0;
     const point_arr = [];
@@ -50,7 +54,7 @@ const WeightRecord = () => {
     <>
       <S.WeightChartContainer>
         <S.TitleWrapper>
-          <Title title="몸무게" size="M" />
+          <Title title="몸무게" size={isMobile ? "XS" : "L"} />
         </S.TitleWrapper>
         {userWeight!.length === 0 && <Empty />}
         <LineGraph points={points!} sortUserWeight={sortUserWeight!} />

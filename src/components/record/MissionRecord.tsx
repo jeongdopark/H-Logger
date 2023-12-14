@@ -13,7 +13,7 @@ export interface IModalInfo {
   index: number;
 }
 
-const MissionRecord = () => {
+const MissionRecord = ({ isMobile }: { isMobile: boolean }) => {
   const { data: missions } = useMissionsQuery();
   const [modalInfo, setModalInfo] = useState<IModalInfo>({
     modalData: {} as IMission,
@@ -23,7 +23,7 @@ const MissionRecord = () => {
   return (
     <S.MissionContainer>
       <S.TitleWrapper>
-        <Title title="미션 목록" size="M" />
+        <Title title="미션 목록" size={isMobile ? "XS" : "L"} />
       </S.TitleWrapper>
       <S.MissionScrollWrapper>
         <S.MissionWrapper>

@@ -6,11 +6,14 @@ export const UserWrapper = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  width: 20%;
   gap: 20px;
   margin: 35px 0px;
+  height: 50px;
   div {
     font-size: ${THEME.FONT_SIZE.XL};
+    @media ${THEME.DEVICE.small} {
+      font-size: ${THEME.FONT_SIZE.M};
+    }
   }
 `;
 
@@ -18,17 +21,22 @@ export const UserImg = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 50%;
+
+  @media ${THEME.DEVICE.small} {
+    width: 70px;
+    height: 70px;
+  }
 `;
 
 export const RecordContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 5px;
   border-radius: ${THEME.BORDER_RADIUS.M};
-
-  align-items: center;
   width: 100%;
   height: 200px;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
+  overflow-x: scroll;
 `;
 
 const WeightChartContainer = styled(RecordContainer)`
@@ -38,8 +46,7 @@ const WeightChartContainer = styled(RecordContainer)`
 export const ScoreRecordWrapper = styled.div`
   display: flex;
   gap: 5px;
-
-  justify-content: center;
+  padding: 10px 20px;
 `;
 
 const ScoreRecordUl = styled.ul`
@@ -50,8 +57,10 @@ const ScoreRecordUl = styled.ul`
   li {
     font-weight: ${THEME.FONT_WEIGHT.L};
     font-size: ${THEME.FONT_SIZE.XXS};
-    height: 13px;
-    border-radius: 3px;
+
+    @media ${THEME.DEVICE.small} {
+      font-size: ${THEME.FONT_SIZE.XXXS};
+    }
   }
 `;
 
@@ -69,6 +78,11 @@ const ScoreRecordLi = styled.li<IScoreColor>`
 
   &:hover .score-tooltip {
     display: block;
+  }
+
+  @media ${THEME.DEVICE.small} {
+    width: 10px;
+    height: 10px !important;
   }
 `;
 
@@ -93,6 +107,12 @@ const MissionElement = styled.div`
   button {
     margin-left: auto;
     margin-top: auto;
+  }
+
+  @media ${THEME.DEVICE.small} {
+    width: 300px;
+    height: 110px;
+    padding: 15px;
   }
 `;
 
@@ -148,7 +168,8 @@ export const TitleWrapper = styled.div`
   display: flex;
   justify-content: start;
   width: 100%;
-  padding: 20px 0px 0px 20px;
+  height: 40px;
+  padding: 15px 0px 0px 15px;
 `;
 
 const GraphLine = styled.line`
@@ -268,6 +289,8 @@ const ChartContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
 `;
 
 interface IChartLi {
@@ -298,10 +321,12 @@ const ChartText = styled.span`
   font-weight: ${THEME.FONT_WEIGHT.M};
 `;
 
-const SVGContainer = styled.svg``;
+const SVGContainer = styled.div`
+  height: 100%;
+`;
 const Polyline = styled.polyline`
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
   animation: dash 3s linear;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;

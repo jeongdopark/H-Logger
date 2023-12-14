@@ -1,9 +1,10 @@
 import { S } from "./styled";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IMission } from "../../types/mission";
 import { useParams } from "react-router-dom";
 import { dateFormat } from "../../utils/dateFormat";
 import { findMidDate } from "../../utils/findMidDate";
+import { PATH_NUMBER } from "../../const/path";
 import Input from "../../components/common/input/Input";
 import Toast from "../../components/toast";
 import Button from "../../components/common/button/Button";
@@ -11,7 +12,7 @@ import useToast from "../../hooks/useToast";
 import DatePicker from "../../components/mission/DatePicker";
 import useMovePage from "../../hooks/useMovePage";
 import useCreateMissionMutation from "../../hooks/mutation/usePostMissionMutation";
-import { PATH_NUMBER } from "../../const/path";
+import { ResponsiveContext } from "../../context/ResponsiveProvider";
 
 export interface IFormData {
   title: string;
@@ -21,6 +22,7 @@ export interface IFormData {
 }
 
 const Mission = () => {
+  const { isMobile } = useContext(ResponsiveContext);
   const [routerHandler] = useMovePage();
   const { mutate } = useCreateMissionMutation();
   const { id } = useParams() as { id: string };
@@ -66,7 +68,7 @@ const Mission = () => {
         <Input
           name="title"
           title="미션 제목"
-          size="L"
+          size={isMobile ? "M" : "L"}
           placeholder="미션 제목을 입력하세요."
           value={title}
           onChange={onChange}
@@ -76,7 +78,7 @@ const Mission = () => {
           <Input
             name="current_weight"
             title="현재 몸무게"
-            size="L"
+            size={isMobile ? "M" : "L"}
             placeholder="현재 몸무게를 입력하세요."
             value={current_weight}
             onChange={onChange}
@@ -84,7 +86,7 @@ const Mission = () => {
           <Input
             name="goal_weight"
             title="목표 몸무게"
-            size="L"
+            size={isMobile ? "M" : "L"}
             placeholder="목표 몸무게를 입력하세요."
             value={goal_weight}
             onChange={onChange}
@@ -93,13 +95,13 @@ const Mission = () => {
         <Input
           name="goal_exercise_count"
           title="목표 운동 횟수"
-          size="L"
+          size={isMobile ? "M" : "L"}
           placeholder="목표 운동 횟수를 입력하세요."
           value={goal_exercise_count}
           onChange={onChange}
         />
         <S.ButtonWrapper>
-          <Button text="미션 생성" size="XL" />
+          <Button text="미션 생성" size={isMobile ? "MOL" : "XL"} />
         </S.ButtonWrapper>
       </S.MissionFormContainer>
     </S.MissionContainer>

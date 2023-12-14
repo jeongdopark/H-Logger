@@ -28,19 +28,30 @@ const RecordContainer = styled.div`
   justify-content: center;
   font-size: ${THEME.FONT_SIZE.XS};
   font-weight: ${THEME.FONT_WEIGHT.M};
+  @media ${THEME.DEVICE.large} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-const FormContainer = styled(RecordContainer)`
+const FormContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  width: 100%;
+  font-size: ${THEME.FONT_SIZE.XS};
+  font-weight: ${THEME.FONT_WEIGHT.M};
   width: 100%;
   flex-direction: column;
   align-items: center;
+  min-height: 500px;
 `;
 
 const RecordElement = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  padding: 20px 10px 10px 20px;
+  padding: 10px;
   gap: 10px;
   border-radius: ${THEME.BORDER_RADIUS.M};
 `;
@@ -85,6 +96,13 @@ const DetailHeader = styled.div`
   span {
     font-size: ${THEME.FONT_SIZE.XL};
     font-weight: ${THEME.FONT_WEIGHT.M};
+    @media ${THEME.DEVICE.small} {
+      font-size: ${THEME.FONT_SIZE.L};
+    }
+  }
+
+  @media ${THEME.DEVICE.small} {
+    font-size: ${THEME.FONT_SIZE.S};
   }
 `;
 
@@ -100,16 +118,23 @@ const MealRecordBox = styled.div`
   justify-content: center;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   border-radius: ${THEME.BORDER_RADIUS.M};
+  @media ${THEME.DEVICE.small} {
+    width: 250px;
+  }
 `;
 
 const ExerciseRecordBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 320px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   padding: 15px 0px;
+
+  @media ${THEME.DEVICE.small} {
+    width: 250px;
+  }
 `;
 
 const ChartWrapper = styled.div`

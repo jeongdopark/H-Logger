@@ -1,6 +1,7 @@
 import { S } from "./styled";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Title from "../common/title/Title";
+import { ResponsiveContext } from "../../context/ResponsiveProvider";
 
 interface IProps {
   startDate: string;
@@ -10,12 +11,13 @@ interface IProps {
 
 const MissionDatePicker = ({ startDate, endDate, setEndDate }: IProps) => {
   const [, setDateRange] = useState([new Date(2023, 10, 30), null]);
+  const { isMobile } = useContext(ResponsiveContext);
 
-  // const [, endDate] = dateRange;
   return (
     <div>
-      <Title title="미션 기간" size="S" />
+      <Title title="미션 기간" size={isMobile ? "XS" : "S"} />
       <S.CustomDatePicker
+        isMobile={isMobile}
         selectsRange={true}
         startDate={
           new Date(

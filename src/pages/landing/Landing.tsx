@@ -10,8 +10,10 @@ import { useContext, useRef, useState } from "react";
 import useToast from "../../hooks/useToast";
 import Toast from "../../components/toast";
 import useScrollLock from "../../hooks/useScrollLock";
+import { ResponsiveContext } from "../../context/ResponsiveProvider";
 
 const Main = () => {
+  const { isMobile } = useContext(ResponsiveContext);
   const { setIsLogin } = useContext(AuthContext);
   const [handleGoogleLogin] = useLogin();
   const [routerHandler] = useMovePage();
@@ -63,8 +65,16 @@ const Main = () => {
         <S.LandingLoginContainer>
           {isLogin ? (
             <S.ButtonWrapper>
-              <Button size="L" text="Calendar" onClick={() => routerHandler({ num: PATH_NUMBER.CALENDAR })} />
-              <Button size="L" text="Record" onClick={() => routerHandler({ num: PATH_NUMBER.RECORD })} />
+              <Button
+                size={isMobile ? "MO" : "L"}
+                text="Calendar"
+                onClick={() => routerHandler({ num: PATH_NUMBER.CALENDAR })}
+              />
+              <Button
+                size={isMobile ? "MO" : "L"}
+                text="Record"
+                onClick={() => routerHandler({ num: PATH_NUMBER.RECORD })}
+              />
             </S.ButtonWrapper>
           ) : (
             <Button size="L" text="Get Start" onClick={LoginBoxHandler} />

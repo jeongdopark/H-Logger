@@ -1,5 +1,5 @@
 import { S } from "./styled";
-import { Suspense } from "react";
+import { Suspense, useContext } from "react";
 import UserSkeleton from "../../components/skeleton/User";
 import RecordBoxSkeleton from "../../components/skeleton/RecordBox";
 import UserSection from "../../components/record/UserSection";
@@ -10,7 +10,9 @@ import MissionSkeleton from "../../components/skeleton/MIsison";
 import ScoreSkeleton from "../../components/skeleton/Score";
 import ErrorBoundary from "../../components/error/ErrorBoundary";
 import { ModalProvider } from "../../context/ModalProvider";
+import { ResponsiveContext } from "../../context/ResponsiveProvider";
 const Record = () => {
+  const { isMobile } = useContext(ResponsiveContext);
   return (
     <ErrorBoundary>
       <S.RecordContainer>
@@ -18,14 +20,14 @@ const Record = () => {
           <UserSection />
         </Suspense>
         <Suspense fallback={<ScoreSkeleton />}>
-          <ScoreRecord />
+          <ScoreRecord isMobile={isMobile} />
         </Suspense>
         <Suspense fallback={<RecordBoxSkeleton />}>
-          <WeightRecord />
+          <WeightRecord isMobile={isMobile} />
         </Suspense>
         <ModalProvider>
           <Suspense fallback={<MissionSkeleton />}>
-            <MissionRecord />
+            <MissionRecord isMobile={isMobile} />
           </Suspense>
         </ModalProvider>
       </S.RecordContainer>

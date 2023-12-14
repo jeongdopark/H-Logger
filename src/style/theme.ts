@@ -1,4 +1,9 @@
 export const THEME = {
+  DEVICE: {
+    xsmall: `(max-width : 480px)`,
+    small: `(max-width : 750px)`,
+    large: `(max-width : 1280px)`,
+  },
   BACKGROUND_COLOR: {
     BLUE: "#2463EB",
     GREEN: "#46CA67",
@@ -48,6 +53,16 @@ export const THEME = {
       HEIGHT: "40px",
       FONT_SIZE: "14px",
     },
+    MO: {
+      WIDTH: "125px",
+      HEIGHT: "40px",
+      FONT_SIZE: "14px",
+    },
+    MOL: {
+      WIDTH: "200px",
+      HEIGHT: "40px",
+      FONT_SIZE: "14px",
+    },
   },
 
   FONT_WEIGHT: {
@@ -57,6 +72,8 @@ export const THEME = {
     XL: "800",
   },
   FONT_SIZE: {
+    XXXXS: "8px",
+    XXXS: "10px",
     XXS: "12px",
     XS: "14px",
     S: "16px",

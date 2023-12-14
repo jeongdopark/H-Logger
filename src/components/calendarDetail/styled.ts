@@ -74,7 +74,8 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  width: 50%;
+  height: 100%;
+  width: 100%;
 `;
 
 const TextareaWrapper = styled.div`
@@ -85,13 +86,16 @@ const TextareaWrapper = styled.div`
 
 export const ExerciseRecordBox = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
-  width: 250px;
+  width: 320px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   padding: 15px 10px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
+  @media ${THEME.DEVICE.small} {
+    width: 250px;
+  }
 `;
 
 const ExerciseRecord = styled.div`
@@ -111,6 +115,9 @@ const MealRecordBox = styled(ExerciseRecordBox)`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media ${THEME.DEVICE.small} {
+    width: 250px;
+  }
 `;
 
 const MealTime = styled.div`
