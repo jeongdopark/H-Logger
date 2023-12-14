@@ -16,6 +16,10 @@ const HeaderContainer = styled.div`
 
   span {
     font-size: ${THEME.FONT_SIZE.L};
+
+    @media ${THEME.DEVICE.small} {
+      font-size: ${THEME.FONT_SIZE.XS};
+    }
   }
 `;
 
@@ -27,6 +31,10 @@ const DaysContainer = styled.div`
   align-items: center;
   font-weight: ${THEME.FONT_WEIGHT.L};
   font-size: ${THEME.FONT_SIZE.XS};
+
+  @media ${THEME.DEVICE.small} {
+    font-size: ${THEME.FONT_SIZE.XXXS};
+  }
 `;
 
 interface IProps {
@@ -50,6 +58,11 @@ const CellElement = styled.div<IProps>`
   span {
     color: ${(props) => (props.validtoday === "true" ? THEME.COLOR.GREEN_2 : THEME.COLOR.BLACK)};
   }
+
+  @media ${THEME.DEVICE.small} {
+    height: 50px;
+    font-size: ${THEME.FONT_SIZE.XXXS};
+  }
 `;
 
 const CellRow = styled.div`
@@ -71,6 +84,13 @@ const ArrowBuntton = styled.button`
   height: 30px;
   border: none;
   cursor: pointer;
+
+  @media ${THEME.DEVICE.small} {
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
 `;
 
 const CellTextContainer = styled.div`
@@ -81,6 +101,11 @@ const CellTextContainer = styled.div`
   width: 60%;
   margin: 0 auto;
   height: 100%;
+  padding: 3px 0px;
+
+  @media ${THEME.DEVICE.small} {
+    gap: 2px;
+  }
 `;
 
 const TagBox = styled.div`
@@ -90,12 +115,19 @@ const TagBox = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_3};
   color: ${THEME.BACKGROUND_COLOR.BLACK};
   border-radius: ${THEME.BORDER_RADIUS.S};
+
+  @media ${THEME.DEVICE.small} {
+    font-size: ${THEME.FONT_SIZE.XXXXS};
+  }
 `;
 
 const TagBoxWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  @media ${THEME.DEVICE.small} {
+    gap: 2px;
+  }
 `;
 
 const MissionDivider = styled.div`
@@ -106,7 +138,15 @@ const MissionDivider = styled.div`
   left: 0px;
 `;
 
+const Dot = styled.div`
+  width: 5px;
+  height: 5px;
+  background-color: ${THEME.BACKGROUND_COLOR.GREEN_2};
+  border-radius: 50%;
+`;
+
 export const S = {
+  Dot,
   MissionDivider,
   TagBoxWrapper,
   TagBox,

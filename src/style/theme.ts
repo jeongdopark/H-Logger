@@ -67,6 +67,8 @@ export const THEME = {
     XL: "800",
   },
   FONT_SIZE: {
+    XXXXS: "8px",
+    XXXS: "10px",
     XXS: "12px",
     XS: "14px",
     S: "16px",
