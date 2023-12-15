@@ -2,8 +2,6 @@ import useCreateDailyLogMutation from "../../hooks/mutation/usePostLogMutation";
 import Selector from "../common/selector/Selector";
 import Button from "../common/button/Button";
 import Title from "../common/title/Title";
-import Toast from "../toast";
-import useToast from "../../hooks/useToast";
 import React, { useState } from "react";
 import { SCORE } from "../../const";
 import { S } from "./styled";
@@ -12,9 +10,10 @@ interface IProps {
   title: string;
   placeholder: string;
   date: string;
+  addToast: (type: string, text: string) => {};
 }
 
-const Textarea = ({ title, placeholder, date }: IProps) => {
+const Textarea = ({ title, placeholder, date, addToast }: IProps) => {
   const { mutate: postLog } = useCreateDailyLogMutation();
   const [score, setScore] = useState<number>(0);
   const [dailyLog, setDailyLog] = useState<string>("");
@@ -27,10 +26,10 @@ const Textarea = ({ title, placeholder, date }: IProps) => {
       { log: dailyLog, score, dateKey: date },
       {
         onSuccess: () => {
-          useToast({ content: <Toast text="등록 완료" type="SUCCESS" /> });
+          addToast("SUCCESS", "등록 완료");
         },
         onError: () => {
-          useToast({ content: <Toast text="등록된 기록이 있습니다." type="FAIL" /> });
+          addToast("FAIL", "다시 입력해 주세요");
         },
       }
     );

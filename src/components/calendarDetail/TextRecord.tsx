@@ -1,25 +1,24 @@
 import { S } from "./styled";
 import { IDate } from "../../types/calendar";
 import useDeleteLogMutation from "../../hooks/mutation/useDeleteLogMutation";
-import useToast from "../../hooks/useToast";
-import Toast from "../toast";
 
 interface IProps {
   detailData: IDate;
   dateKey: string;
+  addToast: (text: string, type: string) => {};
 }
 
-const TextRecord = ({ detailData, dateKey }: IProps) => {
+const TextRecord = ({ detailData, dateKey, addToast }: IProps) => {
   const { mutate: deleteLog } = useDeleteLogMutation();
   const deleteHandler = () => {
     deleteLog(
       { dateKey },
       {
         onSuccess: () => {
-          useToast({ content: <Toast text="삭제 완료" type="SUCCESS" /> });
+          addToast("SUCCESS", "등록 완료");
         },
         onError: () => {
-          useToast({ content: <Toast text="등록된 기록이 있습니다." type="FAIL" /> });
+          addToast("FAIL", "다시 시도해 주세요");
         },
       }
     );

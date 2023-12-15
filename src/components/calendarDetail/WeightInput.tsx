@@ -1,12 +1,10 @@
 import useCreateWeightMutation from "../../hooks/mutation/usePostWeightMutation";
 import Button from "../common/button/Button";
-import useToast from "../../hooks/useToast";
-import Toast from "../toast";
 import { S } from "./styled";
 import React, { useState } from "react";
 import Input from "../common/input/Input";
 
-const WeightInput = ({ date }: { date: string }) => {
+const WeightInput = ({ date, addToast }: { date: string; addToast: (type: string, text: string) => {} }) => {
   const [weight, setWeight] = useState<string>("");
   const { mutate: postWeight } = useCreateWeightMutation();
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,10 +16,10 @@ const WeightInput = ({ date }: { date: string }) => {
       { weight: Number(weight)!, dateKey: date },
       {
         onSuccess: () => {
-          useToast({ content: <Toast text="등록 완료" type="SUCCESS" /> });
+          addToast("SUCCESS", "등록 완료");
         },
         onError: () => {
-          useToast({ content: <Toast text="등록된 기록이 있습니다." type="FAIL" /> });
+          addToast("FAIL", "다시 입력해 주세요");
         },
       }
     );

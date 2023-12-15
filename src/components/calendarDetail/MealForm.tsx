@@ -1,15 +1,13 @@
 import useCreateMealMutation from "../../hooks/mutation/usePostMealMutation";
 import Selector from "../common/selector/Selector";
-import useToast from "../../hooks/useToast";
 import Button from "../common/button/Button";
 import Title from "../common/title/Title";
-import Toast from "../toast";
 import Menu from "./Menu";
 import { MEAL_TIME } from "../../const";
 import { useState } from "react";
 import { S } from "./styled";
 
-const MealForm = ({ date }: { date: string }) => {
+const MealForm = ({ date, addToast }: { date: string; addToast: (type: string, text: string) => {} }) => {
   const [mealTime, setMealTime] = useState<string>("아침");
   const [meals, setMeals] = useState<string[]>([]);
   const [menu, setMenu] = useState<string>("");
@@ -35,10 +33,10 @@ const MealForm = ({ date }: { date: string }) => {
       { menus: meals, time: mealTime, dateKey: date },
       {
         onSuccess: () => {
-          useToast({ content: <Toast text="등록 완료" type="SUCCESS" /> });
+          addToast("SUCCESS", "등록 완료");
         },
         onError: () => {
-          useToast({ content: <Toast text="다시 입력해 주세요." type="FAIL" /> });
+          addToast("FAIL", "다시 입력해 주세요");
         },
       }
     );

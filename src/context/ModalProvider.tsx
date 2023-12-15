@@ -21,6 +21,5 @@ export const ModalProvider = ({ children }: { children: React.ReactNode }) => {
     () => ({ isInitClick, isModalOpened, setIsInitClick, setIsModalOpened }),
     [isInitClick, isModalOpened, setIsInitClick, setIsModalOpened]
   );
-
   return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>;
 };

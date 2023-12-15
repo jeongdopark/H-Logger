@@ -2,12 +2,11 @@ import { S } from "./styled";
 import { IModalInfo } from "./MissionRecord";
 import { dotDateFormat } from "../../utils/dateFormat";
 import { ModalContext } from "../../context/ModalProvider";
+import { ToastContext } from "../../context/ToastProvider";
 import { checkMissionEnd } from "../../utils/checkMissionEnd";
 import { useContext, useRef } from "react";
 import Title from "../common/title/Title";
-import Toast from "../toast";
 import Button from "../common/button/Button";
-import useToast from "../../hooks/useToast";
 import BoxRecord from "./BoxRecord";
 import DonutChart from "./DonutChart";
 import useScrollLock from "../../hooks/useScrollLock";
@@ -16,6 +15,7 @@ import useDeleteMissionMutation from "../../hooks/mutation/useDeleteMissionMutat
 import useFinishMissionMutation from "../../hooks/mutation/useFinishMissionMutation";
 
 const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
+  const { addToast } = useContext(ToastContext);
   const { isInitClick, isModalOpened, setIsInitClick, setIsModalOpened } = useContext(ModalContext);
   const { mutate: deleteMission } = useDeleteMissionMutation();
   const { mutate: finishMission } = useFinishMissionMutation();
@@ -24,13 +24,13 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
   const missionDeleteHandler = () => {
     deleteMission(modalInfo.index, {
       onSuccess: () => {
-        useToast({ content: <Toast text="삭제 완료" type="SUCCESS" /> });
+        addToast("SUCCESS", "삭제 완료");
         setIsModalOpened(false);
         setIsInitClick(false);
         openScroll();
       },
       onError: () => {
-        useToast({ content: <Toast text="에러" type="FAIL" /> });
+        addToast("FAIL", "다시 시도해 주세요");
       },
     });
   };
@@ -41,7 +41,7 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
         {},
         {
           onSuccess: () => {
-            useToast({ content: <Toast text="미션 종료" type="SUCCESS" /> });
+            addToast("SUCCESS", "삭제 완료");
             setIsModalOpened(false);
             setIsInitClick(false);
             openScroll();
@@ -49,7 +49,7 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
         }
       );
     } else {
-      useToast({ content: <Toast text="미션 기간이 남아있습니다." type="FAIL" /> });
+      addToast("FAIL", "미션 기간이 남아있습니다");
     }
   };
 

@@ -205,7 +205,7 @@ const CircleWrapper = styled.div`
 `;
 
 const HoverRect = styled.rect`
-  z-index: 9999;
+  z-index: 999;
   width: 40px;
   height: 20px;
   visibility: hidden;

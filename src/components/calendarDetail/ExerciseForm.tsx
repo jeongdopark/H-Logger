@@ -3,14 +3,12 @@ import Selector from "../common/selector/Selector";
 import Button from "../common/button/Button";
 import React, { useState } from "react";
 import useCreateExerciseMutation from "../../hooks/mutation/usePostExerciseMutation";
-import useToast from "../../hooks/useToast";
-import Toast from "../toast";
 import { EXERCISE_TIME } from "../../const";
 import { S } from "./styled";
 
 type ExerciseTimeType = (typeof EXERCISE_TIME)[number];
 
-const ExerciseForm = ({ date }: { date: string }) => {
+const ExerciseForm = ({ date, addToast }: { date: string; addToast: (text: string, type: string) => {} }) => {
   const { mutate: postExercise } = useCreateExerciseMutation();
   const [exercise, setExercise] = useState<string>("");
   const [exerciseTime, setExerciseTime] = useState<ExerciseTimeType>(EXERCISE_TIME[0]);
@@ -23,10 +21,10 @@ const ExerciseForm = ({ date }: { date: string }) => {
       { category: exercise, time: exerciseTime, dateKey: date },
       {
         onSuccess: () => {
-          useToast({ content: <Toast text="등록 완료" type="SUCCESS" /> });
+          addToast("SUCCESS", "등록 완료");
         },
         onError: () => {
-          useToast({ content: <Toast text="다시 입력해 주세요." type="FAIL" /> });
+          addToast("FAIL", "다시 입력해 주세요");
         },
       }
     );

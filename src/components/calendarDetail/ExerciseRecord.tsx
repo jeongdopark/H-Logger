@@ -1,25 +1,24 @@
 import { S } from "./styled";
 import { IExercise } from "../../types/calendar";
 import useDeleteExerciseMutation from "../../hooks/mutation/useDeleteExerciseMutation";
-import useToast from "../../hooks/useToast";
-import Toast from "../toast";
 interface IProps {
   data: IExercise;
   index: number;
   dateKey: string;
+  addToast: (type: string, text: string) => {};
 }
 
-const ExerciseRecord = ({ data, index, dateKey }: IProps) => {
+const ExerciseRecord = ({ data, index, dateKey, addToast }: IProps) => {
   const { mutate: deleteExercise } = useDeleteExerciseMutation();
   const deleteHandler = () => {
     deleteExercise(
       { dateKey, index },
       {
         onSuccess: () => {
-          useToast({ content: <Toast text="삭제 완료" type="SUCCESS" /> });
+          addToast("SUCCESS", "등록 완료");
         },
         onError: () => {
-          useToast({ content: <Toast text="등록된 기록이 있습니다." type="FAIL" /> });
+          addToast("FAIL", "다시 시도해 주세요");
         },
       }
     );

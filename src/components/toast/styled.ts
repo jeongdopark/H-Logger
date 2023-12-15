@@ -13,7 +13,10 @@ const Toast = styled.div<IProps>`
   padding: 10px;
   width: 300px;
   height: 70px;
-  z-index: 99999;
+  z-index: 999;
+  top: 100px;
+  margin-left: auto;
+
   border-radius: ${THEME.BORDER_RADIUS.S};
   color: ${THEME.COLOR.WHITE};
   background-color: ${(props) => TOAST_TYPE[props.type].BG};
@@ -33,7 +36,7 @@ const ProgressBar = styled.div<IPropgress>`
   height: 5px;
   background-color: ${(props) => TOAST_TYPE[props.type].PROGRESS_BG};
   animation: progressBar ${(props) => props.duration} linear;
-  z-index: 99999;
+  z-index: 999;
 
   @keyframes progressBar {
     0% {
