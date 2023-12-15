@@ -1,27 +1,26 @@
 import { S } from "./styled";
 import { IMeal } from "../../types/calendar";
 import Menu from "./Menu";
-import Toast from "../toast";
-import useToast from "../../hooks/useToast";
 import useDeleteMealMutation from "../../hooks/mutation/useDeleteMealMutation";
 
 interface IProps {
   data: IMeal;
   index: number;
   dateKey: string;
+  addToast: (type: string, text: string) => {};
 }
 
-const MealRecord = ({ data, index, dateKey }: IProps) => {
+const MealRecord = ({ data, index, dateKey, addToast }: IProps) => {
   const { mutate: deleteMeal } = useDeleteMealMutation();
   const deleteHandler = () => {
     deleteMeal(
       { dateKey, index },
       {
         onSuccess: () => {
-          useToast({ content: <Toast text="삭제 완료" type="SUCCESS" /> });
+          addToast("SUCCESS", "등록 완료");
         },
         onError: () => {
-          useToast({ content: <Toast text="등록된 기록이 있습니다." type="FAIL" /> });
+          addToast("FAIL", "다시 시도해 주세요");
         },
       }
     );

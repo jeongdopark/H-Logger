@@ -1,31 +1,31 @@
 import Button from "../../components/common/button/Button";
 import useLogin from "../../hooks/landing/useLogin";
 import useMovePage from "../../hooks/useMovePage";
+import useScrollLock from "../../hooks/useScrollLock";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { S } from "./styled";
 import { SVG } from "../../components/SVG";
 import { AuthContext } from "../../context/AuthProvider";
 import { PATH_NUMBER } from "../../const/path";
-import { useContext, useRef, useState } from "react";
-import useToast from "../../hooks/useToast";
-import Toast from "../../components/toast";
-import useScrollLock from "../../hooks/useScrollLock";
+import { ToastContext } from "../../context/ToastProvider";
 import { ResponsiveContext } from "../../context/ResponsiveProvider";
+import { useContext, useRef, useState } from "react";
 
 const Main = () => {
+  const [isLoginBoxOpened, setIsLoginBoxOpened] = useState<boolean>(false);
+  const [isInitClick, setIsInitClick] = useState<boolean>(false);
   const { isMobile } = useContext(ResponsiveContext);
+  const loginModal = useRef<HTMLDivElement>(null);
   const { setIsLogin } = useContext(AuthContext);
+  const { isLogin } = useContext(AuthContext);
   const [handleGoogleLogin] = useLogin();
   const [routerHandler] = useMovePage();
-  const loginModal = useRef<HTMLDivElement>(null);
-  const { isLogin } = useContext(AuthContext);
-  const [isInitClick, setIsInitClick] = useState<boolean>(false);
-  const [isLoginBoxOpened, setIsLoginBoxOpened] = useState<boolean>(false);
   const { openScroll } = useScrollLock();
   const LoginBoxHandler = () => {
     setIsInitClick(true);
     setIsLoginBoxOpened(true);
   };
+  const { addToast } = useContext(ToastContext);
   useOutsideClick({
     ref: loginModal,
     isInit: isInitClick,
@@ -39,7 +39,7 @@ const Main = () => {
     openScroll();
     setIsLogin(true);
     routerHandler({ num: PATH_NUMBER.CALENDAR });
-    useToast({ content: <Toast text="Guest 로그인" type="SUCCESS" /> });
+    addToast("SUCCESS", "로그인 성공");
   };
 
   return (
@@ -62,6 +62,7 @@ const Main = () => {
           <br />
           <S.LandingSpan>Health Logger</S.LandingSpan>
         </S.LandingH1>
+
         <S.LandingLoginContainer>
           {isLogin ? (
             <S.ButtonWrapper>
