@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "./context/AuthProvider";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ResponsiveProvider } from "./context/ResponsiveProvider";
+import { ToastProvider } from "./context/ToastProvider";
 const queryClient = new QueryClient();
 
 const RouterObject = createBrowserRouter(RouterInfo);
@@ -14,7 +15,9 @@ const App = () => {
       <GlobalStyle />
       <AuthProvider>
         <ResponsiveProvider>
-          <RouterProvider router={RouterObject} />
+          <ToastProvider>
+            <RouterProvider router={RouterObject} />
+          </ToastProvider>
         </ResponsiveProvider>
       </AuthProvider>
     </QueryClientProvider>
