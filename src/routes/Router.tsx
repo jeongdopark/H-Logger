@@ -1,10 +1,14 @@
 import { PATH_NAME } from "../const/path";
 import Layout from "../components/layout/Layout";
-import Record from "../pages/record/Record";
 import Landing from "../pages/landing/Landing";
 import Mission from "../pages/mission/Mission";
-import Calendar from "../pages/calendar/Calendar";
 import CalendarDetail from "../pages/detail/Detail";
+import { Suspense, lazy } from "react";
+import CalendarPageSkeleton from "../components/skeleton/CalendarPage";
+import RecordPageSkeleton from "../components/skeleton/Recordpage";
+
+const Calendar = lazy(() => import("../pages/calendar/Calendar"));
+const Record = lazy(() => import("../pages/record/Record"));
 
 export const RouterInfo = [
   {
@@ -18,7 +22,11 @@ export const RouterInfo = [
       },
       {
         path: PATH_NAME.CALENDAR,
-        element: <Calendar />,
+        element: (
+          <Suspense fallback={<CalendarPageSkeleton />}>
+            <Calendar />
+          </Suspense>
+        ),
         label: "calendar",
       },
       {
@@ -28,7 +36,11 @@ export const RouterInfo = [
       },
       {
         path: PATH_NAME.RECORD,
-        element: <Record />,
+        element: (
+          <Suspense fallback={<RecordPageSkeleton />}>
+            <Record />
+          </Suspense>
+        ),
         label: "record",
       },
       {
