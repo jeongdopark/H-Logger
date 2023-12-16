@@ -28,6 +28,7 @@ const RecordContainer = styled.div`
   justify-content: center;
   font-size: ${THEME.FONT_SIZE.XS};
   font-weight: ${THEME.FONT_WEIGHT.M};
+
   @media ${THEME.DEVICE.large} {
     flex-direction: column;
     align-items: center;
@@ -94,15 +95,8 @@ const DetailHeader = styled.div`
   align-items: center;
   border-radius: ${THEME.BORDER_RADIUS.M} ${THEME.BORDER_RADIUS.M} 0 0;
   span {
-    font-size: ${THEME.FONT_SIZE.XL};
+    font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.L : THEME.FONT_SIZE.XL)};
     font-weight: ${THEME.FONT_WEIGHT.M};
-    @media ${THEME.DEVICE.small} {
-      font-size: ${THEME.FONT_SIZE.L};
-    }
-  }
-
-  @media ${THEME.DEVICE.small} {
-    font-size: ${THEME.FONT_SIZE.S};
   }
 `;
 
@@ -111,30 +105,23 @@ const EmptyBox = styled.div`
 `;
 
 const MealRecordBox = styled.div`
-  width: 320px;
+  width: ${(props) => (props.theme.isMobile ? "250px" : "320px")};
   padding: 15px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   border-radius: ${THEME.BORDER_RADIUS.M};
-  @media ${THEME.DEVICE.small} {
-    width: 250px;
-  }
 `;
 
 const ExerciseRecordBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 320px;
+  width: ${(props) => (props.theme.isMobile ? "250px" : "320px")};
   border-radius: ${THEME.BORDER_RADIUS.M};
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   padding: 15px 0px;
-
-  @media ${THEME.DEVICE.small} {
-    width: 250px;
-  }
 `;
 
 const ChartWrapper = styled.div`

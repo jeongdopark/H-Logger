@@ -15,18 +15,14 @@ const MissionFormContainer = styled.form`
   height: 100%;
   gap: 20px;
 
-  @media ${THEME.DEVICE.small} {
-    align-items: center;
-  }
+  align-items: ${(props) => (props.theme.isMobile ? "center" : "normal")};
 `;
 
 const WeightWrapper = styled.div`
   display: flex;
   gap: 25px;
 
-  @media ${THEME.DEVICE.small} {
-    flex-direction: column;
-  }
+  flex-direction: ${(props) => (props.theme.isMobile ? "column" : "row")};
 `;
 
 const ButtonWrapper = styled.div`

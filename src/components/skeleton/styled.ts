@@ -108,7 +108,7 @@ const CellRow_S = styled.div`
 
 const Cell_S = styled.div`
   width: 100%;
-  height: 150px;
+  height: ${(props) => (props.theme.isMobile ? "50px" : "150px")};
   padding: 5px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   cursor: pointer;
@@ -116,11 +116,6 @@ const Cell_S = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_2};
   position: relative;
   overflow: hidden;
-
-  @media ${THEME.DEVICE.small} {
-    height: 50px;
-    font-size: ${THEME.FONT_SIZE.XXXS};
-  }
 `;
 
 export const S = {

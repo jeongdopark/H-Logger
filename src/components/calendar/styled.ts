@@ -15,11 +15,7 @@ const HeaderContainer = styled.div`
   gap: 15px;
 
   span {
-    font-size: ${THEME.FONT_SIZE.L};
-
-    @media ${THEME.DEVICE.small} {
-      font-size: ${THEME.FONT_SIZE.XS};
-    }
+    font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.XXXS : THEME.FONT_SIZE.XL)};
   }
 `;
 
@@ -30,11 +26,7 @@ const DaysContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   font-weight: ${THEME.FONT_WEIGHT.L};
-  font-size: ${THEME.FONT_SIZE.XS};
-
-  @media ${THEME.DEVICE.small} {
-    font-size: ${THEME.FONT_SIZE.XXXS};
-  }
+  font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.XXXS : THEME.FONT_SIZE.XS)};
 `;
 
 interface IProps {
@@ -43,9 +35,9 @@ interface IProps {
 
 const CellElement = styled.div<IProps>`
   font-weight: ${THEME.FONT_WEIGHT.L};
-  font-size: ${THEME.FONT_SIZE.XS};
+  font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.XXXS : THEME.FONT_SIZE.XS)};
   width: 100%;
-  height: 150px;
+  height: ${(props) => (props.theme.isMobile ? "50px" : "150px")};
   padding: 5px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   cursor: pointer;
@@ -57,11 +49,6 @@ const CellElement = styled.div<IProps>`
 
   span {
     color: ${(props) => (props.validtoday === "true" ? THEME.COLOR.GREEN_2 : THEME.COLOR.BLACK)};
-  }
-
-  @media ${THEME.DEVICE.small} {
-    height: 50px;
-    font-size: ${THEME.FONT_SIZE.XXXS};
   }
 `;
 
@@ -80,54 +67,36 @@ const CellContainer = styled.div`
 
 const ArrowBuntton = styled.button`
   background-color: transparent;
-  width: 30px;
-  height: 30px;
+  width: ${(props) => (props.theme.isMobile ? "12px" : "30px")};
+  height: ${(props) => (props.theme.isMobile ? "12px" : "30px")};
   border: none;
   cursor: pointer;
-
-  @media ${THEME.DEVICE.small} {
-    svg {
-      width: 12px;
-      height: 12px;
-    }
-  }
 `;
 
 const CellTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 5px;
+  gap: ${(props) => (props.theme.isMobile ? "2px" : "5px")};
   width: 60%;
   margin: 0 auto;
   height: 100%;
   padding: 3px 0px;
-
-  @media ${THEME.DEVICE.small} {
-    gap: 2px;
-  }
 `;
 
 const TagBox = styled.div`
   padding: 5px;
   font-weight: ${THEME.FONT_WEIGHT.S};
-  font-size: ${THEME.FONT_SIZE.XXS};
+  font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.XXXXS : THEME.FONT_SIZE.XXS)};
   background-color: ${THEME.BACKGROUND_COLOR.WHITE_3};
   color: ${THEME.BACKGROUND_COLOR.BLACK};
   border-radius: ${THEME.BORDER_RADIUS.S};
-
-  @media ${THEME.DEVICE.small} {
-    font-size: ${THEME.FONT_SIZE.XXXXS};
-  }
 `;
 
 const TagBoxWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  @media ${THEME.DEVICE.small} {
-    gap: 2px;
-  }
+  gap: ${(props) => (props.theme.isMobile ? "2px" : "5px")};
 `;
 
 const MissionDivider = styled.div`

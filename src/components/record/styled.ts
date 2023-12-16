@@ -10,22 +10,14 @@ export const UserWrapper = styled.div`
   margin: 35px 0px;
   height: 50px;
   div {
-    font-size: ${THEME.FONT_SIZE.XL};
-    @media ${THEME.DEVICE.small} {
-      font-size: ${THEME.FONT_SIZE.M};
-    }
+    font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.M : THEME.FONT_SIZE.XL)};
   }
 `;
 
 export const UserImg = styled.img`
-  width: 100px;
-  height: 100px;
+  width: ${(props) => (props.theme.isMobile ? "70px" : "100px")};
+  height: ${(props) => (props.theme.isMobile ? "70px" : "100px")};
   border-radius: 50%;
-
-  @media ${THEME.DEVICE.small} {
-    width: 70px;
-    height: 70px;
-  }
 `;
 
 export const RecordContainer = styled.div`
@@ -56,11 +48,7 @@ const ScoreRecordUl = styled.ul`
 
   li {
     font-weight: ${THEME.FONT_WEIGHT.L};
-    font-size: ${THEME.FONT_SIZE.XXS};
-
-    @media ${THEME.DEVICE.small} {
-      font-size: ${THEME.FONT_SIZE.XXXS};
-    }
+    font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.XXXS : THEME.FONT_SIZE.XXS)};
   }
 `;
 
@@ -70,19 +58,14 @@ interface IScoreColor {
 
 const ScoreRecordLi = styled.li<IScoreColor>`
   background-color: ${(props) => props.color};
-  width: 13px;
-  height: 13px;
+  width: ${(props) => (props.theme.isMobile ? "10px" : "13px")};
+  height: ${(props) => (props.theme.isMobile ? "10px !important" : "13px")};
   border-radius: 3px;
   cursor: pointer;
   position: relative;
 
   &:hover .score-tooltip {
     display: block;
-  }
-
-  @media ${THEME.DEVICE.small} {
-    width: 10px;
-    height: 10px !important;
   }
 `;
 
@@ -94,8 +77,8 @@ export const MissionContainer = styled(RecordContainer)`
 `;
 
 const MissionElement = styled.div`
-  width: 550px;
-  height: 130px;
+  width: ${(props) => (props.theme.isMobile ? "300px" : "550px")};
+  height: ${(props) => (props.theme.isMobile ? "110px" : "130px")};
   padding: 15px;
   border-radius: ${THEME.BORDER_RADIUS.M};
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
@@ -107,12 +90,6 @@ const MissionElement = styled.div`
   button {
     margin-left: auto;
     margin-top: auto;
-  }
-
-  @media ${THEME.DEVICE.small} {
-    width: 300px;
-    height: 110px;
-    padding: 15px;
   }
 `;
 

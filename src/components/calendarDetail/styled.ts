@@ -86,16 +86,13 @@ const TextareaWrapper = styled.div`
 
 export const ExerciseRecordBox = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
-  width: 320px;
+  width: ${(props) => (props.theme.isMobile ? "250px" : "320px")};
   border-radius: ${THEME.BORDER_RADIUS.M};
   padding: 15px 10px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
-  @media ${THEME.DEVICE.small} {
-    width: 250px;
-  }
 `;
 
 const ExerciseRecord = styled.div`
@@ -111,13 +108,10 @@ const Diver = styled.div`
 `;
 
 const MealRecordBox = styled(ExerciseRecordBox)`
-  width: 320px;
+  width: ${(props) => (props.theme.isMobile ? "250px" : "320px")};
   display: flex;
   justify-content: center;
   align-items: center;
-  @media ${THEME.DEVICE.small} {
-    width: 250px;
-  }
 `;
 
 const MealTime = styled.div`

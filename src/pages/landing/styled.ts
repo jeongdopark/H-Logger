@@ -26,18 +26,15 @@ export const LandingSpan = styled.span`
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 800;
-  font-size: clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem);
+  font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.XXL : "clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)")};
   margin-top: 20px;
   margin-bottom: 20px;
   max-width: 600px;
-  @media ${THEME.DEVICE.small} {
-    font-size: ${THEME.FONT_SIZE.XXL};
-  }
 `;
 
 export const LandingH1 = styled.h1`
   font-weight: 800;
-  font-size: clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem);
+  font-size: ${(props) => (props.theme.isMobile ? THEME.FONT_SIZE.XXL : "clamp(2.625rem, 1.2857rem + 3.5714vw, 4rem)")};
   line-height: 1.3;
   scroll-snap-margin-top: calc(var(--MuiDocs-header-height) + 32px);
   scroll-margin-top: calc(var(--MuiDocs-header-height) + 32px);
@@ -45,10 +42,6 @@ export const LandingH1 = styled.h1`
   margin-top: 20px;
   margin-bottom: 20px;
   max-width: 600px;
-
-  @media ${THEME.DEVICE.small} {
-    font-size: ${THEME.FONT_SIZE.XXL};
-  }
 `;
 
 const LandingLoginContainer = styled.div`
