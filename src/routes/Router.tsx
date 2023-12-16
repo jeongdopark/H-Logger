@@ -6,6 +6,7 @@ import CalendarDetail from "../pages/detail/Detail";
 import { Suspense, lazy } from "react";
 import CalendarPageSkeleton from "../components/skeleton/CalendarPage";
 import RecordPageSkeleton from "../components/skeleton/Recordpage";
+import AuthGuard from "../components/AuthGuard";
 
 const Calendar = lazy(() => import("../pages/calendar/Calendar"));
 const Record = lazy(() => import("../pages/record/Record"));
@@ -21,10 +22,23 @@ export const RouterInfo = [
         label: "main",
       },
       {
+        path: PATH_NAME.RECORD,
+        element: (
+          <Suspense fallback={<RecordPageSkeleton />}>
+            <AuthGuard>
+              <Record />
+            </AuthGuard>
+          </Suspense>
+        ),
+        label: "record",
+      },
+      {
         path: PATH_NAME.CALENDAR,
         element: (
           <Suspense fallback={<CalendarPageSkeleton />}>
-            <Calendar />
+            <AuthGuard>
+              <Calendar />
+            </AuthGuard>
           </Suspense>
         ),
         label: "calendar",
@@ -33,15 +47,6 @@ export const RouterInfo = [
         path: PATH_NAME.CALENDAR_DETAIL,
         element: <CalendarDetail />,
         label: "calendarDetail",
-      },
-      {
-        path: PATH_NAME.RECORD,
-        element: (
-          <Suspense fallback={<RecordPageSkeleton />}>
-            <Record />
-          </Suspense>
-        ),
-        label: "record",
       },
       {
         path: PATH_NAME.MISSION,
