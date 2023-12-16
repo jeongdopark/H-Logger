@@ -12,6 +12,7 @@ const WeightInput = ({ date, addToast }: { date: string; addToast: (type: string
   };
   const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setWeight("");
     postWeight(
       { weight: Number(weight)!, dateKey: date },
       {

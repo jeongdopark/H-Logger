@@ -55,14 +55,14 @@ const Footer = styled.footer`
   margin-top: 70px;
   line-height: 8vh;
   padding: 0px 100px;
-  text-align: center;
-  padding: 0px 10px;
+
   a {
     color: ${THEME.COLOR.BLACK};
   }
 
   @media ${THEME.DEVICE.small} {
     font-size: ${THEME.FONT_SIZE.XXXS};
+    padding: 0px 10px;
   }
 `;
 

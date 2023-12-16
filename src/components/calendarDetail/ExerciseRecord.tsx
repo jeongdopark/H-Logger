@@ -15,7 +15,7 @@ const ExerciseRecord = ({ data, index, dateKey, addToast }: IProps) => {
       { dateKey, index },
       {
         onSuccess: () => {
-          addToast("SUCCESS", "등록 완료");
+          addToast("SUCCESS", "삭제 완료");
         },
         onError: () => {
           addToast("FAIL", "다시 시도해 주세요");

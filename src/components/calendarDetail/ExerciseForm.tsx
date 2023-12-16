@@ -17,6 +17,8 @@ const ExerciseForm = ({ date, addToast }: { date: string; addToast: (text: strin
   };
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    setExercise("");
+    setExerciseTime(EXERCISE_TIME[0]);
     postExercise(
       { category: exercise, time: exerciseTime, dateKey: date },
       {

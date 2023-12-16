@@ -127,7 +127,7 @@ const MealTime = styled.div`
 
 const TextRecord = styled(ExerciseRecordBox)`
   padding: 20px;
-  width: 250px;
+  width: 320px;
 `;
 
 const FormWrapper = styled.div`

@@ -29,6 +29,7 @@ const MealForm = ({ date, addToast }: { date: string; addToast: (type: string, t
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    setMeals([]);
     postMeal(
       { menus: meals, time: mealTime, dateKey: date },
       {

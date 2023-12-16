@@ -142,7 +142,7 @@ const ChartWrapper = styled.div`
   background-color: ${THEME.BACKGROUND_COLOR.WHITE};
   border-radius: ${THEME.BORDER_RADIUS.M};
   padding: 20px;
-  width: 250px;
+  width: 320px;
 `;
 
 export const S = {

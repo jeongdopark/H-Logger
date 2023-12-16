@@ -15,13 +15,15 @@ interface IProps {
 
 const Textarea = ({ title, placeholder, date, addToast }: IProps) => {
   const { mutate: postLog } = useCreateDailyLogMutation();
-  const [score, setScore] = useState<number>(0);
+  const [score, setScore] = useState<number>(10);
   const [dailyLog, setDailyLog] = useState<string>("");
   const onChangeLog = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setDailyLog(e.target.value);
   };
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    setScore(10);
+    setDailyLog("");
     postLog(
       { log: dailyLog, score, dateKey: date },
       {
