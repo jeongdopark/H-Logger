@@ -7,8 +7,8 @@ import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import { PATH_NUMBER } from "../../const/path";
 import useMissionsQuery from "../../hooks/queries/useMissionsQuery";
 import { checkPeriod } from "../../utils/checkPeriod";
-import { ResponsiveContext } from "../../context/ResponsiveProvider";
 import { useContext } from "react";
+import { ResponsiveContext } from "../../App";
 
 interface IProps {
   currentMonth: Date;

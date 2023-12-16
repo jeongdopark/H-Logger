@@ -10,7 +10,7 @@ import MissionSkeleton from "../../components/skeleton/MIsison";
 import ScoreSkeleton from "../../components/skeleton/Score";
 import ErrorBoundary from "../../components/error/ErrorBoundary";
 import { ModalProvider } from "../../context/ModalProvider";
-import { ResponsiveContext } from "../../context/ResponsiveProvider";
+import { ResponsiveContext } from "../../App";
 const Record = () => {
   const { isMobile } = useContext(ResponsiveContext);
   return (

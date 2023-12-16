@@ -10,7 +10,7 @@ import Button from "../../components/common/button/Button";
 import DatePicker from "../../components/mission/DatePicker";
 import useMovePage from "../../hooks/useMovePage";
 import useCreateMissionMutation from "../../hooks/mutation/usePostMissionMutation";
-import { ResponsiveContext } from "../../context/ResponsiveProvider";
+import { ResponsiveContext } from "../../App";
 import { ToastContext } from "../../context/ToastProvider";
 
 export interface IFormData {

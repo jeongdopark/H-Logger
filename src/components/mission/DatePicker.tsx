@@ -1,7 +1,7 @@
 import { S } from "./styled";
 import React, { useContext, useState } from "react";
 import Title from "../common/title/Title";
-import { ResponsiveContext } from "../../context/ResponsiveProvider";
+import { ResponsiveContext } from "../../App";
 
 interface IProps {
   startDate: string;

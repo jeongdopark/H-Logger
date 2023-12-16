@@ -8,7 +8,7 @@ import { SVG } from "../../components/SVG";
 import { AuthContext } from "../../context/AuthProvider";
 import { PATH_NUMBER } from "../../const/path";
 import { ToastContext } from "../../context/ToastProvider";
-import { ResponsiveContext } from "../../context/ResponsiveProvider";
+import { ResponsiveContext } from "../../App";
 import { useContext, useRef, useState } from "react";
 
 const Main = () => {
