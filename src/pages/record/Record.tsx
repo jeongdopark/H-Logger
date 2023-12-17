@@ -10,9 +10,9 @@ import MissionSkeleton from "../../components/skeleton/MIsison";
 import ScoreSkeleton from "../../components/skeleton/Score";
 import ErrorBoundary from "../../components/error/ErrorBoundary";
 import { ModalProvider } from "../../context/ModalProvider";
-import { ResponsiveContext } from "../../App";
+import { ViewportContext } from "../../context/ViewportProvider";
 const Record = () => {
-  const { isMobile } = useContext(ResponsiveContext);
+  const { isMobile } = useContext(ViewportContext);
   return (
     <ErrorBoundary>
       <S.RecordContainer>

@@ -8,12 +8,12 @@ interface ToastActions {
   removeToast: () => void;
 }
 
-interface ToastContextType {
+interface IToastContext {
   toasts: IToast[];
   actions: ToastActions;
 }
 
-export const ToastContext = createContext<ToastContextType | null>(null);
+export const ToastContext = createContext<IToastContext | null>(null);
 
 export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   const toast = document.getElementById("toast")!;

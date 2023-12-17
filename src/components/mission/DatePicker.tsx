@@ -1,7 +1,7 @@
 import { S } from "./styled";
 import React, { useContext, useState } from "react";
 import Title from "../common/title/Title";
-import { ResponsiveContext } from "../../App";
+import { ViewportContext } from "../../context/ViewportProvider";
 
 interface IProps {
   startDate: string;
@@ -11,7 +11,7 @@ interface IProps {
 
 const MissionDatePicker = ({ startDate, endDate, setEndDate }: IProps) => {
   const [, setDateRange] = useState([new Date(2023, 10, 30), null]);
-  const { isMobile } = useContext(ResponsiveContext);
+  const { isMobile } = useContext(ViewportContext);
 
   return (
     <div>

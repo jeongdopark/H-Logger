@@ -5,14 +5,13 @@ import { useParams } from "react-router-dom";
 import { dateFormat } from "../../utils/dateFormat";
 import { findMidDate } from "../../utils/findMidDate";
 import { PATH_NUMBER } from "../../const/path";
-import { ResponsiveContext } from "../../App";
 import { ToastContext } from "../../context/ToastProvider";
-
 import Input from "../../components/common/input/Input";
 import Button from "../../components/common/button/Button";
 import DatePicker from "../../components/mission/DatePicker";
 import useMovePage from "../../hooks/useMovePage";
 import useCreateMissionMutation from "../../hooks/mutation/usePostMissionMutation";
+import { ViewportContext } from "../../context/ViewportProvider";
 
 export interface IFormData {
   title: string;
@@ -23,7 +22,7 @@ export interface IFormData {
 
 const Mission = () => {
   const toast = useContext(ToastContext);
-  const { isMobile } = useContext(ResponsiveContext);
+  const { isMobile } = useContext(ViewportContext);
   const [routerHandler] = useMovePage();
   const { mutate } = useCreateMissionMutation();
   const { id } = useParams() as { id: string };

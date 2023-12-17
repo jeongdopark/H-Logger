@@ -8,13 +8,13 @@ import { SVG } from "../../components/SVG";
 import { AuthContext } from "../../context/AuthProvider";
 import { PATH_NUMBER } from "../../const/path";
 import { ToastContext } from "../../context/ToastProvider";
-import { ResponsiveContext } from "../../App";
 import { useContext, useRef, useState } from "react";
+import { ViewportContext } from "../../context/ViewportProvider";
 
 const Main = () => {
   const [isLoginBoxOpened, setIsLoginBoxOpened] = useState<boolean>(false);
   const [isInitClick, setIsInitClick] = useState<boolean>(false);
-  const { isMobile } = useContext(ResponsiveContext);
+  const { isMobile } = useContext(ViewportContext);
   const loginModal = useRef<HTMLDivElement>(null);
   const { setIsLogin } = useContext(AuthContext);
   const { isLogin } = useContext(AuthContext);
@@ -69,8 +69,9 @@ const Main = () => {
               <Button
                 size={isMobile ? "MO" : "L"}
                 text="Calendar"
-                onClick={() => routerHandler({ num: PATH_NUMBER.CALENDAR })}
+                onClick={() => toast?.actions.addToast("SUCCESS", "Toast Test")}
               />
+              {/* routerHandler({ num: PATH_NUMBER.CALENDAR }) */}
               <Button
                 size={isMobile ? "MO" : "L"}
                 text="Record"

@@ -8,7 +8,7 @@ import { PATH_NUMBER } from "../../const/path";
 import useMissionsQuery from "../../hooks/queries/useMissionsQuery";
 import { checkPeriod } from "../../utils/checkPeriod";
 import { useContext } from "react";
-import { ResponsiveContext } from "../../App";
+import { ViewportContext } from "../../context/ViewportProvider";
 
 interface IProps {
   currentMonth: Date;
@@ -17,7 +17,7 @@ interface IProps {
 const CalendarCell = ({ currentMonth }: IProps) => {
   const { data: calendarData } = useCalendarDataQuery();
   const { data: missionData } = useMissionsQuery();
-  const { isMobile } = useContext(ResponsiveContext);
+  const { isMobile } = useContext(ViewportContext);
   const today = format(new Date(), "yyMMdd");
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
