@@ -69,9 +69,9 @@ const Main = () => {
               <Button
                 size={isMobile ? "MO" : "L"}
                 text="Calendar"
-                onClick={() => toast?.actions.addToast("SUCCESS", "Toast Test")}
+                onClick={() => routerHandler({ num: PATH_NUMBER.CALENDAR })}
               />
-              {/* routerHandler({ num: PATH_NUMBER.CALENDAR }) */}
+
               <Button
                 size={isMobile ? "MO" : "L"}
                 text="Record"

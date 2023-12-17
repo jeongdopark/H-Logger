@@ -23,7 +23,7 @@ const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
           const dotDate = dotDateFormat(String(sortUserWeight[index].date));
 
           return (
-            <S.ChartLi x={point.x} y={point.y}>
+            <S.ChartLi x={point.x}>
               <svg viewBox="0 0 20px 20px" width={50} height={205} style={{ zIndex: "999" }}>
                 <S.GraphLineWrapper>
                   <S.GraphCircle
@@ -49,15 +49,7 @@ const LineGraph = ({ points, sortUserWeight }: lineGraphProps): JSX.Element => {
       </ul>
       <S.SVGContainer>
         <svg viewBox={`0 0 ${maxPointX} 100px`} width={maxPointX} height="100%">
-          <S.Polyline
-            points={POLYLINE_POINT}
-            fill="none"
-            stroke={THEME.BACKGROUND_COLOR.GREEN_4}
-            strokeWidth="6"
-          ></S.Polyline>
-          {points.map((e) => (
-            <S.Circle cx={e.x + 45} cy={e.y + 32} r="8" fill="transparent" />
-          ))}
+          <S.Polyline points={POLYLINE_POINT} fill="none" stroke={THEME.BACKGROUND_COLOR.GREEN_4} strokeWidth="6" />
         </svg>
       </S.SVGContainer>
     </S.ChartContainer>

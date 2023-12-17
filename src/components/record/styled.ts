@@ -272,7 +272,6 @@ const ChartContainer = styled.div`
 
 interface IChartLi {
   x: number;
-  y: number;
 }
 
 const ChartLi = styled.li<IChartLi>`
