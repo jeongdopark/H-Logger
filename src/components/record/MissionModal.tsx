@@ -15,7 +15,7 @@ import useDeleteMissionMutation from "../../hooks/mutation/useDeleteMissionMutat
 import useFinishMissionMutation from "../../hooks/mutation/useFinishMissionMutation";
 
 const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
-  const { addToast } = useContext(ToastContext);
+  const toast = useContext(ToastContext);
   const { isInitClick, isModalOpened, setIsInitClick, setIsModalOpened } = useContext(ModalContext);
   const { mutate: deleteMission } = useDeleteMissionMutation();
   const { mutate: finishMission } = useFinishMissionMutation();
@@ -24,13 +24,13 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
   const missionDeleteHandler = () => {
     deleteMission(modalInfo.index, {
       onSuccess: () => {
-        addToast("SUCCESS", "삭제 완료");
+        toast?.actions.addToast("SUCCESS", "삭제 완료");
         setIsModalOpened(false);
         setIsInitClick(false);
         openScroll();
       },
       onError: () => {
-        addToast("FAIL", "다시 시도해 주세요");
+        toast?.actions.addToast("FAIL", "다시 시도해 주세요");
       },
     });
   };
@@ -41,7 +41,7 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
         {},
         {
           onSuccess: () => {
-            addToast("SUCCESS", "삭제 완료");
+            toast?.actions.addToast("SUCCESS", "삭제 완료");
             setIsModalOpened(false);
             setIsInitClick(false);
             openScroll();
@@ -49,7 +49,7 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
         }
       );
     } else {
-      addToast("FAIL", "미션 기간이 남아있습니다");
+      toast?.actions.addToast("FAIL", "미션 기간이 남아있습니다");
     }
   };
 

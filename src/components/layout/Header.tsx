@@ -6,7 +6,7 @@ import useMovePage from "../../hooks/useMovePage";
 import { ToastContext } from "../../context/ToastProvider";
 
 const Header = () => {
-  const { addToast } = useContext(ToastContext);
+  const toast = useContext(ToastContext);
   const { isLogin, setIsLogin } = useContext(AuthContext);
   const [routerHandler] = useMovePage();
 
@@ -14,7 +14,7 @@ const Header = () => {
     setIsLogin(false);
     localStorage.removeItem("uid");
     routerHandler({ num: PATH_NUMBER.LANDING });
-    addToast("SUCCESS", "로그아웃 완료");
+    toast?.actions.addToast("SUCCESS", "로그아웃 완료");
   };
 
   return (

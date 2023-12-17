@@ -25,7 +25,7 @@ const Main = () => {
     setIsInitClick(true);
     setIsLoginBoxOpened(true);
   };
-  const { addToast } = useContext(ToastContext);
+  const toast = useContext(ToastContext);
   useOutsideClick({
     ref: loginModal,
     isInit: isInitClick,
@@ -39,7 +39,7 @@ const Main = () => {
     openScroll();
     setIsLogin(true);
     routerHandler({ num: PATH_NUMBER.CALENDAR });
-    addToast("SUCCESS", "로그인 성공");
+    toast?.actions.addToast("SUCCESS", "로그인");
   };
 
   return (

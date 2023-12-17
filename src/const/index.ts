@@ -47,3 +47,8 @@ export const SVG_VIEWBOX: ISVG_VIEWBOX = {
   AVERAGE_HEIGHT: Math.round(200 / 2),
   SCALE: 15,
 };
+
+export const TOAST_ACTION = {
+  ADD_TOAST: "ADD_TOAST",
+  REMOVE_TOAST: "REMOVE_TOAST",
+} as const;

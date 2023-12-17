@@ -5,10 +5,11 @@ import React, { useState } from "react";
 import useCreateExerciseMutation from "../../hooks/mutation/usePostExerciseMutation";
 import { EXERCISE_TIME } from "../../const";
 import { S } from "./styled";
+import { ToastType } from "../../types/toast";
 
 type ExerciseTimeType = (typeof EXERCISE_TIME)[number];
 
-const ExerciseForm = ({ date, addToast }: { date: string; addToast: (text: string, type: string) => {} }) => {
+const ExerciseForm = ({ date, addToast }: { date: string; addToast: (type: ToastType, text: string) => void }) => {
   const { mutate: postExercise } = useCreateExerciseMutation();
   const [exercise, setExercise] = useState<string>("");
   const [exerciseTime, setExerciseTime] = useState<ExerciseTimeType>(EXERCISE_TIME[0]);

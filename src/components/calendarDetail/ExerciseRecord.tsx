@@ -1,11 +1,12 @@
 import { S } from "./styled";
 import { IExercise } from "../../types/calendar";
 import useDeleteExerciseMutation from "../../hooks/mutation/useDeleteExerciseMutation";
+import { ToastType } from "../../types/toast";
 interface IProps {
   data: IExercise;
   index: number;
   dateKey: string;
-  addToast: (type: string, text: string) => {};
+  addToast: (type: ToastType, text: string) => void;
 }
 
 const ExerciseRecord = ({ data, index, dateKey, addToast }: IProps) => {

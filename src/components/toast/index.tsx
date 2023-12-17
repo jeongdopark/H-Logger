@@ -8,18 +8,15 @@ export type ToastKeyType = keyof typeof TOAST_TYPE;
 export interface IToast {
   text: string;
   type: ToastKeyType;
-  id: number;
 }
 
-const Toast = ({ text, type, id }: IToast) => {
+const Toast = ({ text, type }: IToast) => {
   const toastTime = useRef<any>(null);
-  const { removeToast } = useContext(ToastContext);
-  const handleRemove = () => {
-    removeToast(id);
-  };
+  const toast = useContext(ToastContext);
+
   useEffect(() => {
     toastTime.current = setTimeout(() => {
-      handleRemove();
+      toast?.actions.removeToast();
     }, TOAST_DURATION.DURATION.SET_TIMEOUT);
 
     return () => {

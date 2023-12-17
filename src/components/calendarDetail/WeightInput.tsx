@@ -4,7 +4,7 @@ import { S } from "./styled";
 import React, { useState } from "react";
 import Input from "../common/input/Input";
 
-const WeightInput = ({ date, addToast }: { date: string; addToast: (type: string, text: string) => {} }) => {
+const WeightInput = ({ date, addToast }: { date: string; addToast: (type: ToastType, text: string) => void }) => {
   const [weight, setWeight] = useState<string>("");
   const { mutate: postWeight } = useCreateWeightMutation();
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

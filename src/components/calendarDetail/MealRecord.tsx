@@ -2,12 +2,13 @@ import { S } from "./styled";
 import { IMeal } from "../../types/calendar";
 import Menu from "./Menu";
 import useDeleteMealMutation from "../../hooks/mutation/useDeleteMealMutation";
+import { ToastType } from "../../types/toast";
 
 interface IProps {
   data: IMeal;
   index: number;
   dateKey: string;
-  addToast: (type: string, text: string) => {};
+  addToast: (type: ToastType, text: string) => void;
 }
 
 const MealRecord = ({ data, index, dateKey, addToast }: IProps) => {

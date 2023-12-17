@@ -10,7 +10,7 @@ interface IProps {
   title: string;
   placeholder: string;
   date: string;
-  addToast: (type: string, text: string) => {};
+  addToast: (type: ToastType, text: string) => void;
 }
 
 const Textarea = ({ title, placeholder, date, addToast }: IProps) => {

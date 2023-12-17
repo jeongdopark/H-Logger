@@ -1,11 +1,12 @@
 import { S } from "./styled";
 import { IDate } from "../../types/calendar";
 import useDeleteLogMutation from "../../hooks/mutation/useDeleteLogMutation";
+import { ToastType } from "../../types/toast";
 
 interface IProps {
   detailData: IDate;
   dateKey: string;
-  addToast: (text: string, type: string) => {};
+  addToast: (text: ToastType, type: string) => void;
 }
 
 const TextRecord = ({ detailData, dateKey, addToast }: IProps) => {
