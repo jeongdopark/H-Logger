@@ -77,7 +77,6 @@
 
 - [React Portal + Context API 활용하여 Toast 메세지 구현](https://github.com/jeongdopark/H-Logger/wiki/React-Portal---Context-API-활용하여-Toast-메세지-구현)
 - [resize event + Context API 활용하여 반응형 대응](https://github.com/jeongdopark/H-Logger/wiki/resize-event---Context-API-활용하여-반응형-대응)
-- [Suspense + Skeleton 활용하여 관심사 분리 및 UX 개선](https://github.com/jeongdopark/H-Logger/wiki/Suspense---Skeleton-활용하여-관심사-분리-및-UX-개선)
 - [SVG 라인 차트, 도넛 차트 구현 이야기](https://github.com/jeongdopark/H-Logger/wiki/SVG-라인-차트%2C-도넛-차트-구현-이야기)
 - [vite manualChunks & React.lazy - 성능 최적화](https://github.com/jeongdopark/H-Logger/wiki/성능-최적화-%E2%80%90-vite-manualChunks-%26-React.lazy)
 
