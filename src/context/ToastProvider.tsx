@@ -1,62 +1,50 @@
-import React, { createContext, useReducer } from "react";
-import { createPortal } from "react-dom";
 import Toast from "../components/toast";
+import { createPortal } from "react-dom";
+import React, { createContext, useMemo, useState } from "react";
+import { IToast, ToastType } from "../types/toast";
 
-interface IToast {
-  text: string;
-  type: "SUCCESS" | "FAIL";
-  uid: number;
+interface ToastActions {
+  addToast: (type: ToastType, text: string) => void;
+  removeToast: () => void;
 }
+
 interface ToastContextType {
   toasts: IToast[];
+  actions: ToastActions;
 }
 
-type ToastAction = { type: "ADD_TOAST"; payload: IToast } | { type: "REMOVE_TOAST"; payload: number };
-const initialState = {
-  toasts: [],
-};
-
-const toastReducer = (state: ToastContextType, action: ToastAction) => {
-  switch (action.type) {
-    case "ADD_TOAST":
-      return {
-        ...state,
-        toasts: [...state.toasts, action.payload],
-      };
-    case "REMOVE_TOAST":
-      const updatedToasts = state.toasts.filter((toast) => toast.uid !== action.payload);
-      return {
-        ...state,
-        toasts: updatedToasts,
-      };
-  }
-};
-
-export const ToastContext = createContext<any>({
-  addToast: () => {},
-  removeToast: () => {},
-});
+export const ToastContext = createContext<ToastContextType | null>(null);
 
 export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
-  const [toasts, dispatch] = useReducer(toastReducer, initialState);
-
-  const addToast = (type: "SUCCESS" | "FAIL", text: string) => {
-    const uid = Math.floor(Math.random() * 99999);
-    dispatch({ type: "ADD_TOAST", payload: { uid, text, type } });
-  };
-
-  const removeToast = (id: number) => {
-    dispatch({ type: "REMOVE_TOAST", payload: id });
-  };
   const toast = document.getElementById("toast")!;
+  const [toasts, setToasts] = useState<IToast[]>([]);
+
+  const actions = useMemo(
+    () => ({
+      addToast(type: ToastType, text: string) {
+        const uid = Math.floor(Math.random() * 99999);
+        setToasts((currentToasts) => [...currentToasts, { type, text, uid }]);
+      },
+      removeToast() {
+        setToasts((currentToasts) => {
+          const updatedToasts = [...currentToasts];
+          updatedToasts.shift();
+          return updatedToasts;
+        });
+      },
+    }),
+    []
+  );
+
+  const value = useMemo(() => ({ toasts, actions }), [toasts, actions]);
 
   return (
-    <ToastContext.Provider value={{ addToast, removeToast }}>
+    <ToastContext.Provider value={value}>
       {children}
       {createPortal(
         <React.Fragment>
-          {toasts.toasts.map((e: IToast) => (
-            <Toast type={e.type} text={e.text} id={e.uid} key={e.uid} />
+          {toasts.map((e: IToast) => (
+            <Toast type={e.type} text={e.text} key={e.uid} />
           ))}
         </React.Fragment>,
         toast
