@@ -6,7 +6,7 @@ import Menu from "./Menu";
 import { MEAL_TIME } from "../../const";
 import { useState } from "react";
 import { S } from "./styled";
-
+import { ToastType } from "../../types/toast";
 const MealForm = ({ date, addToast }: { date: string; addToast: (type: ToastType, text: string) => void }) => {
   const [mealTime, setMealTime] = useState<string>("아침");
   const [meals, setMeals] = useState<string[]>([]);

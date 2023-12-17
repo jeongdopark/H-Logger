@@ -3,7 +3,7 @@ import Button from "../common/button/Button";
 import { S } from "./styled";
 import React, { useState } from "react";
 import Input from "../common/input/Input";
-
+import { ToastType } from "../../types/toast";
 const WeightInput = ({ date, addToast }: { date: string; addToast: (type: ToastType, text: string) => void }) => {
   const [weight, setWeight] = useState<string>("");
   const { mutate: postWeight } = useCreateWeightMutation();

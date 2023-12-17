@@ -5,7 +5,7 @@ import Title from "../common/title/Title";
 import React, { useState } from "react";
 import { SCORE } from "../../const";
 import { S } from "./styled";
-
+import { ToastType } from "../../types/toast";
 interface IProps {
   title: string;
   placeholder: string;
