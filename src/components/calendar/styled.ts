@@ -67,10 +67,14 @@ const CellContainer = styled.div`
 
 const ArrowBuntton = styled.button`
   background-color: transparent;
-  width: ${(props) => (props.theme.isMobile ? "12px" : "30px")};
-  height: ${(props) => (props.theme.isMobile ? "12px" : "30px")};
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  svg {
+    width: ${(props) => (props.theme.isMobile ? "12px" : "30px")};
+    height: ${(props) => (props.theme.isMobile ? "12px" : "30px")};
+  }
 `;
 
 const CellTextContainer = styled.div`

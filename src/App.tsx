@@ -22,9 +22,6 @@ const App = () => {
   const IS_MOBILE = !matchMedia("screen and (min-width: 850px)").matches;
   const [isMobile, setIsMobile] = useState<boolean>(IS_MOBILE);
   const handleResize = () => {
-    console.log("resize");
-    console.log(isMobile);
-
     setIsMobile(window.innerWidth < 750);
   };
 
