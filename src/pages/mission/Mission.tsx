@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { dateFormat } from "../../utils/dateFormat";
 import { findMidDate } from "../../utils/findMidDate";
 import { PATH_NUMBER } from "../../const/path";
-import { ToastContext } from "../../context/ToastProvider";
+import { ToastDispatchContext } from "../../context/ToastProvider";
 import Input from "../../components/common/input/Input";
 import Button from "../../components/common/button/Button";
 import DatePicker from "../../components/mission/DatePicker";
@@ -21,7 +21,7 @@ export interface IFormData {
 }
 
 const Mission = () => {
-  const toast = useContext(ToastContext);
+  const actions = useContext(ToastDispatchContext);
   const { isMobile } = useContext(ViewportContext);
   const [routerHandler] = useMovePage();
   const { mutate } = useCreateMissionMutation();
@@ -54,11 +54,11 @@ const Mission = () => {
     const submitData: IMission = { ...formData, exercise_count: 0, period, exercise: {}, isActive: true };
     mutate(submitData, {
       onSuccess: () => {
-        toast?.actions.addToast("SUCCESS", "등록 완료");
+        actions?.addToast("SUCCESS", "등록 완료");
         routerHandler({ num: PATH_NUMBER.CALENDAR });
       },
       onError: () => {
-        toast?.actions.addToast("FAIL", "등록 실패");
+        actions?.addToast("FAIL", "등록 실패");
       },
     });
   };

@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import { PATH_NUMBER } from "../../const/path";
 import useMovePage from "../../hooks/useMovePage";
-import { ToastContext } from "../../context/ToastProvider";
+import { ToastDispatchContext } from "../../context/ToastProvider";
 
 const Header = () => {
-  const toast = useContext(ToastContext);
+  const actions = useContext(ToastDispatchContext);
   const { isLogin, setIsLogin } = useContext(AuthContext);
   const [routerHandler] = useMovePage();
 
@@ -14,7 +14,7 @@ const Header = () => {
     setIsLogin(false);
     localStorage.removeItem("uid");
     routerHandler({ num: PATH_NUMBER.LANDING });
-    toast?.actions.addToast("SUCCESS", "로그아웃 완료");
+    actions?.addToast("SUCCESS", "로그아웃 완료");
   };
 
   return (

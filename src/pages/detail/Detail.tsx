@@ -13,10 +13,10 @@ import { IExercise, IMeal } from "../../types/calendar";
 import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import DonutChart from "../../components/record/DonutChart";
-import { ToastContext } from "../../context/ToastProvider";
+import { ToastDispatchContext } from "../../context/ToastProvider";
 
 const CalendarDetail = () => {
-  const toast = useContext(ToastContext);
+  const actions = useContext(ToastDispatchContext);
   const { id } = useParams() as { id: string };
   const [modeNumber, setModeNumber] = useState(0);
   const { data: calendarData, isLoading } = useCalendarDataQuery();
@@ -28,10 +28,10 @@ const CalendarDetail = () => {
   };
 
   const FormArray = [
-    <ExerciseForm date={id!} addToast={toast?.actions.addToast!} />,
-    <MealForm date={id!} addToast={toast?.actions.addToast!} />,
-    <Textarea title="하루 기록" placeholder="하루를 기록해 주세요." date={id!} addToast={toast?.actions.addToast!} />,
-    <WeightInput date={id!} addToast={toast?.actions.addToast!} />,
+    <ExerciseForm date={id!} addToast={actions?.addToast!} />,
+    <MealForm date={id!} addToast={actions?.addToast!} />,
+    <Textarea title="하루 기록" placeholder="하루를 기록해 주세요." date={id!} addToast={actions?.addToast!} />,
+    <WeightInput date={id!} addToast={actions?.addToast!} />,
   ];
 
   if (isLoading) return <div>Loading...</div>;
@@ -57,7 +57,7 @@ const CalendarDetail = () => {
           <S.RecordElement>
             <S.ExerciseRecordBox>운동</S.ExerciseRecordBox>
             {calendarData[id]?.exercise.map((data: IExercise, index: number) => (
-              <ExerciseRecord data={data} key={index} index={index} dateKey={id} addToast={toast?.actions.addToast!} />
+              <ExerciseRecord data={data} key={index} index={index} dateKey={id} addToast={actions?.addToast!} />
             ))}
           </S.RecordElement>
         ) : (
@@ -69,7 +69,7 @@ const CalendarDetail = () => {
           <S.RecordElement>
             <S.MealRecordBox>식단</S.MealRecordBox>
             {calendarData[id]?.meal.map((data: IMeal, index: number) => (
-              <MealRecord data={data} key={index} index={index} dateKey={id} addToast={toast?.actions.addToast!} />
+              <MealRecord data={data} key={index} index={index} dateKey={id} addToast={actions?.addToast!} />
             ))}
           </S.RecordElement>
         ) : (
@@ -80,7 +80,7 @@ const CalendarDetail = () => {
         {calendarData[id]?.dailyLog ? (
           <S.RecordElement>
             <S.ExerciseRecordBox>일기</S.ExerciseRecordBox>
-            <TextRecord detailData={calendarData[id]!} dateKey={id} addToast={toast?.actions.addToast!} />
+            <TextRecord detailData={calendarData[id]!} dateKey={id} addToast={actions?.addToast!} />
             <S.ChartWrapper>
               <DonutChart percent={calendarData[id].dailyLog.score * 0.01} unit={"점"} />
             </S.ChartWrapper>

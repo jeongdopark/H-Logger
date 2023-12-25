@@ -2,7 +2,7 @@ import { S } from "./styled";
 import { IModalInfo } from "./MissionRecord";
 import { dotDateFormat } from "../../utils/dateFormat";
 import { ModalContext } from "../../context/ModalProvider";
-import { ToastContext } from "../../context/ToastProvider";
+import { ToastDispatchContext } from "../../context/ToastProvider";
 import { checkMissionEnd } from "../../utils/checkMissionEnd";
 import { useContext, useRef } from "react";
 import Title from "../common/title/Title";
@@ -15,7 +15,7 @@ import useDeleteMissionMutation from "../../hooks/mutation/useDeleteMissionMutat
 import useFinishMissionMutation from "../../hooks/mutation/useFinishMissionMutation";
 
 const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
-  const toast = useContext(ToastContext);
+  const actions = useContext(ToastDispatchContext);
   const { isInitClick, isModalOpened, setIsInitClick, setIsModalOpened } = useContext(ModalContext);
   const { mutate: deleteMission } = useDeleteMissionMutation();
   const { mutate: finishMission } = useFinishMissionMutation();
@@ -24,13 +24,13 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
   const missionDeleteHandler = () => {
     deleteMission(modalInfo.index, {
       onSuccess: () => {
-        toast?.actions.addToast("SUCCESS", "삭제 완료");
+        actions?.addToast("SUCCESS", "삭제 완료");
         setIsModalOpened(false);
         setIsInitClick(false);
         openScroll();
       },
       onError: () => {
-        toast?.actions.addToast("FAIL", "다시 시도해 주세요");
+        actions?.addToast("FAIL", "다시 시도해 주세요");
       },
     });
   };
@@ -41,7 +41,7 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
         {},
         {
           onSuccess: () => {
-            toast?.actions.addToast("SUCCESS", "삭제 완료");
+            actions?.addToast("SUCCESS", "삭제 완료");
             setIsModalOpened(false);
             setIsInitClick(false);
             openScroll();
@@ -49,7 +49,7 @@ const MissionModal = ({ modalInfo }: { modalInfo: IModalInfo }) => {
         }
       );
     } else {
-      toast?.actions.addToast("FAIL", "미션 기간이 남아있습니다");
+      actions?.addToast("FAIL", "미션 기간이 남아있습니다");
     }
   };
 

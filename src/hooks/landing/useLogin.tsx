@@ -4,13 +4,13 @@ import { auth } from "../../firebase";
 import { PATH_NUMBER } from "../../const/path";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
-import { ToastContext } from "../../context/ToastProvider";
+import { ToastDispatchContext } from "../../context/ToastProvider";
 import { createUserDoc } from "../../utils/createUserDoc";
 import { checkUserExist } from "../../utils/checkUserExist";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const useLogin = () => {
-  const toast = useContext(ToastContext);
+  const actions = useContext(ToastDispatchContext);
   const [routerHandler] = useMovePage();
   const { openScroll } = useScrollLock();
   const { setIsLogin } = useContext(AuthContext);
@@ -31,12 +31,12 @@ const useLogin = () => {
         localStorage.setItem("uid", user.uid);
         setIsLogin(true);
         routerHandler({ num: PATH_NUMBER.CALENDAR });
-        toast?.actions.addToast("SUCCESS", "로그인 성공");
+        actions?.addToast("SUCCESS", "로그인 성공");
       })
       .catch((err) => {
         alert("로그인 실패");
         console.log(err);
-        toast?.actions.addToast("FAIL", "로그인 실패");
+        actions?.addToast("FAIL", "로그인 실패");
       });
   };
 

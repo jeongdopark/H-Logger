@@ -8,12 +8,7 @@ interface ToastActions {
   removeToast: () => void;
 }
 
-interface IToastContext {
-  toasts: IToast[];
-  actions: ToastActions;
-}
-
-export const ToastContext = createContext<IToastContext | null>(null);
+export const ToastDispatchContext = createContext<ToastActions | null>(null);
 
 export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
   const toast = document.getElementById("toast")!;
@@ -36,10 +31,8 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
     []
   );
 
-  const value = useMemo(() => ({ toasts, actions }), [toasts, actions]);
-
   return (
-    <ToastContext.Provider value={value}>
+    <ToastDispatchContext.Provider value={actions}>
       {children}
       {createPortal(
         <React.Fragment>
@@ -49,6 +42,6 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
         </React.Fragment>,
         toast
       )}
-    </ToastContext.Provider>
+    </ToastDispatchContext.Provider>
   );
 };

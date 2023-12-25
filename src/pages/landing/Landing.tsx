@@ -7,7 +7,7 @@ import { S } from "./styled";
 import { SVG } from "../../components/SVG";
 import { AuthContext } from "../../context/AuthProvider";
 import { PATH_NUMBER } from "../../const/path";
-import { ToastContext } from "../../context/ToastProvider";
+import { ToastDispatchContext } from "../../context/ToastProvider";
 import { useContext, useRef, useState } from "react";
 import { ViewportContext } from "../../context/ViewportProvider";
 
@@ -25,7 +25,7 @@ const Main = () => {
     setIsInitClick(true);
     setIsLoginBoxOpened(true);
   };
-  const toast = useContext(ToastContext);
+  const actions = useContext(ToastDispatchContext);
   useOutsideClick({
     ref: loginModal,
     isInit: isInitClick,
@@ -39,7 +39,7 @@ const Main = () => {
     openScroll();
     setIsLogin(true);
     routerHandler({ num: PATH_NUMBER.CALENDAR });
-    toast?.actions.addToast("SUCCESS", "로그인");
+    actions?.addToast("SUCCESS", "로그인");
   };
 
   return (
