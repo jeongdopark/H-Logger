@@ -38,14 +38,12 @@ interface ISVG_VIEWBOX {
   WIDTH: number;
   HEIGHT: number;
   AVERAGE_HEIGHT: number;
-  SCALE: number;
 }
 
 export const SVG_VIEWBOX: ISVG_VIEWBOX = {
   WIDTH: 1200,
   HEIGHT: 200,
   AVERAGE_HEIGHT: Math.round(200 / 2),
-  SCALE: 15,
 };
 
 export const TOAST_ACTION = {

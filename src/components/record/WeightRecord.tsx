@@ -1,6 +1,7 @@
 import { S } from "./styled";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IWeight } from "../../types/weight";
+import { calculateScale } from "../../utils/calculateScale";
 import { SVG_VIEWBOX, WEIGHT_LINE_CONST } from "../../const";
 import useWeightQuery from "../../hooks/queries/useWeightQuery";
 import Title from "../common/title/Title";
@@ -17,8 +18,10 @@ const WeightRecord = ({ isMobile }: { isMobile: boolean }) => {
   const { data: userWeight, isLoading: userWeightLoading } = useWeightQuery();
   const [points, setPoints] = useState<IPoints[]>();
   const [sortUserWeight, setSortUserWeight] = useState<IWeight[]>();
-
+  const scale = useRef(1);
   useEffect(() => {
+    let min = Infinity;
+    let max = -Infinity;
     let X_INTERVAL = userWeight
       ? isMobile
         ? WEIGHT_LINE_CONST.X_LIMIT_MOBILE / userWeight.length
@@ -30,8 +33,14 @@ const WeightRecord = ({ isMobile }: { isMobile: boolean }) => {
     const sort_weight = userWeight ? userWeight.sort((a, b) => a.date - b.date) : [];
 
     for (let i = 0; i < sort_weight.length; i++) {
+      if (min > sort_weight[i].weight) min = sort_weight[i].weight;
+      if (max < sort_weight[i].weight) max = sort_weight[i].weight;
       sum += sort_weight[i].weight;
     }
+
+    scale.current = calculateScale(max, min);
+    console.log(scale.current);
+
     average = sum / sort_weight.length;
 
     if (userWeight && X_INTERVAL) {
@@ -41,7 +50,7 @@ const WeightRecord = ({ isMobile }: { isMobile: boolean }) => {
           y:
             SVG_VIEWBOX.AVERAGE_HEIGHT +
             (SVG_VIEWBOX.AVERAGE_HEIGHT - sort_weight[i].weight * (SVG_VIEWBOX.AVERAGE_HEIGHT / average)) *
-              SVG_VIEWBOX.SCALE,
+              scale.current,
         });
       }
     }
