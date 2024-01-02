@@ -5,15 +5,16 @@ import { IExercise } from "../../types/calendar";
 import { addDays, startOfWeek, startOfMonth, format } from "date-fns";
 import useCalendarDataQuery from "../../hooks/queries/useCalendarQuery";
 import Title from "../common/title/Title";
-import React from "react";
+import React, { useState } from "react";
 
 const ScoreRecord = ({ isMobile }: { isMobile: boolean }) => {
+  const [year, setYear] = useState(24);
   const { data } = useCalendarDataQuery();
   const navigate = useNavigate();
   const routerHandler = (id: string) => {
     navigate(`/calendar/${id}`);
   };
-  const monthStart = startOfMonth(new Date(2023, 0));
+  const monthStart = startOfMonth(new Date(Number(`20${year}`), 0));
   let startDate = startOfWeek(monthStart);
   let Year = [
     <S.ScoreRecordUl>
@@ -70,17 +71,30 @@ const ScoreRecord = ({ isMobile }: { isMobile: boolean }) => {
         </S.ScoreRecordLi>
       );
       startDate = addDays(startDate, 1);
-      if (format(startDate, "yyMMdd") === "240101") break;
+      if (format(startDate, "yyMMdd") === `${year + 1}0101`) break;
     }
     Year.push(<S.ScoreRecordUl>{Week}</S.ScoreRecordUl>);
-    if (format(startDate, "yyMMdd") === "240101") break;
+    if (format(startDate, "yyMMdd") === `${year + 1}0101`) break;
   }
   return (
     <S.RecordContainer>
       <S.TitleWrapper>
         <Title title="운동" size={isMobile ? "XS" : "L"} />
+        <button
+          onClick={() => {
+            setYear(23);
+          }}
+        >
+          2023
+        </button>
+        <button
+          onClick={() => {
+            setYear(24);
+          }}
+        >
+          2024
+        </button>
       </S.TitleWrapper>
-
       <S.ScoreRecordWrapper>
         {Year.map((week, idx) => (
           <React.Fragment key={idx}>{week}</React.Fragment>

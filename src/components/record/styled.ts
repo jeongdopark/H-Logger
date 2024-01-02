@@ -143,6 +143,7 @@ const HoverBox = styled.div`
 
 export const TitleWrapper = styled.div`
   display: flex;
+  gap: 10px;
   justify-content: start;
   width: 100%;
   height: 40px;
